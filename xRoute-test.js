@@ -1,17 +1,21 @@
 (function(window) {
-    route.addRoute('#/aaa', (path = '') => {
+    router.addRoute('#/aaa', (path = '') => {
         console.log(path);
     })
     
-    route.addRoute('#/bbb', (path = '') => {
+    router.addRoute('#/bbb', (path = '') => {
         console.log(path);
     })
     
-    route.addRoute('#/ccc', (path = '') => {
+    router.addRoute('#/ccc', (path = '') => {
         console.log(path);
     })
     
-    route.addRoute('#/ddd', (path = '') => {
+    router.addRoute('#/ddd', (path = '') => {
         console.log(path);
     })
+    
+    setTimeout(() => {
+        location.hash = '#/ddd';
+    }, 3000);
 })(window);
