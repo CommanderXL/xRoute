@@ -6,6 +6,8 @@
     };
     
     
+    //let navLinks = document.querySelectorAll("a");
+    
     let pageCache = {};
     let links = document.querySelectorAll('.nav-link');
     let latinNameMap = {};
