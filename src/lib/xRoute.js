@@ -1,4 +1,3 @@
-(function (window) {
     var Router = [],
         useHash = false,
         pageCache = {}; //在内存中进行缓存
@@ -21,7 +20,7 @@
     } else {
         //hash发生变化时监听的方式,因为hashchange事件浏览器的支持度已经比较高了,所以使用hashchange
 
-        //轮询
+        //低级浏览器使用 轮询
         /*
         let oldHash = location.hash;
         setInterval(() => {
@@ -92,10 +91,9 @@
 
     //TODO 路由的销毁(根据时间来判断)
 
-
-    window.router = {
+    var route = {
         addRoute,
         handleRoute
     }
 
-})(window);
+export {route};
