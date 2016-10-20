@@ -1,10 +1,10 @@
 import 'whatwg-fetch';
 
 let Model = {
-    records: [],
+    records: {},
     //model创建后的回调
     created() {
-
+        this.records = {};  //创建新的model后,清空records,避免records被其他的model共享而发生副作用
     },
     extend(obj = {}) {
         let extended = obj.extended;
@@ -44,6 +44,7 @@ let Model = {
 }
 
 
+//ajax
 Model.include({
     post(url = '', obj = {}) {
         return new Promise((resolve, reject) => {
@@ -70,9 +71,61 @@ Model.include({
 
 Model.include({
     pageInit() {
-        console.log('this\'s page ');
+        
     }
-})
+});
+
+//Model对象记录
+Model.include({
+    newRecord: true,
+    create() {
+        this.newRecord = false;
+        //parent指向Model.create()创建的model中
+        this.parent.records[this.name] = this;
+    },
+    destory() {
+        delete this.parent.records[this.name];
+    },
+    update() {
+        this.parent.records[this.name] = this.name;
+    },
+    save() {
+        this.newRecord ? this.create() : this.update();
+    }
+});
+
+Model.extend({
+    find(name = '') {
+        return this.records[name] || console.log('Unkonwn record');
+    }
+});
 
 
-export {Model}
+//localstorage操作
+Model.include({
+    setLocItem(key = '', value) {
+        let itemValue,
+            type = typeof value;
+        if(type === 'string' || type === 'number') {
+            itemValue = value;
+        } else if(Object.prototype.toString.call(value) === '[object Object]') {
+            itemValue = JSON.stringify(value);
+        } else {
+            itemValue = undefined;
+        }
+        
+        localStorage.setItem(key, itemValue);
+    },
+    getLocItem(key = '') {
+        return localStorage.getItem(key);          
+    },
+    removeLocItem(key = '') {
+        return localStorage.removeItem(key);
+    }
+});
+
+
+let totalModel = Model.create();
+
+
+export {totalModel}

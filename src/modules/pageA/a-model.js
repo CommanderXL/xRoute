@@ -1,12 +1,9 @@
-import {Model} from '../../lib/model';
+import {totalModel} from '../../lib/model';
 import {test} from './a-controller';
 
 
-let model = Model.create();
-
-let modelA = model.init();
-
-
-
+var modelA = totalModel.init();
+modelA.name = 'modelA';
+modelA.save();
 
 export {modelA}

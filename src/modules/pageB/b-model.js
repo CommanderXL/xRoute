@@ -1,8 +1,13 @@
-import {Model} from '../../lib/model'
+import {totalModel} from '../../lib/model'
 import {test} from '../pageB/b-controller'
 
-var model = Model.create();
 
-var modelB = model.init();
+var modelB = totalModel.init();
+modelB.name = 'modelB';
+modelB.save();
+
+modelB.post('de').then((data) => {
+    console.log(123);
+})
 
 export {modelB}
