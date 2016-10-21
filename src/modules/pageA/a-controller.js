@@ -1,8 +1,9 @@
-import {Controller} from '../../lib/controller'
+import {Controller} from '../../lib/controller';
+import {modelA} from './a-model';
 
-var controller = new Controller();
 
+let controller = modelA.registerController('#container');
 
-export function test() {
-    console.log('This is a-controller');
+export {
+    controller
 }

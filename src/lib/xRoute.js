@@ -14,7 +14,7 @@
             let state = e.state;
             //路由的处理
             if (state && state.path) {
-                handleRoute(state, true);
+                handleRoute(state.path, true);
             }
         });
     } else {
@@ -59,7 +59,7 @@
             let routeItem = Router[i];
             if (routeItem.path === path) {
                 curContext = routeItem.context ? routeItem.context : window;
-
+                
                 routeItem.cb.apply(curContext, [path]);
                 
                 if(!useHash) {

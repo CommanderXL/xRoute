@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import {Controller} from './controller';
 
 let Model = {
     records: {},
@@ -123,6 +124,14 @@ Model.include({
         return localStorage.removeItem(key);
     }
 });
+
+//获取controller操作
+Model.include({
+    controllers: {},
+    registerController(name) {
+        return this.controllers[name] || (this.controllers[name] = new Controller(name));
+    }
+})
 
 
 let totalModel = Model.create();
