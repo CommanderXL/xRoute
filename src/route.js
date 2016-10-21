@@ -7,6 +7,7 @@ import {controller} from './modules/pageA/a-controller';
 Router.addRoute('aaa', () => {
     //modelA.pageInit();
     document.querySelector('#container').innerHTML = require('raw!modules/pageA/a.html');
+    controller.init();
 });
 
 Router.addRoute('bbb', () => {
