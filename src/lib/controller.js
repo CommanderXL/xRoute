@@ -41,4 +41,8 @@ export class Controller {
         
         this.inited = true;
     }
+    
+    unbindEvent() {
+        
+    }
 }
