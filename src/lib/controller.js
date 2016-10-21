@@ -38,5 +38,7 @@ export class Controller {
             let item = obj[key];
             this.domMap[key].addEventListener(item.actionName, item.action);
         }
+        
+        this.inited = true;
     }
 }

@@ -5,4 +5,4 @@ var modelA = totalModel.init();
 modelA.name = 'modelA';
 modelA.save();
 
-export {modelA}
+export default modelA;

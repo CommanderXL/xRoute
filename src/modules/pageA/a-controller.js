@@ -1,6 +1,6 @@
 import {Controller} from '../../lib/controller';
-import {modelA} from './a-model';
-
+import modelA from './a-model';
+import {util} from '../../lib/util';
 
 let controller = modelA.registerController('#container');
 
