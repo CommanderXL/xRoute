@@ -82,6 +82,8 @@ const handleRoute = (path, isFromHistory) => {
 document.addEventListener('click', (e) => {
     let dataset = e.target.dataset,
         oldHash = location.hash.slice(2);
+        
+    //TODO  添加样式处理    
     if (dataset.href === oldHash) return;
     if (dataset) {
         if (handleRoute(dataset.href)) {
@@ -95,17 +97,20 @@ document.addEventListener('click', (e) => {
 const bootstrap = () => {
     document.addEventListener('DOMContentLoaded', (e) => {
         let router = Router[0],
-            currHash = location.hash.slice(2);
+            currHash = location.hash.slice(2),
+            flag = false;
             
         Router.forEach(function(item, index) {
             if(item.path === currHash){
-                item.cb.call(item.context || window);
+                flag = true;
+                return item.cb.call(item.context || window);
             }
-        })
+        });
+        
+        !flag ? router.cb.call(router.context || window) : '';
+        //return router.cb.call(router.context || window);
     })
 }
-
-
 
 //TODO 路由的销毁(根据时间来判断)
 
