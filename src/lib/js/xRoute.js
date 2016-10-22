@@ -42,10 +42,11 @@ if (!useHash) {
 
 
 //添加路由
-const addRoute = (path = '', cb = () => { }, context) => {
+const addRoute = (path = '', cb = () => { }, config = {}, context) => {
     let routeObj = {
         path,
         cb,
+        config,
         context
     }
 
@@ -54,6 +55,7 @@ const addRoute = (path = '', cb = () => { }, context) => {
 
 //路由拦截处理.拦截后返回true, 拦截不成功返回false
 const handleRoute = (path, isFromHistory) => {
+
     let curContext;
     for (let i = 0; i < Router.length; i++) {
         let routeItem = Router[i];
@@ -82,16 +84,25 @@ const handleRoute = (path, isFromHistory) => {
 document.addEventListener('click', (e) => {
     let dataset = e.target.dataset,
         oldHash = location.hash.slice(2);
-        
-    //TODO  添加样式处理    
+
+        //添加钩子 路由进行跳转时模型model上数据的处理
     if (dataset.href === oldHash) return;
     if (dataset) {
         if (handleRoute(dataset.href)) {
             //阻止默认事件
             e.preventDefault();
+            
+            //通过class进行样式处理
+            routeClassHandle(e);
         }
     }
 });
+
+
+const routeClassHandle = (e) => {
+    document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
+    e.target.classList.add('route-active');
+}
 
 
 const bootstrap = () => {
@@ -99,16 +110,15 @@ const bootstrap = () => {
         let router = Router[0],
             currHash = location.hash.slice(2),
             flag = false;
-            
-        Router.forEach(function(item, index) {
-            if(item.path === currHash){
+
+        Router.forEach(function (item, index) {
+            if (item.path === currHash) {
                 flag = true;
                 return item.cb.call(item.context || window);
             }
         });
-        
+
         !flag ? router.cb.call(router.context || window) : '';
-        //return router.cb.call(router.context || window);
     })
 }
 

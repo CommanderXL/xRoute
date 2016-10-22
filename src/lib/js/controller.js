@@ -1,10 +1,11 @@
 export class Controller {
-    constructor(containerName) {
-        this.containerName = containerName;
+    constructor(containerName, model) {
+        this.containerName = containerName || '';
         this.containerBox = null;
         this.domMap = {};
         this.domMapCache = {};
         this.eventCache = {};
+        this.model = model || {};
         
         this.inited = false;
     }
@@ -13,6 +14,10 @@ export class Controller {
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();
+        return this;
+    }
+    setModelCache(obj = {}) {
+        this.model = obj;
         return this;
     }
     getDomMap(obj = {}) {

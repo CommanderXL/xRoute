@@ -66,7 +66,7 @@ Model.include({
 
 Model.include({
     getHash() {
-        return window.location.hash;
+        return window.location.hash.slice(2);
     }
 });
 
@@ -129,7 +129,7 @@ Model.include({
 Model.include({
     controllers: {},
     registerController(name) {
-        return this.controllers[name] || (this.controllers[name] = new Controller(name));
+        return this.controllers[name] || (this.controllers[name] = new Controller(name, this));
     }
 })
 
