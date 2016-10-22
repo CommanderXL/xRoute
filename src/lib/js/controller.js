@@ -6,6 +6,7 @@ export class Controller {
         this.domMapCache = {};
         this.eventCache = {};
         this.model = model || {};
+        this.viewInit = null || function() {};
         
         this.inited = false;
     }
@@ -15,6 +16,7 @@ export class Controller {
         this.setDomMap();
         this.bindEvents();
         this.model.pageInit();
+        this.viewInit();
         
         return this;
     }
@@ -45,11 +47,16 @@ export class Controller {
             let item = obj[key];
             this.domMap[key].addEventListener(item.actionName, item.action);
         }
-        
-        this.inited = true;
+        return this;
     }
     
     unbindEvent() {
         
+    }
+    
+    getViewInit(fn) {
+        this.viewInit = fn.bind(this) || function() {};
+        
+        this.inited = true;
     }
 }

@@ -6,7 +6,9 @@ let controller = modelA.registerController('.page-container:first-child');
 
 controller
 .getDomMap({
-    aContainer: '.a-container'
+    aContainer: '.a-container',
+    myName: '.myName',
+    myPhone: '.myPhone'
 })
 .getBindEvents({
     aContainer: {
@@ -16,6 +18,11 @@ controller
         }
     }
 })
+//页面状态初始化.从localstorage中获取
+.getViewInit(function() {
+    let doms = this.domMap;
+    doms.myName.value = modelA.submitData.name;
+});
 
 export {
     controller
