@@ -10,12 +10,16 @@ Router.addRoute('aaa', () => {
     let page = document.querySelector('.page-container:first-child');
     page.innerHTML = require('modules/pageA/a.html');
     controller.init();
+}, {
+    cache: 'on'
 });
 
 Router.addRoute('bbb', () => {
     //modelB.pageInit();
     let page = document.querySelector('.page-container:nth-child(2)');
     page.innerHTML = require('modules/pageB/b.html');
+}, {
+    cache: 'on'
 });
 
 

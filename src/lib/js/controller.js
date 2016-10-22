@@ -14,6 +14,8 @@ export class Controller {
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();
+        this.model.pageInit();
+        
         return this;
     }
     setModelCache(obj = {}) {

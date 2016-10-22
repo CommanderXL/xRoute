@@ -114,7 +114,6 @@ Model.include({
         } else {
             itemValue = undefined;
         }
-        
         localStorage.setItem(key, itemValue);
     },
     getLocItem(key = '') {
