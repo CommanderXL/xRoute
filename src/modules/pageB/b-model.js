@@ -1,4 +1,4 @@
-import {totalModel} from '../../lib/model'
+import {totalModel} from '../../lib/js/model'
 import {test} from '../pageB/b-controller'
 
 

@@ -39,10 +39,46 @@ class Util {
             return res;
         }
     }
+    each(obj, fn) {
+        if (obj.length) {
+            for (var i = 0, l = obj.length; i < l; i++) {
+                if (false === fn.call(obj[i] || {}, i, obj[i])) break;
+            }
+        } else if (this.isObj(obj)) {
+            for (var n in obj) {
+                if (false === fn.call(obj[n] || {}, n, obj[n])) break;
+            }
+        }
+    }
+    isObj(obj) {
+        return Object.prototype.toString.call(obj) === '[object Object]';
+    }
 }
-
 let util = new Util();
 
+//可以使用继承来继承这些方法
+class ElementSet {
+    css(dom, obj) {
+        if (!dom) return;
+        for (let key of Object.keys(obj)) {
+            dom.style[key] = obj[key];
+        }
+        return this;
+    }
+    hasClass(dom, cls) {
+        return dom.classList.contains(cls);
+    }
+    addClass(dom, cls) {
+        return dom.classList.addClass(cls);
+    }
+    removeClass(dom, cls) {
+        return dom.classList.removeClass(cls);
+    }
+}
+
+let elementSet = new ElementSet();
+
 export {
-    util
+util,
+elementSet
 }

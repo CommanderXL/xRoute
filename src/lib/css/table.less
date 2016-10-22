@@ -1,0 +1,107 @@
+[table] {
+  position: relative;
+  display: table;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  table-layout:fixed;
+  & > [table] {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+[table~="cell"] {
+  display: table-cell;
+}
+//v----vertical
+[table~="v-m"] {
+  vertical-align: middle;
+}
+
+[table~="v-t"] {
+  vertical-align: top;
+}
+
+[table~="v-b"] {
+  vertical-align: bottom;
+}
+
+//h----horizontal
+[table~="h-l"] {
+  text-align: left;
+}
+
+[table~="h-c"] {
+  text-align: center;
+}
+
+[table~="h-r"] {
+  text-align: right;
+}
+
+[table~="w50"] {
+  width: 50px;
+}
+[table~="w100"] {
+  width: 100px;
+}
+[table~="w150"] {
+  width: 150px;
+}
+[table~="p10"] {
+  width: 10%;
+}
+[table~="p20"] {
+  width: 20%;
+}
+[table~="p30"] {
+  width: 30%;
+}
+[table~="p33"] {
+  width: 33.33%;
+}
+[table~="p40"] {
+  width: 40%;
+}
+[table~="p50"] {
+  width: 50%;
+}
+
+/*以main-center属性开始的元素*/
+[table^="main-center"] {
+  display: block;
+  font-size: 0;
+  & > [table] {
+    display: inline-block;
+    font-size: 1rem;
+  }
+}
+
+[table~="main-center-c"] {
+  text-align: center;
+}
+
+[table~="main-center-l"] {
+  text-align: left;
+}
+
+[table~="main-center-r"] {
+  text-align: right;
+}
+
+[table~="justify"] {
+  display: block;
+  text-align: justify;
+  font-size: 0;
+  & > [table] {
+    display: inline-block;
+    font-size: 1rem;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+}

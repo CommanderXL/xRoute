@@ -1,8 +1,8 @@
-import {Controller} from '../../lib/controller';
+import {Controller} from '../../lib/js/controller';
 import modelA from './a-model';
-import {util} from '../../lib/util';
+import {util, elementSet} from '../../lib/js/util';
 
-let controller = modelA.registerController('#container');
+let controller = modelA.registerController('.page-container:first-child');
 
 controller
 .getDomMap({
@@ -12,7 +12,7 @@ controller
     aContainer: {
         actionName: 'click',
         action() {
-            console.log('Hello world');
+            elementSet.css(this, {color: 'red'});
         }
     }
 })

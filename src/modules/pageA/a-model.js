@@ -1,4 +1,6 @@
-import {totalModel} from '../../lib/model';
+import {totalModel} from '../../lib/js/model';
+
+require('./a.less');
 
 
 var modelA = totalModel.init();

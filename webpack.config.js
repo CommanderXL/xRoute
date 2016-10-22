@@ -17,18 +17,24 @@ module.exports ={
                 loader: 'babel'
             },
             {
-                test: '/\.less$/',
+                test: /\.less$/,
                 loader: 'style!css!less'
             },
             {
-                test: '/\.html$/',
+                test: /\.html$/,
                 loader: 'raw'
+            },
+            {
+                test: /\.css$/,
+                loader: 'style!css'
             }
         ]
     },
     resolve: {
         alias: {
-            modules: path.join(__dirname, 'src/modules')  
+            modules: path.join(__dirname, 'src/modules'),
+            cssLib: path.join(__dirname, 'src/lib/css'),  
+            jsLib: path.join(__dirname, 'src/lib/js')
         },
         extensions: ['', '.js', '.less', '.html'],
     },
