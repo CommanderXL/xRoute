@@ -8,19 +8,22 @@ import {controller} from './modules/pageA/a-controller';
 Router.addRoute('aaa', () => {
     //modelA.pageInit();
     let page = document.querySelector('.page-container:first-child');
-    page.innerHTML = require('modules/pageA/a.html');
-    controller.init();
+    if (!controller.getInitedStatus) {    //
+        page.innerHTML = require('modules/pageA/a.html');
+        controller.init();
+    }
+
 }, {
-    cache: 'on'
-});
+        cache: 'on'
+    });
 
 Router.addRoute('bbb', () => {
     //modelB.pageInit();
     let page = document.querySelector('.page-container:nth-child(2)');
     page.innerHTML = require('modules/pageB/b.html');
 }, {
-    cache: 'on'
-});
+        cache: 'on'
+    });
 
 
 Router.bootstrap();
