@@ -1,0 +1,21 @@
+{
+    "extended": "eslint:recommended",
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "eqeqeq": "warn",
+        "no-undef": "error",
+        "no-unused-vars": "warn",
+        "camelcase": "error",
+        "no-mixed-spaces-and-tabs": "error" 
+    }
+}
