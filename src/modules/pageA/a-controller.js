@@ -1,9 +1,10 @@
 import {Controller} from '../../lib/js/controller';
 import modelA from './a-model';
 import {util, elementSet} from '../../lib/js/util';
-///import Picker from '../../lib/js/picker.min';   //时间选择组件
 import timeSelectComponent from '../../components/time-select/index';
 import cityComponent from '../../components/city-select/index';
+import {canvasResize} from '../../lib/js/imgResize';
+import dd from '../../lib/js/dialog';
 
 let controller = modelA.registerController('.page-container:first-child');
 
@@ -71,11 +72,33 @@ controller
 	let cityWrapper = document.querySelector('.city-wrapper'),
 		clickBtn = document.querySelector('.btn');
 
+	let dialog = dd.dialog || {};
+
 	_cityComponent.initModule(cityWrapper);
 
 	clickBtn.addEventListener('click', function() {
-		util.addClass(cityWrapper, 'city-box-show');
+		//util.addClass(cityWrapper, 'city-box-show');
+		dialog.alert('Hello world');
 	})
+
+	let imgContainer = document.getElementById('file');
+	imgContainer.addEventListener('change', function(e) {
+		let file = this.files[0];
+		if(!file) return;
+
+		//图片压缩
+		canvasResize(file, {
+			crop: false,
+			quality: 0.1,
+			rotate: 0,
+			callback(baseStr) {
+				let img = new Image();
+				img.src = baseStr;
+				document.body.appendChild(img);
+			}
+		})
+	});
+
 
 });
 

@@ -56,10 +56,9 @@ export class Controller {
         
     }
     
+    //页面初始化
     getViewInit(fn) {
         this.viewInit = fn.bind(this) || function() {};
-        
-        //this.inited = true;
     }
 
     //获取controller的初始化状态

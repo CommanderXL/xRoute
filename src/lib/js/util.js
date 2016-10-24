@@ -4,15 +4,15 @@ class Util {
     }
     addClass(ele, cls) {
         var _pattern = new RegExp(cls);
-        if(!_pattern.test(ele.className)) ele.className += ' ' + cls;
+        if (!_pattern.test(ele.className)) ele.className += ' ' + cls;
         return ele;
     }
     removeClass(ele, cls) {
         //添加对于DOM元素的判断
-            if(!ele || ele.nodeType !== 1) return;
-            var _pattern = new RegExp(cls);
-            if(_pattern.test(ele.className || '')) ele.className = ele.className.replace(_pattern, '');
-            return ele;
+        if (!ele || ele.nodeType !== 1) return;
+        var _pattern = new RegExp(cls);
+        if (_pattern.test(ele.className || '')) ele.className = ele.className.replace(_pattern, '');
+        return ele;
     }
     checkUserIds(uid) {
         return /^\d{17}(\d|x)$/.test(uid);
@@ -74,17 +74,21 @@ class Util {
     //对模块进行配置
     setConfigModule(arg_map) {
         var input_map = arg_map.input_map,
-                settable_map = arg_map.settable_map,
-                config_map = arg_map.config_map;
-            for(var key in input_map) {
-                if(input_map.hasOwnProperty(key)) {
-                    if(settable_map.hasOwnProperty(key)) {
-                        config_map[key] = input_map[key];
-                    }
-                } else {
-                    console.error('Require a key name');
+            settable_map = arg_map.settable_map,
+            config_map = arg_map.config_map;
+        for (var key in input_map) {
+            if (input_map.hasOwnProperty(key)) {
+                if (settable_map.hasOwnProperty(key)) {
+                    config_map[key] = input_map[key];
                 }
+            } else {
+                console.error('Require a key name');
             }
+        }
+    }
+    //埋点配置
+    omegaCb(name = '', obj = {}, cb = () => {}) {
+        Omega.trackEvent(name, obj, cb);
     }
 }
 let util = new Util();
