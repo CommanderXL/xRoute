@@ -27,6 +27,10 @@ module.exports ={
             {
                 test: /\.css$/,
                 loader: 'style!css'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json'
             }
         ]
     },
@@ -36,7 +40,7 @@ module.exports ={
             cssLib: path.join(__dirname, 'src/lib/css'),  
             jsLib: path.join(__dirname, 'src/lib/js')
         },
-        extensions: ['', '.js', '.less', '.html'],
+        extensions: ['', '.js', '.less', '.html', '.json'],
     },
     plugins: [
         new DashboardPlugin()

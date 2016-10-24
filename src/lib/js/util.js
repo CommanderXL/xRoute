@@ -1,4 +1,19 @@
 class Util {
+    hasClass(ele, cls) {
+        return new RegExp(cls).test(ele.className || '');
+    }
+    addClass(ele, cls) {
+        var _pattern = new RegExp(cls);
+        if(!_pattern.test(ele.className)) ele.className += ' ' + cls;
+        return ele;
+    }
+    removeClass(ele, cls) {
+        //添加对于DOM元素的判断
+            if(!ele || ele.nodeType !== 1) return;
+            var _pattern = new RegExp(cls);
+            if(_pattern.test(ele.className || '')) ele.className = ele.className.replace(_pattern, '');
+            return ele;
+    }
     checkUserIds(uid) {
         return /^\d{17}(\d|x)$/.test(uid);
     }
@@ -52,6 +67,9 @@ class Util {
     }
     isObj(obj) {
         return Object.prototype.toString.call(obj) === '[object Object]';
+    }
+    isArr(arr) {
+        return Object.prototype.toString.call(arr) === '[object Array]';
     }
     //对模块进行配置
     setConfigModule(arg_map) {

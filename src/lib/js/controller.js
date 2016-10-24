@@ -12,11 +12,14 @@ export class Controller {
     }
     //init函数
     init() {
+        //if(this.inited) return;
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();
         this.model.pageInit();
         this.viewInit();
+
+        //this.inited = true;
         
         return this;
     }
@@ -57,6 +60,6 @@ export class Controller {
     getViewInit(fn) {
         this.viewInit = fn.bind(this) || function() {};
         
-        this.inited = true;
+        //this.inited = true;
     }
 }
