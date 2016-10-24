@@ -48,8 +48,8 @@ controller
 			console.log(time);
 		}]
 	});
-	timeSelect.initModule();
-
+	//timeSelect.initTimeModule();
+	timeSelect.initAlphaModule();
 
 });
 

@@ -69,7 +69,24 @@ export default class timeSelectComponent {
     deleteEventFn(ele = '') {
         //TODO  删除其所绑定的事件
     }
-    initModule() {
+    initAlphaModule() {
+        let itemArr = [],
+            element = document.querySelector(this.configMap.containerArr[0]);
+        for(let i = 65; i < 90; i++) {
+            let letter = String.fromCharCode(i);
+            itemArr.push({text: letter, value: letter});
+        }
+        let picker = new Picker({
+            data: [[], itemArr, []],
+            selectIndex: [0, 0, 0],
+            title: '请选择车牌'
+        });
+
+        element.addEventListener('click', function() {
+            picker.show();
+        })       
+    }
+    initTimeModule() {
         var startYearArr = this.configMap.startYearArr,
             timeArr = this.configMap.timeArr,
             containerArr = this.configMap.containerArr,
@@ -100,7 +117,7 @@ export default class timeSelectComponent {
                 title: '请选择时间'
             });
 
-            picker.on('picker.select', (selectedVal, selectIndex) => {
+           /* picker.on('picker.select', (selectedVal, selectIndex) => {
                 let _str = timeItem.year[selectIndex[0]].text + '-' + timeItem.month[selectIndex[1]].text + '-' + timeItem.date[selectIndex[2]].text;
                 cb(_str);
             });
@@ -112,7 +129,7 @@ export default class timeSelectComponent {
                 }
             });
 
-            picker.on('picker.valuechange', () => {});
+            picker.on('picker.valuechange', () => {});*/
 
             element.addEventListener('click', () => {
                 picker.show();
