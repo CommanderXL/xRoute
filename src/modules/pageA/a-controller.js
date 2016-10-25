@@ -45,7 +45,7 @@ controller
 
 		timeSelect.configModule({
 			startYearArr: [1972],
-			containerArr: ['#name'],
+			containerArr: ['#name', '#name-test'],
 			callbackArr: [function (time) {
 				console.log(time);
 			}]
@@ -106,7 +106,12 @@ controller
 		});
 
 
+	})
+	.getViewDestory(function() {
+		console.log('PageA is leaving now');
 	});
+
+
 
 export {
 controller

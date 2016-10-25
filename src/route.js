@@ -5,15 +5,14 @@ import {modelB} from './modules/pageB/b-model';*/
 import {controller} from './modules/pageA/a-controller';
 
 
-Router.addRoute('aaa', () => {
+Router.addRoute('aaa', function () {
     //modelA.pageInit();
     let page = document.querySelector('.page-container:first-child');
     if (!controller.getInitedStatus) {
         page.innerHTML = require('modules/pageA/a.html');
         controller.init();
     }
-
-},{cache: 'on'});
+},{cache: 'on'}, controller.viewDestory);
 
 Router.addRoute('bbb', () => {
     //modelB.pageInit();

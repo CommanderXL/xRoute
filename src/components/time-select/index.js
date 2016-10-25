@@ -71,7 +71,8 @@ export default class timeSelectComponent {
     }
     initAlphaModule() {
         let itemArr = [],
-            element = document.querySelector(this.configMap.containerArr[0]);
+            element1 = document.querySelector(this.configMap.containerArr[0]),
+            element2 = document.querySelector(this.configMap.containerArr[1]);
         for(let i = 65; i < 90; i++) {
             let letter = String.fromCharCode(i);
             itemArr.push({text: letter, value: letter});
@@ -82,9 +83,22 @@ export default class timeSelectComponent {
             title: '请选择车牌'
         });
 
-        element.addEventListener('click', function() {
+        element1.addEventListener('click', function() {
             picker.show();
-        })       
+        });
+
+        element2.addEventListener('click', function() {
+            picker.show();
+        })
+
+
+        picker.on('picker.change', (index, selectIndex) => {
+            picker.refill([{text: 1, value: 1}, {text: 2, value: 2}], 2);
+        })
+
+        picker.on('picker.select', (selectedVal, selectIndex) => {
+
+        })
     }
     initTimeModule() {
         var startYearArr = this.configMap.startYearArr,

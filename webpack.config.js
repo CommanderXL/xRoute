@@ -10,13 +10,13 @@ module.exports ={
     //生成source-map文件
     devtool: 'eval-source-map',
     module: {
-        preLoaders: [
+        /*preLoaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules|picker.min.js$|dialog.js$|imgResize.js$/,
                 loader: 'eslint'
             }
-        ],
+        ],*/
         loaders: [
             {
                 test: /\.js$/,

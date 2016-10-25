@@ -5,7 +5,7 @@
   "main": "demo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./dist"
+    "dev": "webpack-dashboard -- webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./dist"
   },
   "repository": {
     "type": "git",
