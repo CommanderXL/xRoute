@@ -4,5 +4,3 @@ require('cssLib/base.less');
 
 import 'babel-polyfill';
 import './route';
-
-

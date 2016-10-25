@@ -6,7 +6,7 @@ import cityComponent from '../../components/city-select/index';
 import {canvasResize} from '../../lib/js/imgResize';
 import dd from '../../lib/js/dialog';
 
-let controller = modelA.registerController('.page-container:first-child');
+let controller = modelA.registerController('#container');
 
 controller
 	.getDomMap({
@@ -104,14 +104,13 @@ controller
 				}
 			})
 		});
-
-
 	})
 	.getViewDestory(function() {
-		console.log('PageA is leaving now');
+		//console.log('PageA is leaving now');
+		//console.log(modelA.submitData);
+		let pickerEl = document.querySelector('.picker');
+		document.body.removeChild(pickerEl);
 	});
-
-
 
 export {
 controller

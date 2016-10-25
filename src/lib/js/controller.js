@@ -7,6 +7,7 @@ export class Controller {
         this.eventCache = {};
         this.model = model || {};
         this.viewInit = null || function() {};
+        this.viewDestory = null || function() {};
         
         this.inited = false;
     }

@@ -42,13 +42,14 @@ if (!useHash) {
 
 
 //添加路由
-const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, context) => {
+const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
     let routeObj = {
         path,
         cb,
         config,
         context,
-        viewDestory
+        viewDestory,
+        view
     }
 
     Router.push(routeObj);
@@ -60,11 +61,14 @@ const handleRoute = (path, isFromHistory) => {
     let curContext,
         oldPath = location.hash.slice(2);
     
+    //页面销毁
     Router.forEach(function(route, index) {
-        console.log(route.path, oldPath);
         if(route.path === oldPath) {
 
             route.viewDestory && route.viewDestory();
+            
+            //页面视图缓存？？？这个可以放到页面初始化的过程?
+            route.view && localStorage.setItem('view', route.view);
         }
     })
 
@@ -97,10 +101,8 @@ document.addEventListener('click', (e) => {
         oldHash = location.hash.slice(2);
         
     if (href) {
-
         //添加钩子 路由进行跳转时模型model上数据的处理
         if (href === oldHash) return;
-
 
         if (handleRoute(href)) {
             //阻止默认事件

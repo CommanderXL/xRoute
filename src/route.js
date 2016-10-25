@@ -4,19 +4,22 @@ import {route as Router} from './lib/js/xRoute';
 import {modelB} from './modules/pageB/b-model';*/
 import {controller} from './modules/pageA/a-controller';
 
+let viewA = require('modules/pageA/a.html');
+let viewB = require('modules/pageB/b.html');
+
 
 Router.addRoute('aaa', function () {
     //modelA.pageInit();
-    let page = document.querySelector('.page-container:first-child');
-    if (!controller.getInitedStatus) {
-        page.innerHTML = require('modules/pageA/a.html');
+    let page = document.querySelector('#container');
+    //if (!controller.getInitedStatus) {
+        page.innerHTML = viewA;
         controller.init();
-    }
-},{cache: 'on'}, controller.viewDestory);
+    //}
+},{cache: 'on'}, controller.viewDestory, viewA);
 
 Router.addRoute('bbb', () => {
     //modelB.pageInit();
-    let page = document.querySelector('.page-container:nth-child(2)');
+    let page = document.querySelector('#container');
     page.innerHTML = require('modules/pageB/b.html');
 },{cache: 'on'});
 
