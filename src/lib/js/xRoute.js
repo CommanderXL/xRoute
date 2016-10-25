@@ -42,12 +42,13 @@ if (!useHash) {
 
 
 //添加路由
-const addRoute = (path = '', cb = () => { }, config = {}, context) => {
+const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, context) => {
     let routeObj = {
         path,
         cb,
         config,
-        context
+        context,
+        viewDestory
     }
 
     Router.push(routeObj);
@@ -56,8 +57,16 @@ const addRoute = (path = '', cb = () => { }, config = {}, context) => {
 //路由拦截处理.拦截后返回true, 拦截不成功返回false
 const handleRoute = (path, isFromHistory) => {
 
-    let curContext;
-    console.log(location.hash);
+    let curContext,
+        oldPath = location.hash.slice(2);
+    
+    Router.forEach(function(route, index) {
+        console.log(route.path, oldPath);
+        if(route.path === oldPath) {
+
+            route.viewDestory && route.viewDestory();
+        }
+    })
 
     for (let i = 0; i < Router.length; i++) {
         let routeItem = Router[i];
@@ -88,7 +97,7 @@ document.addEventListener('click', (e) => {
         oldHash = location.hash.slice(2);
         
     if (href) {
-        
+
         //添加钩子 路由进行跳转时模型model上数据的处理
         if (href === oldHash) return;
 
