@@ -1,5 +1,7 @@
 var path = require('path'),
-    DashboardPlugin = require('webpack-dashboard/plugin');
+    DashboardPlugin = require('webpack-dashboard/plugin'),
+    webpack = require('webpack'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports ={
     entry: path.join(__dirname, 'src/index.js'),
@@ -25,7 +27,7 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: 'style!css!less'
+                loader: ExtractTextPlugin.extract('style', 'css!less')
             },
             {
                 test: /\.html$/,
@@ -33,7 +35,7 @@ module.exports ={
             },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                loader: ExtractTextPlugin.extract('style', 'css')
             },
             {
                 test: /\.json$/,
@@ -50,6 +52,7 @@ module.exports ={
         extensions: ['', '.js', '.less', '.html', '.json'],
     },
     plugins: [
-        new DashboardPlugin()
+        new DashboardPlugin(),
+        new ExtractTextPlugin('style.css')
     ]
 }
