@@ -5,14 +5,19 @@ var path = require('path'),
 
 module.exports ={
     entry: path.join(__dirname, 'src/index.js'),
+    /*entry: {
+        app: path.join(__dirname, 'src/index.js'),
+        vendor: ['jsLib/imgResize']
+    },*/
     output: {
         path: path.join(__dirname, 'dist/js'),
         filename: 'bundle.js'
     },
     //生成source-map文件
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     module: {
-        /*preLoaders: [
+        noParse: [/picker.min/],
+       /* preLoaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules|picker.min.js$|dialog.js$|imgResize.js$/,
@@ -53,6 +58,11 @@ module.exports ={
     },
     plugins: [
         new DashboardPlugin(),
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin('style.css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: '[name].bundle.js',
+            //minChunks: 2
+        })
     ]
 }

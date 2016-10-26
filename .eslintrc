@@ -15,7 +15,6 @@
         "eqeqeq": "warn",
         "no-undef": "error",
         "no-unused-vars": "warn",
-        "camelcase": "error",
         "no-mixed-spaces-and-tabs": "error" 
     }
 }
