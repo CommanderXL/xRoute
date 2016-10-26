@@ -1,10 +1,11 @@
 import {Controller} from 'jsLib/controller';
 import modelA from './a-model';
-import {util, elementSet} from 'jsLib/util';
-import timeSelectComponent from '../../components/time-select/index';
-import cityComponent from '../../components/city-select/index';
+import {
+	util,
+	elementSet
+} from 'jsLib/util';
+import {timeSelectComponent, cityComponent, dd} from 'components/index';
 import {canvasResize} from 'jsLib/imgResize';
-import dd from 'jsLib/dialog';
 
 let controller = modelA.registerController('#container');
 

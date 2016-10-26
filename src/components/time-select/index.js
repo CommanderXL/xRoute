@@ -1,5 +1,5 @@
 import {util} from '../../lib/js/util';
-import Picker from '../../lib/js/picker.min'
+import Picker from 'components/uipicker/picker.min'
 
 
 export default class timeSelectComponent {

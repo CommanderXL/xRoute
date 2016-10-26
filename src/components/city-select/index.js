@@ -1,4 +1,5 @@
 import {util} from 'jsLib/util';
+import dialog from 'components/dialog/index';
 
 export default class cityComponent {
     constructor() {
@@ -28,7 +29,6 @@ export default class cityComponent {
         var _provinceList = '';
         for (var i = 0; i < cities.length; i++) {
             _provinceList += `<li class="list-item" data-id="${cities[i]['id']}" data-name="${cities[i]['name']}">${cities[i]['name']}</li>`;
-            //_provinceList += '<li class="list-item" data-id="' + cities[i]['id'] + '" data-name="' + cities[i]['name'] + '">' + cities[i]['name'] + '</li>';
         }
         return _provinceList;
     }
@@ -167,7 +167,7 @@ export default class cityComponent {
 
     showCityBox() {
         //TODO dialog组件
-        //if(this.configModule.allCities.length === 0) return dialog.alert('网络异常');
+        if(this.configModule.allCities.length === 0) return dialog.alert('网络异常');
         util.addClass(this.DomMap.append_target, 'city-box-show');
     }
 

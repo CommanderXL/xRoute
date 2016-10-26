@@ -1,17 +1,31 @@
 var path = require('path'),
     DashboardPlugin = require('webpack-dashboard/plugin'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var PATHS = {
+    app: path.join(__dirname, 'src'),
+    dist: path.join(__dirname, 'dist')
+}
+
+var pkg = require('./package.json');
+
+
 module.exports ={
-    entry: path.join(__dirname, 'src/index.js'),
-    /*entry: {
+    //2个打包的入口文件
+    //components是自身写的组件
+    //还可以打包通过npm安装的模块
+    entry: {
         app: path.join(__dirname, 'src/index.js'),
-        vendor: ['jsLib/imgResize']
-    },*/
+        //style: path.join(__dirname, 'src/lib/index.less'),
+        components: ['./src/components/index.js']
+        //vendor: Object.keys(pkg.dependencies)
+    },
     output: {
         path: path.join(__dirname, 'dist/js'),
         filename: 'bundle.js'
+        //TODO: build文件中加入hash值
     },
     //生成source-map文件
     devtool: 'source-map',
@@ -58,12 +72,11 @@ module.exports ={
         extensions: ['', '.js', '.less', '.html', '.json'],
     },
     plugins: [
+        /*new HtmlWebpackPlugin({
+            title: '司机注册'
+        }),*/
         new DashboardPlugin(),
         new ExtractTextPlugin('style.css'),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            filename: '[name].bundle.js',
-            //minChunks: 2
-        })
+        new webpack.optimize.CommonsChunkPlugin('components', 'components.js')
     ]
 }
