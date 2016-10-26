@@ -1,5 +1,4 @@
 import {util} from 'jsLib/util';
-require('./index.less');
 
 export default class cityComponent {
     constructor() {
@@ -54,7 +53,6 @@ export default class cityComponent {
     //注意各种this的指向.  city-active???
     //省份选择
     onProvinceListClick(that) {
-        console.log(that);
         return function (e) {
             var _target = e.target,
                 _citiesList = that.getCityChilds(_target.dataset.id);
