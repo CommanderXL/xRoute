@@ -44,6 +44,7 @@ if (!useHash) {
 //添加路由
 const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
     path = path.split('.').join('/');   //转化嵌套的路由   'ccc.aaa'  --->>>   'ccc/aaa'
+    
     let routeObj = {
         path,           //路由
         cb,             //页面加载回调
@@ -76,6 +77,7 @@ const handleRoute = (path, isFromHistory) => {
     for (let i = 0; i < Router.length; i++) {
         let routeItem = Router[i];
         if (routeItem.path === path) {
+            //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
             curContext = routeItem.context ? routeItem.context : window;
 
             routeItem.cb.apply(curContext, [path]);
@@ -104,7 +106,8 @@ document.addEventListener('click', (e) => {
     let href = e.target.dataset.href || '',
         oldHash = location.hash.slice(2);
 
-    href = href.split('-').join('/');
+    //将data-href数据形式转化为路由形式
+    href = href.split('-').join('/');       //将data-href='ccc-aaa' --->>> 转化为 ccc/aaa  外部写法可能存在出入,但是在内部统一转化为a/b/c/d的形式
         
     if (href) {
         //添加钩子 路由进行跳转时模型model上数据的处理
@@ -132,13 +135,42 @@ const bootstrap = () => {
             currHash = location.hash.slice(2),
             flag = false;
 
-        Router.forEach(function (item, index) {
-            if (item.path === currHash) {
+        let lastArr = currHash.split('/')[0];
+
+        Router.forEach(function(item, index) {
+            if(item.path === lastArr) {
                 flag = true;
                 return item.cb.call(item.context || window);
             }
         });
 
+        if(lastArr !== currHash) {
+            Router.forEach(function(item, index) {
+                if(item.path === currHash) {
+                    return item.cb.call(item.context || window);
+                }
+            });
+        }
+
+
+        /*hashArr.forEach(function(hash, index) {
+            Router.forEach(function(item) {
+                if(item.path === currHash) {
+                    return item.cb.call(item.context || window);
+                }
+            })
+        })*/
+
+
+
+        /*Router.forEach(function (item, index) {
+            if (item.path === currHash) {
+                flag = true;
+                return item.cb.call(item.context || window);
+            }
+        });*/
+
+        //初始化active.route样式处理
         routeClassHandle(currHash);
 
         !flag ? router.cb.call(router.context || window) : '';
