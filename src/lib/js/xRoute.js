@@ -44,12 +44,12 @@ if (!useHash) {
 //添加路由
 const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
     let routeObj = {
-        path,
-        cb,
+        path,           //路由
+        cb,             //页面加载回调
         config,
         context,
-        viewDestory,
-        view
+        viewDestory,    //页面销毁回调
+        view            //页面视图
     }
 
     Router.push(routeObj);
@@ -67,7 +67,7 @@ const handleRoute = (path, isFromHistory) => {
 
             route.viewDestory && route.viewDestory();
             
-            //页面视图缓存？？？这个可以放到页面初始化的过程?
+            //页面视图缓存？？？这个可以放到页面初始化的过程?  视图文件已经打包到了js文件里,是否还需要单独添加
             route.view && localStorage.setItem('view', route.view);
         }
     })
@@ -87,6 +87,9 @@ const handleRoute = (path, isFromHistory) => {
             } else {
                 location.hash = '/' + path;
             }
+            
+            //激活状路由样式处理
+            routeClassHandle(path);
 
             return true;
         }
@@ -108,17 +111,14 @@ document.addEventListener('click', (e) => {
             //阻止默认事件
             e.preventDefault();
             
-            //通过class进行样式处理
-            routeClassHandle(e);
-            
         }
     }
 });
 
 //路由激活状态class控制
-const routeClassHandle = (e) => {
+const routeClassHandle = (hash) => {
     document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
-    e.target.classList.add('route-active');
+    document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
 }
 
 

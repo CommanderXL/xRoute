@@ -81,13 +81,13 @@ module.exports ={
         extensions: ['', '.js', '.less', '.html', '.json'],
     },
     plugins: [
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             title: '司机注册',
             template: './dist/assets/index.html',
             filename: path.join(__dirname, 'dist/test.html')    //输出html文件的位置
-        }),
+        }),*/
         new DashboardPlugin(),
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin('style.css'),                     //将引入的样式文件单独抽成style.css文件并插入到head标签当中
         new webpack.optimize.CommonsChunkPlugin('components', 'components.js')
     ]
 }
