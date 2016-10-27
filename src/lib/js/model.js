@@ -73,15 +73,17 @@ Model.include({
     }
 });
 
+//hash值
 Model.include({
     getHash() {
         return window.location.hash.slice(2);
     }
 });
 
+//页面初始化内容
 Model.include({
     pageInit() {
-        
+
     }
 });
 
@@ -116,9 +118,9 @@ Model.include({
     setLocItem(key = '', value) {
         let itemValue,
             type = typeof value;
-        if(type === 'string' || type === 'number') {
+        if (type === 'string' || type === 'number') {
             itemValue = value;
-        } else if(Object.prototype.toString.call(value) === '[object Object]') {
+        } else if (Object.prototype.toString.call(value) === '[object Object]') {
             itemValue = JSON.stringify(value);
         } else {
             itemValue = undefined;
@@ -126,7 +128,7 @@ Model.include({
         localStorage.setItem(key, itemValue);
     },
     getLocItem(key = '') {
-        return localStorage.getItem(key);          
+        return localStorage.getItem(key);
     },
     removeLocItem(key = '') {
         return localStorage.removeItem(key);

@@ -1,5 +1,4 @@
 import {totalModel} from 'jsLib/model';
-require('./a.less');
 
 let modelA = totalModel.init();
 
@@ -10,10 +9,13 @@ modelA.submitData = {
     phone: null,
     sex: ''
 };
-//模型初始化
+//数据模型初始化
 modelA.pageInit = function() {
     this.submitData.name = modelA.getLocItem(this.name);
 }
 modelA.save();
+
+//console.log(totalModel);
+console.log(modelA.pageInit.valueOf());
 
 export default modelA;

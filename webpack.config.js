@@ -81,9 +81,11 @@ module.exports ={
         extensions: ['', '.js', '.less', '.html', '.json'],
     },
     plugins: [
-        /*new HtmlWebpackPlugin({
-            title: '司机注册'
-        }),*/
+        new HtmlWebpackPlugin({
+            title: '司机注册',
+            template: './dist/assets/index.html',
+            filename: path.join(__dirname, 'dist/test.html')    //输出html文件的位置
+        }),
         new DashboardPlugin(),
         new ExtractTextPlugin('style.css'),
         new webpack.optimize.CommonsChunkPlugin('components', 'components.js')
