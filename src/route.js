@@ -31,6 +31,20 @@ Router.addRoute('ccc', () => {
     let page = document.querySelector('#container');
     page.innerHTML = viewC;
     controllerC.init();
+});
+
+
+Router.addRoute('ccc.1', () => {
+    let page = document.querySelector('.c-container');
+    page.innerHTML = require('modules/pageC/c-1/index.html');
+    console.log('This\'s pagec-1');
+});
+
+
+Router.addRoute('ccc.2', () => {
+    let page = document.querySelector('.c-container');
+    page.innerHTML = require('modules/pageC/c-2/index.html');
+    console.log('This\'s pagec-2');
 })
 
 

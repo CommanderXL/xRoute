@@ -43,6 +43,7 @@ if (!useHash) {
 
 //添加路由
 const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
+    path = path.split('.').join('/');   //转化嵌套的路由   'ccc.aaa'  --->>>   'ccc/aaa'
     let routeObj = {
         path,           //路由
         cb,             //页面加载回调
@@ -100,8 +101,10 @@ const handleRoute = (path, isFromHistory) => {
 //TODO 事件冒泡路由拦截  <a href="a.html">   <a href="#/a">  这2种写法处理起来有什么区别?
 //路由的写法统一为:   <a data-href="aaa"></a>
 document.addEventListener('click', (e) => {
-    let href = e.target.dataset.href,
+    let href = e.target.dataset.href || '',
         oldHash = location.hash.slice(2);
+
+    href = href.split('-').join('/');
         
     if (href) {
         //添加钩子 路由进行跳转时模型model上数据的处理
@@ -117,6 +120,7 @@ document.addEventListener('click', (e) => {
 
 //路由激活状态class控制
 const routeClassHandle = (hash) => {
+    hash = hash.split('/').join('-');
     document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
     document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
 }
@@ -135,12 +139,13 @@ const bootstrap = () => {
             }
         });
 
+        routeClassHandle(currHash);
+
         !flag ? router.cb.call(router.context || window) : '';
     })
 }
 
 //TODO 路由的销毁(根据时间来判断)
-
 var route = {
     addRoute,
     handleRoute,
