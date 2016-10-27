@@ -9,7 +9,8 @@ var PATHS = {
     dist: path.join(__dirname, 'dist')
 }
 
-var pkg = require('./package.json');
+var PKG = require('./package.json');
+var TARGET = process.env.npm_lifecycle_event;   //获取当前正在运行的脚本名称
 
 
 module.exports ={
@@ -29,6 +30,14 @@ module.exports ={
     },
     //生成source-map文件
     devtool: 'source-map',
+    devServer: {
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:3000',
+                secure: false
+            }
+        }
+    },
     module: {
         noParse: [/picker.min/],
        /* preLoaders: [

@@ -9,6 +9,12 @@ import {canvasResize} from 'jsLib/imgResize';
 
 let controller = modelA.registerController('#container');
 
+
+modelA.get('/api', {})
+.then(function(data) {
+	console.log(data);
+})
+
 controller
 	.getDomMap({
 		aContainer: '.a-container',

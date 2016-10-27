@@ -58,8 +58,17 @@ Model.include({
                 body: JSON.stringify(obj)
             }).then((data) => {
                 //添加正确处理和错误处理的函数 reject
-                resolve(data);
+                resolve(data.json());
             })
+        })
+    },
+    get(url = '') {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+                .then((data) => {
+                    //正确处理的方式
+                    resolve(data.json());
+                })
         })
     }
 });
