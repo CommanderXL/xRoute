@@ -1,5 +1,6 @@
 export class Controller {
-    constructor(containerName, model) {
+    constructor(name, containerName, model) {
+        this.name = name;
         this.containerName = containerName || '';
         this.containerBox = null;
         this.domMap = {};
@@ -13,6 +14,7 @@ export class Controller {
     }
     //init函数
     init() {
+        //console.log(this);
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();

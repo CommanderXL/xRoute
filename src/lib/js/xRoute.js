@@ -40,7 +40,6 @@ if (!useHash) {
 }
 
 
-
 //添加路由
 const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
     path = path.split('.').join('/');   //转化嵌套的路由   'ccc.aaa'  --->>>   'ccc/aaa'
@@ -137,6 +136,8 @@ const bootstrap = () => {
 
         let lastArr = currHash.split('/')[0];
 
+
+        //TODO 代码比较龊,可以优化的地方还很多
         Router.forEach(function(item, index) {
             if(item.path === lastArr) {
                 flag = true;

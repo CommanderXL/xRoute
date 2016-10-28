@@ -9,9 +9,9 @@ modelB.pageInit = function() {
 modelB.save();
 
 
-console.log(modelB.pageInit.valueOf());
+//console.log(modelB.pageInit.valueOf());
 
-console.log(totalModel.find('modelA'), totalModel.find('modelB'));
+//console.log(totalModel.find('modelA'), totalModel.find('modelB'));
 
 
 

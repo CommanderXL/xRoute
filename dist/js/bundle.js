@@ -6,10 +6,10 @@ webpackJsonp([0],[
 	
 	__webpack_require__(1);
 	
-	__webpack_require__(24);
-	__webpack_require__(28);
+	__webpack_require__(26);
 	__webpack_require__(30);
 	__webpack_require__(32);
+	__webpack_require__(34);
 	
 	//import 'babel-polyfill';
 
@@ -23,17 +23,16 @@ webpackJsonp([0],[
 	
 	var _aController = __webpack_require__(3);
 	
-	var _bController = __webpack_require__(17);
+	var _controller = __webpack_require__(17);
 	
-	var _controller = __webpack_require__(19);
-	
-	var viewA = __webpack_require__(21);
 	//model只涉及到数据模型,而controller即要和model同时还要和view进行交互.因此这里应该是引入controller
 	/*import {modelA} from './modules/pageA/a-model';
 	import {modelB} from './modules/pageB/b-model';*/
+	var viewA = __webpack_require__(19);
+	//import {controllerB} from 'modules/pageB/b-controller';
 	
-	var viewB = __webpack_require__(22);
-	var viewC = __webpack_require__(23);
+	var viewB = __webpack_require__(20);
+	var viewC = __webpack_require__(21);
 	
 	_xRoute.route.addRoute('aaa', function () {
 	    //modelA.pageInit();
@@ -46,15 +45,40 @@ webpackJsonp([0],[
 	
 	_xRoute.route.addRoute('bbb', function () {
 	    //modelB.pageInit();
-	    var page = document.querySelector('#container');
+	    __webpack_require__.e/* nsure */(1, function () {
+	        var controllerB = __webpack_require__(24);
+	        var page = document.querySelector('#container');
+	        page.innerHTML = viewB;
+	        controllerB.init();
+	        //console.log(123);
+	    });
+	    /*let page = document.querySelector('#container');
 	    page.innerHTML = viewB;
-	    _bController.controllerB.init();
+	    controllerB.init();*/
 	}, { cache: 'on' });
 	
 	_xRoute.route.addRoute('ccc', function () {
-	    var page = document.querySelector('#container');
+	    /*let page = document.querySelector('#container');
 	    page.innerHTML = viewC;
-	    _controller.controllerC.init();
+	    controllerC.init();*/
+	    !/* require.ensure */(function () {
+	        var controllerC = __webpack_require__(17);
+	        var page = document.querySelector('#container');
+	        page.innerHTML = viewC;
+	        controllerC.init();
+	    }(__webpack_require__));
+	});
+	
+	_xRoute.route.addRoute('ccc.1', function () {
+	    var page = document.querySelector('.c-container');
+	    page.innerHTML = __webpack_require__(22);
+	    console.log('This\'s pagec-1');
+	});
+	
+	_xRoute.route.addRoute('ccc.2', function () {
+	    var page = document.querySelector('.c-container');
+	    page.innerHTML = __webpack_require__(23);
+	    console.log('This\'s pagec-2');
 	});
 	
 	_xRoute.route.bootstrap();
@@ -118,13 +142,15 @@ webpackJsonp([0],[
 	    var view = arguments[4];
 	    var context = arguments[5];
 	
+	    path = path.split('.').join('/'); //转化嵌套的路由   'ccc.aaa'  --->>>   'ccc/aaa'
+	
 	    var routeObj = {
-	        path: path,
-	        cb: cb,
+	        path: path, //路由
+	        cb: cb, //页面加载回调
 	        config: config,
 	        context: context,
-	        viewDestory: viewDestory,
-	        view: view
+	        viewDestory: viewDestory, //页面销毁回调
+	        view: view //页面视图
 	    };
 	
 	    Router.push(routeObj);
@@ -142,7 +168,7 @@ webpackJsonp([0],[
 	
 	            route.viewDestory && route.viewDestory();
 	
-	            //页面视图缓存？？？这个可以放到页面初始化的过程?
+	            //页面视图缓存？？？这个可以放到页面初始化的过程?  视图文件已经打包到了js文件里,是否还需要单独添加
 	            route.view && localStorage.setItem('view', route.view);
 	        }
 	    });
@@ -150,6 +176,7 @@ webpackJsonp([0],[
 	    for (var i = 0; i < Router.length; i++) {
 	        var routeItem = Router[i];
 	        if (routeItem.path === path) {
+	            //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
 	            curContext = routeItem.context ? routeItem.context : window;
 	
 	            routeItem.cb.apply(curContext, [path]);
@@ -163,6 +190,9 @@ webpackJsonp([0],[
 	                location.hash = '/' + path;
 	            }
 	
+	            //激活状路由样式处理
+	            routeClassHandle(path);
+	
 	            return true;
 	        }
 	    }
@@ -172,8 +202,11 @@ webpackJsonp([0],[
 	//TODO 事件冒泡路由拦截  <a href="a.html">   <a href="#/a">  这2种写法处理起来有什么区别?
 	//路由的写法统一为:   <a data-href="aaa"></a>
 	document.addEventListener('click', function (e) {
-	    var href = e.target.dataset.href,
+	    var href = e.target.dataset.href || '',
 	        oldHash = location.hash.slice(2);
+	
+	    //将data-href数据形式转化为路由形式
+	    href = href.split('-').join('/'); //将data-href='ccc-aaa' --->>> 转化为 ccc/aaa  外部写法可能存在出入,但是在内部统一转化为a/b/c/d的形式
 	
 	    if (href) {
 	        //添加钩子 路由进行跳转时模型model上数据的处理
@@ -182,17 +215,15 @@ webpackJsonp([0],[
 	        if (handleRoute(href)) {
 	            //阻止默认事件
 	            e.preventDefault();
-	
-	            //通过class进行样式处理
-	            routeClassHandle(e);
 	        }
 	    }
 	});
 	
 	//路由激活状态class控制
-	var routeClassHandle = function routeClassHandle(e) {
+	var routeClassHandle = function routeClassHandle(hash) {
+	    hash = hash.split('/').join('-');
 	    document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
-	    e.target.classList.add('route-active');
+	    document.querySelector('[data-href=' + hash + ']').classList.add('route-active');
 	};
 	
 	var bootstrap = function bootstrap() {
@@ -201,19 +232,47 @@ webpackJsonp([0],[
 	            currHash = location.hash.slice(2),
 	            flag = false;
 	
+	        var lastArr = currHash.split('/')[0];
+	
+	        //TODO 代码比较龊,可以优化的地方还很多
 	        Router.forEach(function (item, index) {
-	            if (item.path === currHash) {
+	            if (item.path === lastArr) {
 	                flag = true;
 	                return item.cb.call(item.context || window);
 	            }
 	        });
+	
+	        if (lastArr !== currHash) {
+	            Router.forEach(function (item, index) {
+	                if (item.path === currHash) {
+	                    return item.cb.call(item.context || window);
+	                }
+	            });
+	        }
+	
+	        /*hashArr.forEach(function(hash, index) {
+	            Router.forEach(function(item) {
+	                if(item.path === currHash) {
+	                    return item.cb.call(item.context || window);
+	                }
+	            })
+	        })*/
+	
+	        /*Router.forEach(function (item, index) {
+	            if (item.path === currHash) {
+	                flag = true;
+	                return item.cb.call(item.context || window);
+	            }
+	        });*/
+	
+	        //初始化active.route样式处理
+	        routeClassHandle(currHash);
 	
 	        !flag ? router.cb.call(router.context || window) : '';
 	    });
 	};
 	
 	//TODO 路由的销毁(根据时间来判断)
-	
 	var route = {
 	    addRoute: addRoute,
 	    handleRoute: handleRoute,
@@ -247,7 +306,7 @@ webpackJsonp([0],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var controller = _aModel2.default.registerController('#container');
+	var controller = _aModel2.default.registerController('controlA', '#container');
 	
 	/*modelA.get('/api', {})
 	.then(function(data) {
@@ -369,9 +428,10 @@ webpackJsonp([0],[
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var Controller = exports.Controller = function () {
-	    function Controller(containerName, model) {
+	    function Controller(name, containerName, model) {
 	        _classCallCheck(this, Controller);
 	
+	        this.name = name;
 	        this.containerName = containerName || '';
 	        this.containerBox = null;
 	        this.domMap = {};
@@ -389,6 +449,7 @@ webpackJsonp([0],[
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init() {
+	            //console.log(this);
 	            this.containerBox = document.querySelector(this.containerName);
 	            this.setDomMap();
 	            this.bindEvents();
@@ -678,8 +739,9 @@ webpackJsonp([0],[
 	//获取controller操作
 	Model.include({
 	    controllers: {},
-	    registerController: function registerController(name) {
-	        return this.controllers[name] || (this.controllers[name] = new _controller.Controller(name, this));
+	    //这里的controller不能使用容器的选择器确定
+	    registerController: function registerController(name, containerName) {
+	        return this.controllers[name] || (this.controllers[name] = new _controller.Controller(name, containerName, this));
 	    }
 	});
 	
@@ -17251,73 +17313,33 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.controllerB = undefined;
-	
 	var _controller = __webpack_require__(4);
 	
-	var _bModel = __webpack_require__(18);
-	
-	var _bModel2 = _interopRequireDefault(_bModel);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var controllerB = _bModel2.default.registerController('#b-container');
-	
-	exports.controllerB = controllerB;
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _model = __webpack_require__(6);
-	
-	var modelB = _model.totalModel.init();
-	modelB.name = 'modelB';
-	modelB.pageInit = function () {
-	    console.log('This\'s is page B');
-	};
-	modelB.save();
-	
-	console.log(modelB.pageInit.valueOf());
-	
-	console.log(_model.totalModel.find('modelA'), _model.totalModel.find('modelB'));
-	
-	exports.default = modelB;
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.controllerC = undefined;
-	
-	var _controller = __webpack_require__(4);
-	
-	var _model = __webpack_require__(20);
+	var _model = __webpack_require__(18);
 	
 	var _model2 = _interopRequireDefault(_model);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var controllerC = _model2.default.registerController("#controllerc");
+	var controllerC = _model2.default.registerController('controlC', "#container");
 	
-	exports.controllerC = controllerC;
+	controllerC.getDomMap({
+	    btn: '#btnc'
+	}).getBindEvents({
+	    btn: {
+	        actionName: 'click',
+	        action: function action() {
+	            console.log('C按钮点击');
+	        }
+	    }
+	});
+	
+	module.exports = controllerC;
+	
+	//export {controllerC};
 
 /***/ },
-/* 20 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17343,39 +17365,46 @@ webpackJsonp([0],[
 	exports.default = modelC;
 
 /***/ },
-/* 21 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>This is pageA</div>\n\n<div class=\"a-container\" style=\"margin-top: 50px; height: 40px;line-height: 40px;\">\n    姓名: <input type=\"text\" class=\"myName\">\n    电话: <input type=\"number\" class=\"myPhone\">\n</div>\n\n\n<button id=\"name\">name</button>\n<button id=\"name-test\">name test</button>\n<button id=\"age\">点我</button>\n\n\n\n<div class=\"btn\" style=\"margin-top: 50px;\">\n    点击显示城市选择\n</div>\n\n\n<input type=\"file\" id=\"file\" style=\"margin-top: 20px;\"/>\n\n\n<div class=\"alert-btn\" style=\"margin-top: 30px;\">弹窗实验</div>\n\n\n\n<div class=\"city-wrapper\">\n</div>\n"
 
 /***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>This is b.html</div>\n\n<button id=\"btn\">\n    点击我吧\n</button>"
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "<ul table class=\"pagec-route\">\n    <li table=\"cell v-m h-c\">\n        <a data-href=\"ccc-1\">c-route-1</a>\n    </li>\n    <li table=\"cell v-m h-c\">\n        <a data-href=\"ccc-2\">c-route-2</a>\n    </li>\n</ul>\n\n<button id=\"btnc\">\n    按钮C\n</button>\n\n\n<div class=\"c-container\">\n\n</div>"
+
+/***/ },
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>This is b.html</div>"
+	module.exports = "<p>This is c-1 index.html</p>"
 
 /***/ },
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<p>this is page c</p>"
+	module.exports = "<p>This is c-route-2</p>"
 
 /***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 24 */,
 /* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */
+/* 26 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 27 */,
+/* 28 */,
 /* 29 */,
 /* 30 */
 /***/ function(module, exports) {
@@ -17385,6 +17414,13 @@ webpackJsonp([0],[
 /***/ },
 /* 31 */,
 /* 32 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 33 */,
+/* 34 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

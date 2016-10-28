@@ -7,7 +7,7 @@ import {
 import {timeSelectComponent, cityComponent, dd} from 'components/index';
 import {canvasResize} from 'jsLib/imgResize';
 
-let controller = modelA.registerController('#container');
+let controller = modelA.registerController('controlA','#container');
 
 
 /*modelA.get('/api', {})

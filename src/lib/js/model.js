@@ -138,8 +138,9 @@ Model.include({
 //获取controller操作
 Model.include({
     controllers: {},
-    registerController(name) {
-        return this.controllers[name] || (this.controllers[name] = new Controller(name, this));
+    //这里的controller不能使用容器的选择器确定
+    registerController(name, containerName) {
+        return this.controllers[name] || (this.controllers[name] = new Controller(name, containerName,this));
     }
 })
 
