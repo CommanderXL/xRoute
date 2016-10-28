@@ -2,6 +2,7 @@ import {
     Controller
 } from 'jsLib/controller';
 import modelB from './b-model';
+import {timeSelectComponent, cityComponent, dd} from 'components/index';
 
 let controllerB = modelB.registerController('controlB', '#container');
 

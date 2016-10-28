@@ -17,12 +17,14 @@ module.exports ={
     //2个打包的入口文件
     //components是自身写的组件
     //还可以打包通过npm安装的模块
-    entry: {
+    entry: path.join(__dirname, 'src/index.js'),
+   /* entry: {
         app: path.join(__dirname, 'src/index.js'),
         //style: path.join(__dirname, 'src/lib/index.less'),
-        components: ['./src/components/index.js']
+        components: ['./src/components/index.js'],
+        //publicPath: '/dist/'
         //vendor: Object.keys(pkg.dependencies)
-    },
+    },*/
     output: {
         path: path.join(__dirname, 'dist/js'),
         filename: 'bundle.js'
@@ -87,7 +89,8 @@ module.exports ={
             filename: path.join(__dirname, 'dist/test.html')    //输出html文件的位置
         }),*/
         new DashboardPlugin(),
-        new ExtractTextPlugin('style.css'),                     //将引入的样式文件单独抽成style.css文件并插入到head标签当中
-        new webpack.optimize.CommonsChunkPlugin('components', 'components.js')
+        //new ExtractTextPlugin('../css/style.css'),                     
+        new ExtractTextPlugin('style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中
+        //new webpack.optimize.CommonsChunkPlugin('components', 'components.js')
     ]
 }

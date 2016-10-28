@@ -4,18 +4,13 @@ import {
 	util,
 	elementSet
 } from 'jsLib/util';
-import {timeSelectComponent, cityComponent, dd} from 'components/index';
-import {canvasResize} from 'jsLib/imgResize';
+/*import {timeSelectComponent, cityComponent, dd} from 'components/index';*/
+/*import {canvasResize} from 'jsLib/imgResize';*/
 
 let controller = modelA.registerController('controlA','#container');
 
 
-/*modelA.get('/api', {})
-.then(function(data) {
-	console.log(data);
-})*/
-
-controller
+/*controller
 	.getDomMap({
 		aContainer: '.a-container',
 		myName: '.myName',
@@ -40,9 +35,9 @@ controller
 				console.log(this.value);
 			}
 		}
-	})
+	})*/
 	//页面状态初始化.从localstorage中获取
-	.getViewInit(function () {
+/*	.getViewInit(function () {
 		let doms = this.domMap;
 		doms.myName.value = modelA.submitData.name;
 
@@ -117,7 +112,7 @@ controller
 		//console.log(modelA.submitData);
 		let pickerEl = document.querySelector('.picker');
 		document.body.removeChild(pickerEl);
-	});
+	});*/
 
 export {
 controller
