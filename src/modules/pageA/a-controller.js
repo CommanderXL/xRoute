@@ -4,10 +4,36 @@ import {
 	util,
 	elementSet
 } from 'jsLib/util';
+import {route} from 'jsLib/xRoute';
 /*import {timeSelectComponent, cityComponent, dd} from 'components/index';*/
 /*import {canvasResize} from 'jsLib/imgResize';*/
 
 let controller = modelA.registerController('controlA','#container');
+
+
+controller
+	.getDomMap({
+		phoneEle: '#phone',
+		registerBtnEle: '.btn'
+	})
+	.getBindEvents({
+		phoneEle: {
+			actionName: 'blur',
+			action() {
+				console.log(this.value);
+			}
+		},
+		registerBtnEle: {
+			actionName: 'click',
+			action() {
+				console.log('btn');
+				route.go('bbb');
+			}
+		}
+	})
+	.getViewInit(function() {
+		document.title = '注册';
+	})
 
 
 /*controller

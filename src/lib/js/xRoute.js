@@ -178,11 +178,24 @@ const bootstrap = () => {
     })
 }
 
+
+    const go = function(path) {
+        handleRoute(path);
+    }
+
+
+    const back = function(path) {
+
+    }
+
+
+
 //TODO 路由的销毁(根据时间来判断)
 var route = {
     addRoute,
     handleRoute,
-    bootstrap
+    bootstrap,
+    go
 }
 
 export {route};
