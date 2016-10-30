@@ -27,7 +27,7 @@ controller
 			actionName: 'click',
 			action() {
 				console.log('btn');
-				route.go('bbb');
+				route.go('aaa.1');
 			}
 		}
 	})

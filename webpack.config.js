@@ -13,6 +13,10 @@ var PKG = require('./package.json');
 var TARGET = process.env.npm_lifecycle_event;   //获取当前正在运行的脚本名称
 
 
+
+//TODO  [name]-[contenthash:8].css
+//TODO  样式文件单独抽离出来打包.文件名带上路径信息
+
 module.exports ={
     //2个打包的入口文件
     //components是自身写的组件

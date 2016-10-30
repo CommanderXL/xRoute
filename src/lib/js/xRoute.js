@@ -124,7 +124,7 @@ document.addEventListener('click', (e) => {
 const routeClassHandle = (hash) => {
     hash = hash.split('/').join('-');
     document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
-    document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
+    document.querySelector(`[data-href=${hash}]`) && document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
 }
 
 
@@ -180,6 +180,7 @@ const bootstrap = () => {
 
 
     const go = function(path) {
+        path = path.split('.').join('/');
         handleRoute(path);
     }
 

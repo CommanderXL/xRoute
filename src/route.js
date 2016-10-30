@@ -17,6 +17,17 @@ Router.addRoute('aaa', function () {
     //}
 },{cache: 'on'}, controller.viewDestory, viewA);
 
+
+Router.addRoute('aaa.1', function() {
+    require.ensure([], function() {
+        let controller = require('modules/pageA/a-1/controller');
+        let page = document.querySelector('#container');
+
+        page.innerHTML = require('modules/pageA/a-1/index.html');
+        controller.init();
+    })
+});
+
 Router.addRoute('bbb', () => {
     //modelB.pageInit();
     require.ensure([], function() {
