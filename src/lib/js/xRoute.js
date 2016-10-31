@@ -41,9 +41,9 @@ if (!useHash) {
 
 
 //添加路由
-const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => {}, view, context) => {
+const addRoute = (path = '', cb = () => { }, config = {}, viewDestory = () => { }, view, context) => {
     path = path.split('.').join('/');   //转化嵌套的路由   'ccc.aaa'  --->>>   'ccc/aaa'
-    
+
     let routeObj = {
         path,           //路由
         cb,             //页面加载回调
@@ -61,13 +61,13 @@ const handleRoute = (path, isFromHistory) => {
 
     let curContext,
         oldPath = location.hash.slice(2);
-    
+
     //页面销毁
-    Router.forEach(function(route, index) {
-        if(route.path === oldPath) {
+    Router.forEach(function (route, index) {
+        if (route.path === oldPath) {
 
             route.viewDestory && route.viewDestory();
-            
+
             //页面视图缓存？？？这个可以放到页面初始化的过程?  视图文件已经打包到了js文件里,是否还需要单独添加
             route.view && localStorage.setItem('view', route.view);
         }
@@ -89,7 +89,7 @@ const handleRoute = (path, isFromHistory) => {
             } else {
                 location.hash = '/' + path;
             }
-            
+
             //激活状路由样式处理
             routeClassHandle(path);
 
@@ -107,7 +107,7 @@ document.addEventListener('click', (e) => {
 
     //将data-href数据形式转化为路由形式
     href = href.split('-').join('/');       //将data-href='ccc-aaa' --->>> 转化为 ccc/aaa  外部写法可能存在出入,但是在内部统一转化为a/b/c/d的形式
-        
+
     if (href) {
         //添加钩子 路由进行跳转时模型model上数据的处理
         if (href === oldHash) return;
@@ -115,7 +115,7 @@ document.addEventListener('click', (e) => {
         if (handleRoute(href)) {
             //阻止默认事件
             e.preventDefault();
-            
+
         }
     }
 });
@@ -123,8 +123,10 @@ document.addEventListener('click', (e) => {
 //路由激活状态class控制
 const routeClassHandle = (hash) => {
     hash = hash.split('/').join('-');
-    document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
-    document.querySelector(`[data-href=${hash}]`) && document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
+    if (hash) {
+        document.querySelector('.route-active') && document.querySelector('.route-active').classList.remove('route-active');
+        document.querySelector(`[data-href=${hash}]`) && document.querySelector(`[data-href=${hash}]`).classList.add('route-active');
+    }
 }
 
 
@@ -138,16 +140,16 @@ const bootstrap = () => {
 
 
         //TODO 代码比较龊,可以优化的地方还很多
-        Router.forEach(function(item, index) {
-            if(item.path === lastArr) {
+        Router.forEach(function (item, index) {
+            if (item.path === lastArr) {
                 flag = true;
                 return item.cb.call(item.context || window);
             }
         });
 
-        if(lastArr !== currHash) {
-            Router.forEach(function(item, index) {
-                if(item.path === currHash) {
+        if (lastArr !== currHash) {
+            Router.forEach(function (item, index) {
+                if (item.path === currHash) {
                     return item.cb.call(item.context || window);
                 }
             });
@@ -179,15 +181,15 @@ const bootstrap = () => {
 }
 
 
-    const go = function(path) {
-        path = path.split('.').join('/');
-        handleRoute(path);
-    }
+const go = function (path) {
+    path = path.split('.').join('/');
+    handleRoute(path);
+}
 
 
-    const back = function(path) {
+const back = function (path) {
 
-    }
+}
 
 
 

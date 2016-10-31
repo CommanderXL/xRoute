@@ -1,10 +1,9 @@
-import {Controller} from 'jsLib/controller';
 import modelA from './a-model';
 import {
 	util,
 	elementSet
 } from 'jsLib/util';
-import {route} from 'jsLib/xRoute';
+import {Controller, route} from 'jsLib/index';
 /*import {timeSelectComponent, cityComponent, dd} from 'components/index';*/
 /*import {canvasResize} from 'jsLib/imgResize';*/
 

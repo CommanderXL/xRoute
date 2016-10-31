@@ -1,8 +1,7 @@
-import {
-    Controller
-} from 'jsLib/controller';
+import {Controller} from 'jsLib/index';
 import modelB from './b-model';
-import {timeSelectComponent, cityComponent, dd} from 'components/index';
+import {timeSelectComponent, cityComponent} from 'components/index';
+import {dd} from 'jsLib/util';
 
 let controllerB = modelB.registerController('controlB', '#container');
 

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/lib/js/index.js"],"names":[],"mappings":";;;;;;;;;;;;;;;AAAA;;AACA;;AACA,uC","file":"js/lib.js","sourcesContent":["import {Controller} from 'jsLib/controller';\nimport {totalModel} from 'jsLib/model';\nimport {route} from 'jsLib/xRoute';\n\n\n/** WEBPACK FOOTER **\n ** ./src/lib/js/index.js\n **/"],"sourceRoot":""}

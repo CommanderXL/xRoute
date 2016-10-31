@@ -1,5 +1,5 @@
 import {util} from 'jsLib/util';
-import dialog from 'components/dialog/index';
+import dd from 'jsLib/dialog';
 
 export default class cityComponent {
     constructor() {
@@ -167,7 +167,7 @@ export default class cityComponent {
 
     showCityBox() {
         //TODO dialog组件
-        if(this.configModule.allCities.length === 0) return dialog.alert('网络异常');
+        if(this.configModule.allCities.length === 0) return dd.dialog.alert('网络异常');
         util.addClass(this.DomMap.append_target, 'city-box-show');
     }
 

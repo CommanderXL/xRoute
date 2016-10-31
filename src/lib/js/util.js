@@ -1,3 +1,5 @@
+import dd from 'jsLib/dialog';
+
 class Util {
     hasClass(ele, cls) {
         return new RegExp(cls).test(ele.className || '');
@@ -90,6 +92,10 @@ class Util {
     omegaCb(name = '', obj = {}, cb = () => {}) {
         Omega.trackEvent(name, obj, cb);
     }
+    isNumAndStr(str) {
+        let pattern = /[^0-9a-zA-Z]/;
+        return pattern.test(str);
+    }
 }
 let util = new Util();
 
@@ -117,5 +123,6 @@ let elementSet = new ElementSet();
 
 export {
 util,
-elementSet
+elementSet,
+dd
 }

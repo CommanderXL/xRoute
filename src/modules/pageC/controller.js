@@ -1,6 +1,6 @@
 import {
     Controller
-} from 'jsLib/controller';
+} from 'jsLib/index';
 import modelC from './model';
 
 let controllerC = modelC.registerController('controlC', "#container");

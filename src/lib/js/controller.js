@@ -50,7 +50,7 @@ export class Controller {
         let obj = this.eventCache;
         for(let key in obj) {
             let item = obj[key];
-            this.domMap[key].addEventListener(item.actionName, item.action.bind(this));
+            this.domMap[key].addEventListener(item.actionName, item.action.bind(this.domMap[key]));
         }
         return this;
     }
