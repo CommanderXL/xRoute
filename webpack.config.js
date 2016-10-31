@@ -12,8 +12,6 @@ var PATHS = {
 var PKG = require('./package.json');
 var TARGET = process.env.npm_lifecycle_event;   //获取当前正在运行的脚本名称
 
-
-
 //TODO  [name]-[contenthash:8].css
 //TODO  样式文件单独抽离出来打包.文件名带上路径信息
 /**
@@ -43,13 +41,8 @@ module.exports ={
         //publicPath: '/dist/'
         //vendor: Object.keys(pkg.dependencies)
     },*/
-
-    /*output: {
-        path: PATHS.dist,
-        filename: '[name].js'
-    },*/
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: PATHS.dist,
         filename: '[name].js'
         //TODO: build文件中加入hash值
     },
@@ -113,12 +106,11 @@ module.exports ={
             filename: 'pages/index.html'   //输出html文件的位置
         }),
         new DashboardPlugin(),
-        //new ExtractTextPlugin('../css/style.css'),                     
-        new ExtractTextPlugin('css/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中
+        new ExtractTextPlugin('css/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/common.js',
-            minChunks: 2
+            minChunks: 3
         })
     ]
 }
