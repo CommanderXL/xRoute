@@ -59,13 +59,13 @@ export class Controller {
         
     }
     
-    //页面初始化(willAppear阶段)
+    //钩子: 页面初始化(willAppear阶段)
     getViewInit(fn) {
         this.viewInit = fn.bind(this) || function() {};
         return this;
     }
 
-    //页面销毁阶段(willDisappear阶段)
+    //钩子: 页面销毁阶段(willDisappear阶段)
     getViewDestory(fn) {
         this.viewDestory = fn.bind(this) || function() {};
         return this;
