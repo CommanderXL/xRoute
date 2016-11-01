@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([2,6],{
 
 /***/ 24:
 /***/ function(module, exports, __webpack_require__) {
@@ -11,7 +11,7 @@ webpackJsonp([2],{
 	
 	var _util = __webpack_require__(3);
 	
-	var _index = __webpack_require__(10);
+	var _index = __webpack_require__(9);
 	
 	var _index2 = __webpack_require__(1);
 	
@@ -164,7 +164,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 	
-	var _model = __webpack_require__(12);
+	var _model = __webpack_require__(11);
 	
 	var modelAA = _model.totalModel.init();
 	

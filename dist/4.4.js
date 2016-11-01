@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackJsonp([4,6],{
 
 /***/ 29:
 /***/ function(module, exports, __webpack_require__) {
@@ -14,10 +14,6 @@ webpackJsonp([4],{
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var controller = _model2.default.registerController('passwordCtrl', '#container');
-	
-	function pattern() {
-	    console.log(222);
-	}
 	
 	controller.getDomMap({
 	    firPassWord: '.first-password',
@@ -52,7 +48,7 @@ webpackJsonp([4],{
 	    value: true
 	});
 	
-	var _model = __webpack_require__(12);
+	var _model = __webpack_require__(11);
 	
 	var model = _model.totalModel.init();
 	

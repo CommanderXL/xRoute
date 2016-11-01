@@ -4,7 +4,7 @@ import {totalModel} from 'jsLib/model'
 var modelB = totalModel.init();
 modelB.name = 'modelB';
 modelB.pageInit = function() {
-    console.log('This\'s is page B');
+    //console.log('This\'s is page B');
 }
 modelB.save();
 

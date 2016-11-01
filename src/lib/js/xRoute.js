@@ -1,3 +1,5 @@
+import {dd} from 'jsLib/util';
+
 var Router = [],
     useHash = false,
     pageCache = {}; //在内存中进行缓存
@@ -15,7 +17,11 @@ if (!useHash) {
         //路由的处理
         if (state && state.path) {
             handleRoute(state.path, true);
-        }
+        } 
+        //TODO 对于state为空的情况的处理
+        /*else {
+            dd.dialog.alert('ok');
+        }*/
     });
 } else {
     //hash发生变化时监听的方式,因为hashchange事件浏览器的支持度已经比较高了,所以使用hashchange
@@ -35,7 +41,7 @@ if (!useHash) {
 
     //hashchange方式
     window.addEventListener('hashchange', (e) => {
-        handleRoute(location.hash);
+        handleRoute(location.hash.slice(2));
     });
 }
 
@@ -65,11 +71,7 @@ const handleRoute = (path, isFromHistory) => {
     //页面销毁
     Router.forEach(function (route, index) {
         if (route.path === oldPath) {
-
             route.viewDestory && route.viewDestory();
-
-            //页面视图缓存？？？这个可以放到页面初始化的过程?  视图文件已经打包到了js文件里,是否还需要单独添加
-            route.view && localStorage.setItem('view', route.view);
         }
     })
 
@@ -155,28 +157,20 @@ const bootstrap = () => {
             });
         }
 
-
-        /*hashArr.forEach(function(hash, index) {
-            Router.forEach(function(item) {
-                if(item.path === currHash) {
-                    return item.cb.call(item.context || window);
-                }
-            })
-        })*/
-
-
-
-        /*Router.forEach(function (item, index) {
-            if (item.path === currHash) {
-                flag = true;
-                return item.cb.call(item.context || window);
-            }
-        });*/
-
         //初始化active.route样式处理
         routeClassHandle(currHash);
 
-        !flag ? router.cb.call(router.context || window) : '';
+        if(!flag) {
+            router.cb.call(router.context || window);
+
+            if(!useHash) {
+                history.pushState({ path: router.path }, null, '#/' + router.path);
+            } else {
+                location.hash = '/' + router.path;
+            }
+        }
+
+        //!flag ? router.cb.call(router.context || window) : '';
     })
 }
 

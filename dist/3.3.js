@@ -1,11 +1,11 @@
-webpackJsonp([3],{
+webpackJsonp([3,6],{
 
 /***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _index = __webpack_require__(10);
+	var _index = __webpack_require__(9);
 	
 	var _model = __webpack_require__(28);
 	
@@ -41,9 +41,9 @@ webpackJsonp([3],{
 	    value: true
 	});
 	
-	var _controller = __webpack_require__(11);
+	var _controller = __webpack_require__(10);
 	
-	var _model = __webpack_require__(12);
+	var _model = __webpack_require__(11);
 	
 	var modelC = _model.totalModel.init();
 	

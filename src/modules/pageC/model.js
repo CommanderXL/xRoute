@@ -6,7 +6,7 @@ let modelC = totalModel.init();
 modelC.name = 'modelC';
 
 modelC.pageInit = function() {
-    console.log('This\'s is page c');
+    //console.log('This\'s is page c');
 }
 
 modelC.save();

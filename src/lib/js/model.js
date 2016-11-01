@@ -4,7 +4,7 @@ import EventEmitter from './eventEmitter';
 
 let Model = Object.create(EventEmitter);
 
-
+//Model用以创建新模型,新模型用以创建实例
 Model = {
     records: {},
     //model创建后的回调
@@ -31,8 +31,8 @@ Model = {
         }
     },
     create() {
-        let object = Object.create(this);
-        object.parent = this;
+        let object = Object.create(this);   //新模型继承至Model,调用init方法产生新实例
+        object.parent = this;               //新模型.parent = Model
 
         object.prototype = object.fn = Object.create(this.prototype);
 
@@ -42,14 +42,14 @@ Model = {
     },
     init() {
         let instance = Object.create(this.prototype);
-        instance.parent = this;
-        instance.init.apply(instance, arguments);
+        instance.parent = this;             //实例.parent = 新模型
+        instance.init.apply(instance, arguments);   //Model.prototype.init();
         return instance;
     }
 }
 
 
-//ajax
+//ajax  实例继承
 Model.include({
     post(url = '', obj = {}) {
         return new Promise((resolve, reject) => {
@@ -84,7 +84,7 @@ Model.include({
     }
 });
 
-//页面初始化内容
+//页面初始化model数据
 Model.include({
     pageInit() {
 
@@ -96,14 +96,17 @@ Model.include({
     newRecord: true,
     create() {
         this.newRecord = false;
-        //parent指向Model.create()创建的model中
-        this.parent.records[this.name] = this;
+        //新模型.records[this.name] = this;
+        this.parent.records[this.name] = this.dup();
     },
     destory() {
         delete this.parent.records[this.name];
     },
     update() {
-        this.parent.records[this.name] = this.name;
+        this.parent.records[this.name] = this.dup();
+    },
+    dup() {
+        return Object.assign({}, this);
     },
     save() {
         this.newRecord ? this.create() : this.update();
@@ -142,7 +145,7 @@ Model.include({
 
 
 
-//获取controller操作
+//controller在Model上进行注册
 Model.include({
     controllers: {},
     //这里的controller不能使用容器的选择器确定
