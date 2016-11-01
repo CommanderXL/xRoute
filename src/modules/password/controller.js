@@ -3,11 +3,6 @@ import {util, dd} from 'jsLib/util';
 
 let controller = model.registerController('passwordCtrl', '#container');
 
-
-function pattern() {
-    console.log(222);
-}
-
 controller
     .getDomMap({
         firPassWord: '.first-password',

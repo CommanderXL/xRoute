@@ -1,4 +1,4 @@
-webpackJsonp([3,6],{
+webpackJsonp([3],{
 
 /***/ 27:
 /***/ function(module, exports, __webpack_require__) {

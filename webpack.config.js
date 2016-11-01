@@ -57,7 +57,7 @@ module.exports ={
         }
     },
     module: {
-        //noParse: [/picker.min/],
+        noParse: [/node_modules/],
        /* preLoaders: [
             {
                 test: /\.js$/,
@@ -68,8 +68,9 @@ module.exports ={
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /node_modules|picker.min.js/,
                 loader: 'babel'
+                //添加对于uipicker过滤的处理
             },
             {
                 test: /\.less$/,
@@ -107,6 +108,8 @@ module.exports ={
         }),
         new DashboardPlugin(),
         new ExtractTextPlugin('css/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
+       /* new webpack.optimize.CommonsChunkPlugin('js/components', 'js/components.js'),
+        new webpack.optimize.CommonsChunkPlugin('js/lib', 'js/lib.js'),*/
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/common.js',
