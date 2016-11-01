@@ -1,7 +1,11 @@
 import 'whatwg-fetch';
 import {Controller} from './controller';
+import EventEmitter from './eventEmitter';
 
-let Model = {
+let Model = Object.create(EventEmitter);
+
+
+Model = {
     records: {},
     //model创建后的回调
     created() {
@@ -134,6 +138,9 @@ Model.include({
         return localStorage.removeItem(key);
     }
 });
+
+
+
 
 //获取controller操作
 Model.include({

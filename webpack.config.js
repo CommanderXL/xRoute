@@ -57,7 +57,7 @@ module.exports ={
         }
     },
     module: {
-        noParse: [/node_modules/],
+        //noParse: [/node_modules/],
        /* preLoaders: [
             {
                 test: /\.js$/,
