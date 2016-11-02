@@ -31,7 +31,7 @@ Router.addRoute('aaa.1', function() {
 
         page.innerHTML = require('modules/pageA/a-1/index.html');
         controller.init();
-    })
+    }, 'page-a')
 });
 
 Router.addRoute('bbb', () => {
@@ -53,7 +53,7 @@ Router.addRoute('ccc', () => {
         let page = document.querySelector('#container');
         page.innerHTML = viewC;
         controllerC.init();
-    })
+    }, 'page-c')
 });
 
 
@@ -77,7 +77,7 @@ Router.addRoute('password', () => {
         let page = document.querySelector('#container');
         page.innerHTML = require('modules/password/index.html');
         controller.init();
-    })
+    }, 'password')
 })
 
 

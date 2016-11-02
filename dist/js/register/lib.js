@@ -1,4 +1,4 @@
-webpackJsonp([5,6],[
+webpackJsonp([5],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -859,13 +859,17 @@ webpackJsonp([5,6],[
 
 /***/ },
 /* 14 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.route = undefined;
+	
+	var _util = __webpack_require__(3);
+	
 	var Router = [],
 	    useHash = false,
 	    pageCache = {}; //在内存中进行缓存
@@ -884,6 +888,10 @@ webpackJsonp([5,6],[
 	        if (state && state.path) {
 	            handleRoute(state.path, true);
 	        }
+	        //TODO 对于state为空的情况的处理
+	        /*else {
+	            dd.dialog.alert('ok');
+	        }*/
 	    });
 	} else {
 	    //hash发生变化时监听的方式,因为hashchange事件浏览器的支持度已经比较高了,所以使用hashchange
@@ -903,7 +911,7 @@ webpackJsonp([5,6],[
 	
 	    //hashchange方式
 	    window.addEventListener('hashchange', function (e) {
-	        handleRoute(location.hash);
+	        handleRoute(location.hash.slice(2));
 	    });
 	}
 	
@@ -939,11 +947,7 @@ webpackJsonp([5,6],[
 	    //页面销毁
 	    Router.forEach(function (route, index) {
 	        if (route.path === oldPath) {
-	
 	            route.viewDestory && route.viewDestory();
-	
-	            //页面视图缓存？？？这个可以放到页面初始化的过程?  视图文件已经打包到了js文件里,是否还需要单独添加
-	            route.view && localStorage.setItem('view', route.view);
 	        }
 	    });
 	
@@ -1026,25 +1030,20 @@ webpackJsonp([5,6],[
 	            });
 	        }
 	
-	        /*hashArr.forEach(function(hash, index) {
-	            Router.forEach(function(item) {
-	                if(item.path === currHash) {
-	                    return item.cb.call(item.context || window);
-	                }
-	            })
-	        })*/
-	
-	        /*Router.forEach(function (item, index) {
-	            if (item.path === currHash) {
-	                flag = true;
-	                return item.cb.call(item.context || window);
-	            }
-	        });*/
-	
 	        //初始化active.route样式处理
 	        routeClassHandle(currHash);
 	
-	        !flag ? router.cb.call(router.context || window) : '';
+	        if (!flag) {
+	            router.cb.call(router.context || window);
+	
+	            if (!useHash) {
+	                history.pushState({ path: router.path }, null, '#/' + router.path);
+	            } else {
+	                location.hash = '/' + router.path;
+	            }
+	        }
+	
+	        //!flag ? router.cb.call(router.context || window) : '';
 	    });
 	};
 	

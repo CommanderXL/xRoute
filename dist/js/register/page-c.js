@@ -1,4 +1,4 @@
-webpackJsonp([3,6],{
+webpackJsonp([3],{
 
 /***/ 27:
 /***/ function(module, exports, __webpack_require__) {
@@ -50,7 +50,7 @@ webpackJsonp([3,6],{
 	modelC.name = 'modelC';
 	
 	modelC.pageInit = function () {
-	    console.log('This\'s is page c');
+	    //console.log('This\'s is page c');
 	};
 	
 	modelC.save();
@@ -60,4 +60,4 @@ webpackJsonp([3,6],{
 /***/ }
 
 });
-//# sourceMappingURL=3.3.js.map
+//# sourceMappingURL=page-c.js.map

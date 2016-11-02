@@ -28,22 +28,17 @@ module.exports ={
     //还可以打包通过npm安装的模块
     //entry: path.join(__dirname, 'src/index.js'),
     entry: {
-        'js/index': path.join(__dirname, 'src/index.js'),
+        'index': path.join(__dirname, 'src/index.js'),
         //'js/base': ['./src/lib/js/util.js', 'whatwg-fetch'],
-        'js/components': ['./src/components/index.js'],
-        'js/lib': ['./src/lib/js/index.js'],
+        'components': ['./src/components/index.js'],
+        'lib': ['./src/lib/js/index.js'],
         //'js/components': ['./src/components/city-select/index.js', './src/components/time-select/index.js', './src/components/uipicker/picker.min.js']
     },
-   /* entry: {
-        app: path.join(__dirname, 'src/index.js'),
-        //style: path.join(__dirname, 'src/lib/index.less'),
-        components: ['./src/components/index.js'],
-        //publicPath: '/dist/'
-        //vendor: Object.keys(pkg.dependencies)
-    },*/
     output: {
         path: PATHS.dist,
-        filename: '[name].js'
+        publicPath: '/static/taxi-driver/src',    //配置publicPath文件
+        filename: 'js/register/[name].js',
+        chunkFilename: 'js/register/[name].js',
         //TODO: build文件中加入hash值
     },
     //生成source-map文件
@@ -104,15 +99,15 @@ module.exports ={
             title: '认证资料',
             template: './dist/assets/info.html',
             inject: 'body',
-            filename: 'pages/index.html'   //输出html文件的位置
+            filename: 'pages/register/index.html'   //输出html文件的位置
         }),
         new DashboardPlugin(),
-        new ExtractTextPlugin('css/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
+        new ExtractTextPlugin('css/register/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
        /* new webpack.optimize.CommonsChunkPlugin('js/components', 'js/components.js'),
         new webpack.optimize.CommonsChunkPlugin('js/lib', 'js/lib.js'),*/
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'js/common.js',
+            filename: 'js/register/common.js',
             minChunks: 3
         })
     ]

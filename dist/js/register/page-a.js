@@ -1,4 +1,4 @@
-webpackJsonp([2,6],{
+webpackJsonp([2],{
 
 /***/ 24:
 /***/ function(module, exports, __webpack_require__) {
@@ -184,4 +184,4 @@ webpackJsonp([2,6],{
 /***/ }
 
 });
-//# sourceMappingURL=2.2.js.map
+//# sourceMappingURL=page-a.js.map
