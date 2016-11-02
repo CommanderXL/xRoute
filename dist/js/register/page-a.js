@@ -11,9 +11,11 @@ webpackJsonp([2],{
 	
 	var _util = __webpack_require__(3);
 	
-	var _index = __webpack_require__(9);
+	var _route = __webpack_require__(8);
 	
-	var _index2 = __webpack_require__(1);
+	var _route2 = _interopRequireDefault(_route);
+	
+	var _index = __webpack_require__(1);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -80,7 +82,7 @@ webpackJsonp([2],{
 	    text: '难过',
 	    value: 4
 	}];
-	var picker = new _index2.Picker({
+	var picker = new _index.Picker({
 	    data: [data1, data2, data3],
 	    selectedIndex: [0, 1, 2],
 	    title: '我们都是小学生'
@@ -123,7 +125,7 @@ webpackJsonp([2],{
 	                    console.log(data);
 	                });
 	
-	                _index.route.go('password');
+	                _route2.default.go('password');
 	                //出现弹层,给以用户以提示    
 	                //dd.dialog.alert('well done');
 	            }

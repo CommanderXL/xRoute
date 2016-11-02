@@ -1,6 +1,7 @@
 import modelA from './a-model';
 import {util,elementSet} from 'jsLib/util';
 import {Controller, route} from 'jsLib/index';
+import Router from 'src/route';
 /*import {timeSelectComponent, cityComponent, dd} from 'components/index';*/
 /*import {canvasResize} from 'jsLib/imgResize';*/
 
@@ -23,7 +24,7 @@ controller
 			actionName: 'click',
 			action() {
 				console.log('btn');
-				route.go('aaa.1');
+				Router.go('aaa.1');
 			}
 		}
 	})

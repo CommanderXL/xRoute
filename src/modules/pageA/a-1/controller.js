@@ -1,6 +1,6 @@
 import modelAA from './model';
 import {util, dd} from 'jsLib/util';
-import {route} from 'jsLib/index';
+import Router from 'src/route';
 import {Picker} from 'components/index';
 //模块的粒度太大,打包的时候将其他组件也打包进去了
 
@@ -133,7 +133,7 @@ controller
                             console.log(data);
                         });
 
-                    route.go('password');
+                    Router.go('password');
                     //出现弹层,给以用户以提示    
                     //dd.dialog.alert('well done');
 

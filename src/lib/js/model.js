@@ -60,19 +60,22 @@ Model.include({
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(obj)
-            }).then((data) => {
+            }).then(data => resolve(data.json()));
+            /*.then((data) => {
                 //添加正确处理和错误处理的函数 reject
                 resolve(data.json());
-            })
+            })*/
         })
     },
     get(url = '') {
         return new Promise((resolve, reject) => {
             fetch(url)
+                .then(data => resolve(data.json()));
+            /*fetch(url)
                 .then((data) => {
                     //正确处理的方式
                     resolve(data.json());
-                })
+                })*/
         })
     }
 });
