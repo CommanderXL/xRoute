@@ -7,9 +7,9 @@ export class Controller {
         this.domMapCache = {};
         this.eventCache = {};
         this.model = model || {};
-        this.viewInit = null || function() {};
-        this.viewDestory = null || function() {};
-        
+        this.viewInit = null || function () { };
+        this.viewDestory = null || function () { };
+
         this.inited = false;
     }
     //init函数
@@ -21,7 +21,7 @@ export class Controller {
         this.viewInit();
 
         this.inited = true;
-        
+
         return this;
     }
     setModelCache(obj = {}) {
@@ -35,10 +35,15 @@ export class Controller {
     //dom缓存
     setDomMap() {
         let obj = this.domMapCache;
-        for(let key in obj) {
-            this.domMap[key] = this.containerBox.querySelector(obj[key]);
+        for (let key in obj) {
+            try {
+                this.domMap[key] = this.containerBox.querySelector(obj[key]);
+            }
+            catch (e) {
+                console.error(`${key}need the right domMap`);
+            }
+
         }
-        console.log(this.domMap);
         return this;
     }
 
@@ -55,27 +60,27 @@ export class Controller {
     bindEvents() {
         let eventMap = this.eventMap;
 
-        for(let key in eventMap) {
+        for (let key in eventMap) {
             let [domName, eventType] = key.split(' '),
                 eventName = eventMap[key];
-            this.domMap[domName].addEventListener(eventType, this.eventCache[eventName]);
+            this.domMap[domName].addEventListener(eventType, this.eventCache[eventName].bind(this));
         }
         return this;
     }
-    
+
     unbindEvent() {
-        
+
     }
-    
+
     //钩子: 页面初始化(willAppear阶段)
     getViewInit(fn) {
-        this.viewInit = fn.bind(this) || function() {};
+        this.viewInit = fn.bind(this) || function () { };
         return this;
     }
 
     //钩子: 页面销毁阶段(willDisappear阶段)
     getViewDestory(fn) {
-        this.viewDestory = fn.bind(this) || function() {};
+        this.viewDestory = fn.bind(this) || function () { };
         return this;
     }
 

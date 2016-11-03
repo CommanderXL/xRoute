@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		6:0
+/******/ 		3:0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 /******/
-/******/ 			script.src = __webpack_require__.p + "js/register/" + ({"0":"components","1":"index","2":"page-a","3":"page-c","4":"password","5":"lib"}[chunkId]||chunkId) + ".js";
+/******/ 			script.src = __webpack_require__.p + "js/register/" + ({"0":"components","1":"index","2":"lib"}[chunkId]||chunkId) + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -96,22 +96,15 @@
 /* 1 */,
 /* 2 */,
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.dd = exports.elementSet = exports.util = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _dialog = __webpack_require__(4);
-	
-	var _dialog2 = _interopRequireDefault(_dialog);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -320,7 +313,6 @@
 	
 	exports.util = util;
 	exports.elementSet = elementSet;
-	exports.dd = _dialog2.default;
 
 /***/ },
 /* 4 */
@@ -559,7 +551,9 @@
 	  }, e.dialog.Fn = s, t.dd = e;
 	}(window);
 	
-	exports.default = dd;
+	var dialog = dd.dialog;
+	
+	exports.default = dialog;
 
 /***/ }
 /******/ ]);

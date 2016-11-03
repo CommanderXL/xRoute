@@ -36,7 +36,7 @@ module.exports ={
     },
     output: {
         path: PATHS.dist,
-        publicPath: '/static/taxi-driver/',    //配置publicPath文件. 路径已经要写完整
+        publicPath: '/static/taxi-driver/',    //配置publicPath文件. 路径一定要写完整
         filename: 'js/register/[name].js',
         chunkFilename: 'js/register/[name].js',
         //TODO: build文件中加入hash值

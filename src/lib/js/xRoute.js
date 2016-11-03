@@ -1,4 +1,4 @@
-import {dd} from 'jsLib/util';
+import {dialog} from 'jsLib/index';
 
 export default class Route {
     constructor() {
@@ -7,14 +7,17 @@ export default class Route {
         this.pageCache = {};    //在内存中进行缓存
     }
 
-    addRoute({path, viewInit, viewDestory, context}) {
+    addRoute({path, viewInit, viewDestory, context, template, templateUrl, viewBox}) {
         path = path.split('.').join('/');
 
         this.routes.push({
             path,
             viewInit,
             viewDestory,
-            context
+            context,
+            template,
+            templateUrl,
+            viewBox
         });
     }
     handleRoute(path = '', isFromHistory) {
@@ -32,6 +35,12 @@ export default class Route {
             if (routeItem.path === path) {
                 //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
                 curContext = routeItem.context ? routeItem.context : window;
+
+                let viewBox = document.querySelector(routeItem.viewBox);
+
+                if (!viewBox) return;
+                //渲染视图
+                viewBox.innerHTML = routeItem.template;
 
                 routeItem.viewInit.apply(curContext, [path]);
 
@@ -111,7 +120,8 @@ export default class Route {
         document.addEventListener('DOMContentLoaded', (e) => {
             let router = this.routes[0],
                 currHash = location.hash.slice(2),
-                flag = false;
+                flag = false,
+                viewBox = null;
 
             let lastArr = currHash.split('/')[0];
 
@@ -120,6 +130,15 @@ export default class Route {
             this.routes.forEach((item, index) => {
                 if (item.path === lastArr) {
                     flag = true;
+
+
+                    viewBox = document.querySelector(item.viewBox);
+
+                    if (!viewBox) return;
+                    //渲染视图
+                    viewBox.innerHTML = item.template;
+
+
                     return item.viewInit.call(item.context || window);
                 }
             });
@@ -127,6 +146,13 @@ export default class Route {
             if (lastArr !== currHash) {
                 this.routes.forEach((item, index) => {
                     if (item.path === currHash) {
+
+                        viewBox = document.querySelector(item.viewBox);
+
+                        if (!viewBox) return;
+                        //渲染视图
+                        viewBox.innerHTML = item.template
+
                         return item.viewInit.call(item.context || window);
                     }
                 })
@@ -136,6 +162,14 @@ export default class Route {
             this.routeClassHandle(currHash);
 
             if (!flag) {
+
+                viewBox = document.querySelector(item.viewBox);
+
+                if (!viewBox) return;
+                //渲染视图
+                viewBox.innerHTML = item.template
+
+
                 router.viewInit.call(router.context || window);
 
                 if (!this.useHash) {

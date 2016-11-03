@@ -1,7 +1,7 @@
 import model from './model';
-import {util, dd} from 'jsLib/util';
+import {util, dialog} from 'jsLib/index';
 
-let controller = model.registerController('passwordCtrl', '#container');
+let controller = model.registerCtrl('passwordCtrl', '.public-container');
 
 controller
     .getDomMap({
@@ -13,13 +13,13 @@ controller
         'confirmPassWord blur': 'confBlur'
     })
     .getEventsFn({
-        firBlur() {
-            let value = this.value;
+        firBlur(e) {
+            let value = e.target.value;
             //show some tips
             (value.length < 6 || value.length > 32 || util.isNumAndStr(value)) && (console.log(123));
         },
-        confBlur() {
-            console.log(this.value);
+        confBlur(e) {
+            console.log(e.target.value);
         }
     })
     .getViewInit(function () {

@@ -1,5 +1,3 @@
-import dd from 'jsLib/dialog';
-
 class Util {
     hasClass(ele, cls) {
         return new RegExp(cls).test(ele.className || '');
@@ -124,5 +122,4 @@ let elementSet = new ElementSet();
 export {
 util,
 elementSet,
-dd
 }

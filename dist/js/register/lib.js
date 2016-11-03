@@ -1,4 +1,4 @@
-webpackJsonp([5],[
+webpackJsonp([2],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22,7 +22,7 @@ webpackJsonp([5],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.Route = exports.totalModel = exports.Controller = undefined;
+	exports.util = exports.dialog = exports.Route = exports.totalModel = exports.Controller = undefined;
 	
 	var _controller = __webpack_require__(10);
 	
@@ -32,11 +32,19 @@ webpackJsonp([5],[
 	
 	var _xRoute2 = _interopRequireDefault(_xRoute);
 	
+	var _dialog = __webpack_require__(4);
+	
+	var _dialog2 = _interopRequireDefault(_dialog);
+	
+	var _util = __webpack_require__(3);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.Controller = _controller.Controller;
 	exports.totalModel = _model.totalModel;
 	exports.Route = _xRoute2.default;
+	exports.dialog = _dialog2.default;
+	exports.util = _util.util;
 
 /***/ },
 /* 10 */
@@ -47,6 +55,8 @@ webpackJsonp([5],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -74,7 +84,6 @@ webpackJsonp([5],[
 	    _createClass(Controller, [{
 	        key: 'init',
 	        value: function init() {
-	            //console.log(this);
 	            this.containerBox = document.querySelector(this.containerName);
 	            this.setDomMap();
 	            this.bindEvents();
@@ -110,14 +119,23 @@ webpackJsonp([5],[
 	            for (var key in obj) {
 	                this.domMap[key] = this.containerBox.querySelector(obj[key]);
 	            }
+	            console.log(this.domMap);
 	            return this;
 	        }
 	    }, {
-	        key: 'getBindEvents',
-	        value: function getBindEvents() {
-	            var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	        key: 'getEvents',
+	        value: function getEvents() {
+	            var eventMap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	
-	            this.eventCache = obj;
+	            this.eventMap = eventMap;
+	            return this;
+	        }
+	    }, {
+	        key: 'getEventsFn',
+	        value: function getEventsFn() {
+	            var eventFnMap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	
+	            this.eventCache = eventFnMap;
 	            return this;
 	        }
 	        //事件绑定
@@ -125,10 +143,17 @@ webpackJsonp([5],[
 	    }, {
 	        key: 'bindEvents',
 	        value: function bindEvents() {
-	            var obj = this.eventCache;
-	            for (var key in obj) {
-	                var item = obj[key];
-	                this.domMap[key].addEventListener(item.actionName, item.action.bind(this.domMap[key]));
+	            var eventMap = this.eventMap;
+	
+	            for (var key in eventMap) {
+	                var _key$split = key.split(' ');
+	
+	                var _key$split2 = _slicedToArray(_key$split, 2);
+	
+	                var domName = _key$split2[0];
+	                var eventType = _key$split2[1];
+	                var eventName = eventMap[key];
+	                this.domMap[domName].addEventListener(eventType, this.eventCache[eventName]);
 	            }
 	            return this;
 	        }
@@ -352,7 +377,7 @@ webpackJsonp([5],[
 	Model.include({
 	    controllers: {},
 	    //这里的controller不能使用容器的选择器确定
-	    registerController: function registerController(name, containerName) {
+	    registerCtrl: function registerCtrl(name, containerName) {
 	        return this.controllers[name] || (this.controllers[name] = new _controller.Controller(name, containerName, this));
 	    }
 	});
@@ -880,7 +905,7 @@ webpackJsonp([5],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _util = __webpack_require__(3);
+	var _index = __webpack_require__(9);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -900,6 +925,9 @@ webpackJsonp([5],[
 	            var viewInit = _ref.viewInit;
 	            var viewDestory = _ref.viewDestory;
 	            var context = _ref.context;
+	            var template = _ref.template;
+	            var templateUrl = _ref.templateUrl;
+	            var viewBox = _ref.viewBox;
 	
 	            path = path.split('.').join('/');
 	
@@ -907,7 +935,10 @@ webpackJsonp([5],[
 	                path: path,
 	                viewInit: viewInit,
 	                viewDestory: viewDestory,
-	                context: context
+	                context: context,
+	                template: template,
+	                templateUrl: templateUrl,
+	                viewBox: viewBox
 	            });
 	        }
 	    }, {
@@ -931,6 +962,12 @@ webpackJsonp([5],[
 	                if (routeItem.path === path) {
 	                    //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
 	                    curContext = routeItem.context ? routeItem.context : window;
+	
+	                    var viewBox = document.querySelector(routeItem.viewBox);
+	
+	                    if (!viewBox) return;
+	                    //渲染视图
+	                    viewBox.innerHTML = routeItem.template;
 	
 	                    routeItem.viewInit.apply(curContext, [path]);
 	
