@@ -98,18 +98,16 @@ controller
         itemEle4: '.arr-item:nth-child(4)',
         btn: '.btn'
     })
-    .getBindEvents({
-        inputEle: {
-            actionName: 'click',
-            action() {
-
-            }
+    .getEvents({
+        'inputEle click': 'inputClick',
+        'btn click': 'btnClick'
+    })
+    .getEventsFn({
+        inputClick() {
+            console.log('input click');
         },
-        btn: {
-            actionName: 'click', 
-            action() {
-                picker.show();
-            }
+        btnClick() {
+            picker.show();
         }
     })
     .getViewInit(function () {

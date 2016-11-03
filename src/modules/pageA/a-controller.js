@@ -13,19 +13,17 @@ controller
 		phoneEle: '#phone',
 		registerBtnEle: '.btn'
 	})
-	.getBindEvents({
-		phoneEle: {
-			actionName: 'blur',
-			action() {
-				console.log(this.value);
-			}
+	.getEvents({
+		'phoneEle blur': 'phoneEleBlur',
+		'registerBtnEle click': 'registerBtnEleClick'
+	})
+	.getEventsFn({
+		phoneEleBlur() {
+			console.log(this.value);
 		},
-		registerBtnEle: {
-			actionName: 'click',
-			action() {
-				console.log('btn');
-				Router.go('aaa.1');
-			}
+		registerBtnEleClick() {
+			console.log('btn');
+			Router.go('aaa.1')
 		}
 	})
 	.getViewInit(function() {

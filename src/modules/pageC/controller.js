@@ -9,14 +9,6 @@ controllerC
 .getDomMap({
     btn: '#btnc'
 })
-.getBindEvents({
-    btn: {
-        actionName: 'click',
-        action() {
-            console.log('C按钮点击');
-        }
-    }
-})
 
 module.exports = controllerC;
 
