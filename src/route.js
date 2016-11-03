@@ -22,12 +22,12 @@ Router.addRoute({
 
 
 Router.addRoute({
-    path: 'account/verify',
+    path: 'verify',
     viewBox: '.public-container',
-    template: require('modules/account/verify/index.html'),
+    template: require('modules//verify/index.html'),
     viewInit() {
         require.ensure([], () => {
-            let controller = require('modules/account/verify/controller');
+            let controller = require('modules/verify/controller');
             controller.init();
         }, 'account-verify');
     }
@@ -91,7 +91,6 @@ Router.addRoute({
     }
 })*/
 
-
 /*Router.addRoute({
     path: 'ccc',
     viewInit() {
@@ -103,8 +102,6 @@ Router.addRoute({
         }, 'page-c')
     }
 })*/
-
-
 
 /*Router.addRoute({
     path: 'ccc.1',
@@ -124,9 +121,6 @@ Router.addRoute({
         console.log('This\'s pagec-2');
     }
 })*/
-
-
-
 
 Router.bootstrap();
 

@@ -135,7 +135,6 @@ Model.include({
         } else {
             itemValue = undefined;
         }
-        console.log(key, value);
         localStorage.setItem(key, itemValue);
     },
     getLocItem(key = '') {

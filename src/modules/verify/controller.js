@@ -25,13 +25,12 @@ controller
                 util.addClass(this.domMap.itemArrs[value.length], 'red');
             } else {
                 if (value.length === 4) {
+                    console.log(123);
                     //验证码验证
                     model.get('/api')
                         .then(function (data) {
                             if(data) Router.go('password')
                         });
-
-                    Router.go('password');
                     //出现弹层,给以用户以提示    
                     //dd.dialog.alert('well done');
 

@@ -21,6 +21,7 @@ export default class Route {
         });
     }
     handleRoute(path = '', isFromHistory) {
+        console.log(path);
         let curContext,                     //上下文
             oldPath = location.hash.slice(2);
 
@@ -94,6 +95,8 @@ export default class Route {
 
         if (!this.useHash) {
             window.addEventListener('popstate', (e) => {
+                console.log('popstate');
+
                 let state = e.state;
 
                 if (state && state.path) this.handleRoute(state.path, true);
@@ -113,6 +116,7 @@ export default class Route {
 
             //将data-href数据形式转化为路由形式
             href = href.split('-').join('/');       //将data-href='ccc-aaa' --->>> 转化为 ccc/aaa  外部写法可能存在出入,但是在内部统一转化为a/b/c/d的形式
+
 
             if (href) {
                 //添加钩子 路由进行跳转时模型model上数据的处理
@@ -140,7 +144,6 @@ export default class Route {
                 if (item.path === lastArr) {
                     flag = true;
 
-
                     viewBox = document.querySelector(item.viewBox);
 
                     if (!viewBox) return;
@@ -160,7 +163,7 @@ export default class Route {
 
                         if (!viewBox) return;
                         //渲染视图
-                        viewBox.innerHTML = item.template
+                        viewBox.innerHTML = item.template;
 
                         return item.viewInit.call(item.context || window);
                     }
@@ -172,12 +175,11 @@ export default class Route {
 
             if (!flag) {
 
-                viewBox = document.querySelector(item.viewBox);
+                viewBox = document.querySelector(router.viewBox);
 
                 if (!viewBox) return;
                 //渲染视图
-                viewBox.innerHTML = item.template
-
+                viewBox.innerHTML = router.template;
 
                 router.viewInit.call(router.context || window);
 

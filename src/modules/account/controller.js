@@ -19,7 +19,7 @@ controller
         },
         getCode() {
             console.log(234);
-            Router.go('account/verify')
+            Router.go('verify')
         }
     })
     .getViewInit(function() {
