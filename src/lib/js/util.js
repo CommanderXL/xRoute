@@ -94,6 +94,9 @@ class Util {
         let pattern = /[^0-9a-zA-Z]/;
         return pattern.test(str);
     }
+    getCurrPath() {
+        return location.hash.slice(2).split('/').join('.');
+    }
 }
 let util = new Util();
 

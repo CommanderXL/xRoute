@@ -79,6 +79,15 @@ export default class Route {
 
     }
 
+    registerCtrl(path, ctrl) {
+        this.routes.forEach((item, index) => {
+            if(item.path === path) {
+                item.viewDestory = ctrl.viewDestory;
+            }
+        })
+    }
+
+
     bootstrap() {
 
         if (!history.pushState) this.useHash = true;
@@ -182,6 +191,7 @@ export default class Route {
             //!flag ? router.viewInit.call(router.context || window) : '';
         })
     }
+
 }
 
 

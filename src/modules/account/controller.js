@@ -4,7 +4,6 @@ import Router from 'src/route';
 
 let controller = model.registerCtrl('account-ctrl', '.public-container');
 
-
 controller
     .getDomMap({
         phoneInputEle: '.account-phone',
@@ -22,6 +21,17 @@ controller
             console.log(234);
             Router.go('account/verify')
         }
+    })
+    .getViewInit(function() {
+        this.domMap.phoneInputEle.value = model.phone;
+    })
+    .getViewDestory(function() {
+        model.phone = this.domMap.phoneInputEle.value;
+        model.setLocItem('phone', model.phone);
     });
+
+Router.registerCtrl(util.getCurrPath(), controller);
+
+
 
 module.exports = controller;

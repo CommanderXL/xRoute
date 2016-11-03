@@ -12,7 +12,7 @@ Router.addRoute({
     viewInit() {
         require.ensure([], () => {
             let controller = require('modules/account/controller');
-            //controller.init();
+            controller.init();
         }, 'account');
     },
     viewDestory() {

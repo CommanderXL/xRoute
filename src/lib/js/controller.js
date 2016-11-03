@@ -17,8 +17,8 @@ export class Controller {
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();
-        this.model.pageInit();
-        this.viewInit();
+        this.model.pageInit();  //模型初始化
+        this.viewInit();        //视图初始化
 
         this.inited = true;
 
@@ -74,18 +74,22 @@ export class Controller {
 
     //钩子: 页面初始化(willAppear阶段)
     getViewInit(fn) {
-        this.viewInit = fn.bind(this) || function () { };
+        this.viewInit = fn && fn.bind(this) || function () { };
         return this;
     }
 
     //钩子: 页面销毁阶段(willDisappear阶段)
     getViewDestory(fn) {
-        this.viewDestory = fn.bind(this) || function () { };
+        this.viewDestory = fn && fn.bind(this) || function () { };
         return this;
     }
 
     //获取controller的初始化状态
     get getInitedStatus() {
         return this.inited;
+    }
+
+    get getRoute() {
+        return location.hash.split('/').join('.');
     }
 }
