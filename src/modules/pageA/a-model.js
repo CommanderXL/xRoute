@@ -16,6 +16,6 @@ modelA.pageInit = function() {
 modelA.save();
 
 //console.log(totalModel);
-console.log(modelA.pageInit.valueOf());
+//console.log(modelA.pageInit.valueOf());
 
 export default modelA;

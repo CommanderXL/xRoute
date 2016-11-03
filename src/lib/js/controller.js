@@ -14,7 +14,6 @@ export class Controller {
     }
     //init函数
     init() {
-        //console.log(this);
         this.containerBox = document.querySelector(this.containerName);
         this.setDomMap();
         this.bindEvents();
@@ -39,18 +38,27 @@ export class Controller {
         for(let key in obj) {
             this.domMap[key] = this.containerBox.querySelector(obj[key]);
         }
+        console.log(this.domMap);
         return this;
     }
-    getBindEvents(obj = {}) {
-        this.eventCache = obj;
+
+    getEvents(eventMap = {}) {
+        this.eventMap = eventMap;
+        return this;
+    }
+
+    getEventsFn(eventFnMap = {}) {
+        this.eventCache = eventFnMap;
         return this;
     }
     //事件绑定
     bindEvents() {
-        let obj = this.eventCache;
-        for(let key in obj) {
-            let item = obj[key];
-            this.domMap[key].addEventListener(item.actionName, item.action.bind(this.domMap[key]));
+        let eventMap = this.eventMap;
+
+        for(let key in eventMap) {
+            let [domName, eventType] = key.split(' '),
+                eventName = eventMap[key];
+            this.domMap[domName].addEventListener(eventType, this.eventCache[eventName]);
         }
         return this;
     }
