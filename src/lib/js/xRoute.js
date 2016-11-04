@@ -101,13 +101,7 @@ export default class Route {
 
     registerCtrl(path, ctrl) {
         this.routes[path] ? this.routes[path].viewDestory = ctrl.viewDestory : '';
-        /*this.routes.forEach((item, index) => {
-            if (item.path === path) {
-                item.viewDestory = ctrl.viewDestory;
-            }
-        })*/
     }
-
 
     bootstrap() {
 
@@ -155,22 +149,6 @@ export default class Route {
                 viewBox = null,
                 lastRoute;
 
-            let lastArr = currHash.split('/')[0];
-
-
-            /*if(lastRoute = this.routes[lastArr]) {
-                flag = true;
-
-                viewBox = document.querySelector(lastRoute.viewBox);
-
-                if(!viewBox) return;
-
-                viewBox.innerHTML = lastRoute.template;
-
-                return item.viewInit.call(item.context || window);
-            }*/
-
-
             let pathArr = currHash.split('/');
 
             pathArr.forEach((item, index) => {
@@ -193,40 +171,6 @@ export default class Route {
                 }
             })
 
-
-
-            //TODO 代码比较龊,可以优化的地方还很多
-            /*this.routes.forEach((item, index) => {
-                if (item.path === lastArr) {
-                    flag = true;
-
-                    viewBox = document.querySelector(item.viewBox);
-
-                    if (!viewBox) return;
-                    //渲染视图
-                    viewBox.innerHTML = item.template;
-
-
-                    return item.viewInit.call(item.context || window);
-                }
-            });
-
-            if (lastArr !== currHash) {
-                this.routes.forEach((item, index) => {
-                    if (item.path === currHash) {
-
-                        viewBox = document.querySelector(item.viewBox);
-
-                        if (!viewBox) return;
-                        //渲染视图
-                        viewBox.innerHTML = item.template;
-
-                        return item.viewInit.call(item.context || window);
-                    }
-                })
-            }*/
-
-            console.log(flag);
             //初始化active.route样式处理
             this.routeClassHandle(currHash);
 

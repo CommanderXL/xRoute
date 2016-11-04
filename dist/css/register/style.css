@@ -560,5 +560,9 @@ div {
 .red {
   border-color: red !important;
 }
+.info [table~="cell"] {
+  border: 1px solid #e3e3e3;
+  height: 40px;
+}
 
 /*# sourceMappingURL=style.css.map*/

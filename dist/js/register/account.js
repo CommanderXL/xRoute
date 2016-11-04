@@ -1,11 +1,11 @@
 webpackJsonp([2],{
 
-/***/ 18:
+/***/ 20:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _model = __webpack_require__(19);
+	var _model = __webpack_require__(21);
 	
 	var _model2 = _interopRequireDefault(_model);
 	
@@ -46,7 +46,7 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 19:
+/***/ 21:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -1,15 +1,19 @@
 webpackJsonp([4],{
 
-/***/ 22:
+/***/ 24:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _model = __webpack_require__(23);
+	var _model = __webpack_require__(25);
 	
 	var _model2 = _interopRequireDefault(_model);
 	
 	var _index = __webpack_require__(9);
+	
+	var _route = __webpack_require__(8);
+	
+	var _route2 = _interopRequireDefault(_route);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -17,10 +21,12 @@ webpackJsonp([4],{
 	
 	controller.getDomMap({
 	    firPassWord: '.first-password',
-	    confirmPassWord: '.confirm-password'
+	    confirmPassWord: '.confirm-password',
+	    btn: '.btn'
 	}).getEvents({
 	    'firPassWord blur': 'firBlur',
-	    'confirmPassWord blur': 'confBlur'
+	    'confirmPassWord blur': 'confBlur',
+	    'btn click': 'pageGo'
 	}).getEventsFn({
 	    firBlur: function firBlur(e) {
 	        var value = e.target.value;
@@ -29,6 +35,9 @@ webpackJsonp([4],{
 	    },
 	    confBlur: function confBlur(e) {
 	        console.log(e.target.value);
+	    },
+	    pageGo: function pageGo() {
+	        _route2.default.go('info.car');
 	    }
 	}).getViewInit(function () {});
 	
@@ -36,7 +45,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 23:
+/***/ 25:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -6,13 +6,15 @@ webpackJsonp([1],[
 	
 	__webpack_require__(8);
 	
-	__webpack_require__(24);
-	__webpack_require__(28);
 	__webpack_require__(30);
-	__webpack_require__(32);
-	
 	__webpack_require__(34);
 	__webpack_require__(36);
+	__webpack_require__(38);
+	
+	__webpack_require__(40);
+	__webpack_require__(42);
+	
+	__webpack_require__(44);
 	
 	//import 'babel-polyfill';
 
@@ -40,13 +42,15 @@ webpackJsonp([1],[
 	
 	var Router = new _index.Route();
 	
+	Router.home('account');
+	
 	Router.addRoute({
 	    path: 'account',
 	    viewBox: '.public-container',
 	    template: __webpack_require__(15),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(2, function () {
-	            var controller = __webpack_require__(18);
+	            var controller = __webpack_require__(20);
 	            controller.init();
 	        });
 	    },
@@ -57,7 +61,7 @@ webpackJsonp([1],[
 	    template: __webpack_require__(16),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(3, function () {
-	            var controller = __webpack_require__(20);
+	            var controller = __webpack_require__(22);
 	            controller.init();
 	        });
 	    }
@@ -67,7 +71,27 @@ webpackJsonp([1],[
 	    template: __webpack_require__(17),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(4, function () {
-	            var controller = __webpack_require__(22);
+	            var controller = __webpack_require__(24);
+	            controller.init();
+	        });
+	    }
+	}).addRoute({
+	    path: 'info',
+	    viewBox: '.public-container',
+	    template: __webpack_require__(18),
+	    viewInit: function viewInit() {
+	        __webpack_require__.e/* nsure */(5, function () {
+	            var controller = __webpack_require__(26);
+	            controller.init();
+	        });
+	    }
+	}).addRoute({
+	    path: 'info.car',
+	    viewBox: '.info-container',
+	    template: __webpack_require__(19),
+	    viewInit: function viewInit() {
+	        __webpack_require__.e/* nsure */(6, function () {
+	            var controller = __webpack_require__(28);
 	            controller.init();
 	        });
 	    }
@@ -429,10 +453,6 @@ webpackJsonp([1],[
 	            }).then(function (data) {
 	                return resolve(data.json());
 	            });
-	            /*.then((data) => {
-	                //添加正确处理和错误处理的函数 reject
-	                resolve(data.json());
-	            })*/
 	        });
 	    },
 	    get: function get() {
@@ -442,11 +462,6 @@ webpackJsonp([1],[
 	            fetch(url).then(function (data) {
 	                return resolve(data.json());
 	            });
-	            /*fetch(url)
-	                .then((data) => {
-	                    //正确处理的方式
-	                    resolve(data.json());
-	                })*/
 	        });
 	    }
 	});
@@ -1062,12 +1077,22 @@ webpackJsonp([1],[
 	    function Route() {
 	        _classCallCheck(this, Route);
 	
-	        this.routes = [];
+	        this.routes = {};
+	        this.default = '';
 	        this.useHash = false;
+	        this.id = 0;
 	        this.pageCache = {}; //在内存中进行缓存
 	    }
 	
 	    _createClass(Route, [{
+	        key: 'home',
+	        value: function home() {
+	            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	
+	            this.default = path;
+	            return this;
+	        }
+	    }, {
 	        key: 'addRoute',
 	        value: function addRoute(_ref) {
 	            var path = _ref.path;
@@ -1080,64 +1105,78 @@ webpackJsonp([1],[
 	
 	            path = path.split('.').join('/');
 	
-	            this.routes.push({
+	            var id = this.id++;
+	
+	            this.routes[path] = {
 	                path: path,
 	                viewInit: viewInit,
 	                viewDestory: viewDestory,
 	                context: context,
 	                template: template,
 	                templateUrl: templateUrl,
-	                viewBox: viewBox
-	            });
+	                viewBox: viewBox,
+	                id: id
+	            };
 	
 	            return this;
 	        }
 	    }, {
 	        key: 'handleRoute',
 	        value: function handleRoute() {
+	            var _this = this;
+	
 	            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	            var isFromHistory = arguments[1];
 	
-	            console.log(path);
 	            var curContext = void 0,
 	                //上下文
-	            oldPath = location.hash.slice(2);
+	            oldPath = location.hash.slice(2),
+	                oldRoute = void 0,
+	                newRoute = void 0;
 	
 	            //页面销毁
-	            this.routes.forEach(function (route, index) {
-	                if (route.path === oldPath) {
-	                    route.viewDestory && route.viewDestory();
+	            if (oldRoute = this.routes[oldPath]) {
+	                oldRoute.viewDestory && oldRoute.viewDestory();
+	            }
+	
+	            var pathArr = path.split('/');
+	
+	            pathArr.forEach(function (item, index) {
+	
+	                var _path = pathArr.filter(function (a, b) {
+	                    return b <= index;
+	                }).join('/');
+	
+	                var _route = void 0,
+	                    _viewBox = void 0;
+	
+	                if (_route = _this.routes[_path]) {
+	                    _viewBox = document.querySelector(_route.viewBox);
+	
+	                    if (!_viewBox) return;
+	
+	                    _viewBox.innerHTML = _route.template;
+	
+	                    _route.viewInit.call(_route.context || window);
+	
+	                    if (index + 1 === pathArr.length) {
+	                        if (!_this.useHash) {
+	                            //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
+	                            if (!isFromHistory) {
+	                                history.pushState({ path: _path }, null, '#/' + _path);
+	                            }
+	                        } else {
+	                            location.hash = '/' + _path;
+	                        }
+	
+	                        //激活状路由样式处理
+	                        _this.routeClassHandle(_path);
+	
+	                        return true;
+	                    }
 	                }
 	            });
 	
-	            for (var i = 0, routeItem; routeItem = this.routes[i++];) {
-	                if (routeItem.path === path) {
-	                    //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
-	                    curContext = routeItem.context ? routeItem.context : window;
-	
-	                    var viewBox = document.querySelector(routeItem.viewBox);
-	
-	                    if (!viewBox) return;
-	                    //渲染视图
-	                    viewBox.innerHTML = routeItem.template;
-	
-	                    routeItem.viewInit.apply(curContext, [path]);
-	
-	                    if (!this.useHash) {
-	                        //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
-	                        if (!isFromHistory) {
-	                            history.pushState({ path: path }, null, '#/' + path);
-	                        }
-	                    } else {
-	                        location.hash = '/' + path;
-	                    }
-	
-	                    //激活状路由样式处理
-	                    this.routeClassHandle(path);
-	
-	                    return true;
-	                }
-	            }
 	            return false;
 	        }
 	    }, {
@@ -1161,32 +1200,26 @@ webpackJsonp([1],[
 	    }, {
 	        key: 'registerCtrl',
 	        value: function registerCtrl(path, ctrl) {
-	            this.routes.forEach(function (item, index) {
-	                if (item.path === path) {
-	                    item.viewDestory = ctrl.viewDestory;
-	                }
-	            });
+	            this.routes[path] ? this.routes[path].viewDestory = ctrl.viewDestory : '';
 	        }
 	    }, {
 	        key: 'bootstrap',
 	        value: function bootstrap() {
-	            var _this = this;
+	            var _this2 = this;
 	
 	            if (!history.pushState) this.useHash = true;
 	
 	            if (!this.useHash) {
 	                window.addEventListener('popstate', function (e) {
-	                    console.log('popstate');
-	
 	                    var state = e.state;
 	
-	                    if (state && state.path) _this.handleRoute(state.path, true);
+	                    if (state && state.path) _this2.handleRoute(state.path, true);
 	
 	                    //TODO 添加对于state为空的情况的处理
 	                });
 	            } else {
 	                window.addEventListener('hashchange', function (e) {
-	                    _this.handleRoute(location.hash.slice(2));
+	                    _this2.handleRoute(location.hash.slice(2));
 	                });
 	            }
 	
@@ -1202,7 +1235,7 @@ webpackJsonp([1],[
 	                    //添加钩子 路由进行跳转时模型model上数据的处理
 	                    if (href === oldHash) return;
 	
-	                    if (_this.handleRoute(href)) {
+	                    if (_this2.handleRoute(href)) {
 	                        //阻止默认事件
 	                        e.preventDefault();
 	                    }
@@ -1210,57 +1243,48 @@ webpackJsonp([1],[
 	            });
 	
 	            document.addEventListener('DOMContentLoaded', function (e) {
-	                var router = _this.routes[0],
+	                var router = _this2.routes[_this2.default],
 	                    currHash = location.hash.slice(2),
 	                    flag = false,
-	                    viewBox = null;
+	                    viewBox = null,
+	                    lastRoute = void 0;
 	
-	                var lastArr = currHash.split('/')[0];
+	                var pathArr = currHash.split('/');
 	
-	                //TODO 代码比较龊,可以优化的地方还很多
-	                _this.routes.forEach(function (item, index) {
-	                    if (item.path === lastArr) {
+	                pathArr.forEach(function (item, index) {
+	
+	                    var _path = pathArr.filter(function (a, b) {
+	                        return b <= index;
+	                    }).join('/');
+	
+	                    var _route = void 0,
+	                        _viewBox = void 0;
+	
+	                    if (_route = _this2.routes[_path]) {
+	                        _viewBox = document.querySelector(_route.viewBox);
+	
+	                        if (!_viewBox) return;
+	
+	                        _viewBox.innerHTML = _route.template;
+	
+	                        _route.viewInit.call(_route.context || window);
+	
 	                        flag = true;
-	
-	                        viewBox = document.querySelector(item.viewBox);
-	
-	                        if (!viewBox) return;
-	                        //渲染视图
-	                        viewBox.innerHTML = item.template;
-	
-	                        return item.viewInit.call(item.context || window);
 	                    }
 	                });
 	
-	                if (lastArr !== currHash) {
-	                    _this.routes.forEach(function (item, index) {
-	                        if (item.path === currHash) {
-	
-	                            viewBox = document.querySelector(item.viewBox);
-	
-	                            if (!viewBox) return;
-	                            //渲染视图
-	                            viewBox.innerHTML = item.template;
-	
-	                            return item.viewInit.call(item.context || window);
-	                        }
-	                    });
-	                }
-	
 	                //初始化active.route样式处理
-	                _this.routeClassHandle(currHash);
+	                _this2.routeClassHandle(currHash);
 	
 	                if (!flag) {
 	
 	                    viewBox = document.querySelector(router.viewBox);
-	
-	                    if (!viewBox) return;
 	                    //渲染视图
 	                    viewBox.innerHTML = router.template;
 	
 	                    router.viewInit.call(router.context || window);
 	
-	                    if (!_this.useHash) {
+	                    if (!_this2.useHash) {
 	                        history.pushState({ path: router.path }, null, '#/' + router.path);
 	                    } else {
 	                        location.hash = '/' + router.path;
@@ -1293,30 +1317,30 @@ webpackJsonp([1],[
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "<p>当前注册账号为18811002289</p>\n<input type=\"password\" maxlength=32 placeholder=\"请输入密码\" class=\"first-password\">\n<br/>\n<input type=\"password\" maxlength=32 placeholder=\"请再次输入密码\" class=\"confirm-password\">"
+	module.exports = "<p>当前注册账号为18811002289</p>\n<input type=\"password\" maxlength=32 placeholder=\"请输入密码\" class=\"first-password\">\n<br/>\n<input type=\"password\" maxlength=32 placeholder=\"请再次输入密码\" class=\"confirm-password\">\n\n<a class=\"btn btn-orange\">点击我跳转至info页面</a>"
 
 /***/ },
-/* 18 */,
-/* 19 */,
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"info\" table>\n    <div table=\"cell v-m h-c\">\n        1. 身份信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        2. 公司信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        3. 车辆信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        4. 从业信息\n    </div>\n</div>\n\n<div class=\"info-container\">\n\n</div>"
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>This is info-car page</h1>"
+
+/***/ },
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 24 */,
 /* 25 */,
 /* 26 */,
 /* 27 */,
-/* 28 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 28 */,
 /* 29 */,
 /* 30 */
 /***/ function(module, exports) {
@@ -1325,12 +1349,7 @@ webpackJsonp([1],[
 
 /***/ },
 /* 31 */,
-/* 32 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 32 */,
 /* 33 */,
 /* 34 */
 /***/ function(module, exports) {
@@ -1340,6 +1359,34 @@ webpackJsonp([1],[
 /***/ },
 /* 35 */,
 /* 36 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 37 */,
+/* 38 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 39 */,
+/* 40 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 41 */,
+/* 42 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 43 */,
+/* 44 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

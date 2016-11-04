@@ -1,4 +1,4 @@
-webpackJsonp([5],[
+webpackJsonp([7],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -291,10 +291,6 @@ webpackJsonp([5],[
 	            }).then(function (data) {
 	                return resolve(data.json());
 	            });
-	            /*.then((data) => {
-	                //添加正确处理和错误处理的函数 reject
-	                resolve(data.json());
-	            })*/
 	        });
 	    },
 	    get: function get() {
@@ -304,11 +300,6 @@ webpackJsonp([5],[
 	            fetch(url).then(function (data) {
 	                return resolve(data.json());
 	            });
-	            /*fetch(url)
-	                .then((data) => {
-	                    //正确处理的方式
-	                    resolve(data.json());
-	                })*/
 	        });
 	    }
 	});
@@ -924,12 +915,22 @@ webpackJsonp([5],[
 	    function Route() {
 	        _classCallCheck(this, Route);
 	
-	        this.routes = [];
+	        this.routes = {};
+	        this.default = '';
 	        this.useHash = false;
+	        this.id = 0;
 	        this.pageCache = {}; //在内存中进行缓存
 	    }
 	
 	    _createClass(Route, [{
+	        key: 'home',
+	        value: function home() {
+	            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+	
+	            this.default = path;
+	            return this;
+	        }
+	    }, {
 	        key: 'addRoute',
 	        value: function addRoute(_ref) {
 	            var path = _ref.path;
@@ -942,64 +943,78 @@ webpackJsonp([5],[
 	
 	            path = path.split('.').join('/');
 	
-	            this.routes.push({
+	            var id = this.id++;
+	
+	            this.routes[path] = {
 	                path: path,
 	                viewInit: viewInit,
 	                viewDestory: viewDestory,
 	                context: context,
 	                template: template,
 	                templateUrl: templateUrl,
-	                viewBox: viewBox
-	            });
+	                viewBox: viewBox,
+	                id: id
+	            };
 	
 	            return this;
 	        }
 	    }, {
 	        key: 'handleRoute',
 	        value: function handleRoute() {
+	            var _this = this;
+	
 	            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	            var isFromHistory = arguments[1];
 	
-	            console.log(path);
 	            var curContext = void 0,
 	                //上下文
-	            oldPath = location.hash.slice(2);
+	            oldPath = location.hash.slice(2),
+	                oldRoute = void 0,
+	                newRoute = void 0;
 	
 	            //页面销毁
-	            this.routes.forEach(function (route, index) {
-	                if (route.path === oldPath) {
-	                    route.viewDestory && route.viewDestory();
+	            if (oldRoute = this.routes[oldPath]) {
+	                oldRoute.viewDestory && oldRoute.viewDestory();
+	            }
+	
+	            var pathArr = path.split('/');
+	
+	            pathArr.forEach(function (item, index) {
+	
+	                var _path = pathArr.filter(function (a, b) {
+	                    return b <= index;
+	                }).join('/');
+	
+	                var _route = void 0,
+	                    _viewBox = void 0;
+	
+	                if (_route = _this.routes[_path]) {
+	                    _viewBox = document.querySelector(_route.viewBox);
+	
+	                    if (!_viewBox) return;
+	
+	                    _viewBox.innerHTML = _route.template;
+	
+	                    _route.viewInit.call(_route.context || window);
+	
+	                    if (index + 1 === pathArr.length) {
+	                        if (!_this.useHash) {
+	                            //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
+	                            if (!isFromHistory) {
+	                                history.pushState({ path: _path }, null, '#/' + _path);
+	                            }
+	                        } else {
+	                            location.hash = '/' + _path;
+	                        }
+	
+	                        //激活状路由样式处理
+	                        _this.routeClassHandle(_path);
+	
+	                        return true;
+	                    }
 	                }
 	            });
 	
-	            for (var i = 0, routeItem; routeItem = this.routes[i++];) {
-	                if (routeItem.path === path) {
-	                    //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
-	                    curContext = routeItem.context ? routeItem.context : window;
-	
-	                    var viewBox = document.querySelector(routeItem.viewBox);
-	
-	                    if (!viewBox) return;
-	                    //渲染视图
-	                    viewBox.innerHTML = routeItem.template;
-	
-	                    routeItem.viewInit.apply(curContext, [path]);
-	
-	                    if (!this.useHash) {
-	                        //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
-	                        if (!isFromHistory) {
-	                            history.pushState({ path: path }, null, '#/' + path);
-	                        }
-	                    } else {
-	                        location.hash = '/' + path;
-	                    }
-	
-	                    //激活状路由样式处理
-	                    this.routeClassHandle(path);
-	
-	                    return true;
-	                }
-	            }
 	            return false;
 	        }
 	    }, {
@@ -1023,32 +1038,26 @@ webpackJsonp([5],[
 	    }, {
 	        key: 'registerCtrl',
 	        value: function registerCtrl(path, ctrl) {
-	            this.routes.forEach(function (item, index) {
-	                if (item.path === path) {
-	                    item.viewDestory = ctrl.viewDestory;
-	                }
-	            });
+	            this.routes[path] ? this.routes[path].viewDestory = ctrl.viewDestory : '';
 	        }
 	    }, {
 	        key: 'bootstrap',
 	        value: function bootstrap() {
-	            var _this = this;
+	            var _this2 = this;
 	
 	            if (!history.pushState) this.useHash = true;
 	
 	            if (!this.useHash) {
 	                window.addEventListener('popstate', function (e) {
-	                    console.log('popstate');
-	
 	                    var state = e.state;
 	
-	                    if (state && state.path) _this.handleRoute(state.path, true);
+	                    if (state && state.path) _this2.handleRoute(state.path, true);
 	
 	                    //TODO 添加对于state为空的情况的处理
 	                });
 	            } else {
 	                window.addEventListener('hashchange', function (e) {
-	                    _this.handleRoute(location.hash.slice(2));
+	                    _this2.handleRoute(location.hash.slice(2));
 	                });
 	            }
 	
@@ -1064,7 +1073,7 @@ webpackJsonp([5],[
 	                    //添加钩子 路由进行跳转时模型model上数据的处理
 	                    if (href === oldHash) return;
 	
-	                    if (_this.handleRoute(href)) {
+	                    if (_this2.handleRoute(href)) {
 	                        //阻止默认事件
 	                        e.preventDefault();
 	                    }
@@ -1072,57 +1081,48 @@ webpackJsonp([5],[
 	            });
 	
 	            document.addEventListener('DOMContentLoaded', function (e) {
-	                var router = _this.routes[0],
+	                var router = _this2.routes[_this2.default],
 	                    currHash = location.hash.slice(2),
 	                    flag = false,
-	                    viewBox = null;
+	                    viewBox = null,
+	                    lastRoute = void 0;
 	
-	                var lastArr = currHash.split('/')[0];
+	                var pathArr = currHash.split('/');
 	
-	                //TODO 代码比较龊,可以优化的地方还很多
-	                _this.routes.forEach(function (item, index) {
-	                    if (item.path === lastArr) {
+	                pathArr.forEach(function (item, index) {
+	
+	                    var _path = pathArr.filter(function (a, b) {
+	                        return b <= index;
+	                    }).join('/');
+	
+	                    var _route = void 0,
+	                        _viewBox = void 0;
+	
+	                    if (_route = _this2.routes[_path]) {
+	                        _viewBox = document.querySelector(_route.viewBox);
+	
+	                        if (!_viewBox) return;
+	
+	                        _viewBox.innerHTML = _route.template;
+	
+	                        _route.viewInit.call(_route.context || window);
+	
 	                        flag = true;
-	
-	                        viewBox = document.querySelector(item.viewBox);
-	
-	                        if (!viewBox) return;
-	                        //渲染视图
-	                        viewBox.innerHTML = item.template;
-	
-	                        return item.viewInit.call(item.context || window);
 	                    }
 	                });
 	
-	                if (lastArr !== currHash) {
-	                    _this.routes.forEach(function (item, index) {
-	                        if (item.path === currHash) {
-	
-	                            viewBox = document.querySelector(item.viewBox);
-	
-	                            if (!viewBox) return;
-	                            //渲染视图
-	                            viewBox.innerHTML = item.template;
-	
-	                            return item.viewInit.call(item.context || window);
-	                        }
-	                    });
-	                }
-	
 	                //初始化active.route样式处理
-	                _this.routeClassHandle(currHash);
+	                _this2.routeClassHandle(currHash);
 	
 	                if (!flag) {
 	
 	                    viewBox = document.querySelector(router.viewBox);
-	
-	                    if (!viewBox) return;
 	                    //渲染视图
 	                    viewBox.innerHTML = router.template;
 	
 	                    router.viewInit.call(router.context || window);
 	
-	                    if (!_this.useHash) {
+	                    if (!_this2.useHash) {
 	                        history.pushState({ path: router.path }, null, '#/' + router.path);
 	                    } else {
 	                        location.hash = '/' + router.path;
