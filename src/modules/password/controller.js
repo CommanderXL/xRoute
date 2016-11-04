@@ -1,16 +1,19 @@
 import model from './model';
 import {util, dialog} from 'jsLib/index';
+import Router from 'src/route';
 
 let controller = model.registerCtrl('passwordCtrl', '.public-container');
 
 controller
     .getDomMap({
         firPassWord: '.first-password',
-        confirmPassWord: '.confirm-password'
+        confirmPassWord: '.confirm-password',
+        btn: '.btn'
     })
     .getEvents({
         'firPassWord blur': 'firBlur',
-        'confirmPassWord blur': 'confBlur'
+        'confirmPassWord blur': 'confBlur',
+        'btn click': 'pageGo'
     })
     .getEventsFn({
         firBlur(e) {
@@ -20,6 +23,9 @@ controller
         },
         confBlur(e) {
             console.log(e.target.value);
+        },
+        pageGo() {
+            Router.go('info.car');   
         }
     })
     .getViewInit(function () {

@@ -42,7 +42,7 @@ Model = {
     },
     init() {
         let instance = Object.create(this.prototype);
-        instance.parent = this;             //实例.parent = 新模型
+        instance.parent = this;                     //实例.parent = 新模型
         instance.init.apply(instance, arguments);   //Model.prototype.init();
         return instance;
     }
@@ -60,22 +60,13 @@ Model.include({
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(obj)
-            }).then(data => resolve(data.json()));
-            /*.then((data) => {
-                //添加正确处理和错误处理的函数 reject
-                resolve(data.json());
-            })*/
+            }).then(data => resolve(data.json()))
         })
     },
     get(url = '') {
         return new Promise((resolve, reject) => {
             fetch(url)
                 .then(data => resolve(data.json()));
-            /*fetch(url)
-                .then((data) => {
-                    //正确处理的方式
-                    resolve(data.json());
-                })*/
         })
     }
 });
@@ -153,7 +144,7 @@ Model.include({
     controllers: {},
     //这里的controller不能使用容器的选择器确定
     registerCtrl(name, containerName) {
-        return this.controllers[name] || (this.controllers[name] = new Controller(name, containerName,this));
+        return this.controllers[name] || (this.controllers[name] = new Controller(name, containerName, this));
     }
 })
 

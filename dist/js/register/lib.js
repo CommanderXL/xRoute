@@ -1,4 +1,4 @@
-webpackJsonp([2],[
+webpackJsonp([5],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -60,6 +60,8 @@ webpackJsonp([2],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var Controller = exports.Controller = function () {
@@ -87,8 +89,8 @@ webpackJsonp([2],[
 	            this.containerBox = document.querySelector(this.containerName);
 	            this.setDomMap();
 	            this.bindEvents();
-	            this.model.pageInit();
-	            this.viewInit();
+	            this.model.pageInit(); //模型初始化
+	            this.viewInit(); //视图初始化
 	
 	            this.inited = true;
 	
@@ -117,9 +119,13 @@ webpackJsonp([2],[
 	        value: function setDomMap() {
 	            var obj = this.domMapCache;
 	            for (var key in obj) {
-	                this.domMap[key] = this.containerBox.querySelector(obj[key]);
+	                try {
+	                    var doms = [].concat(_toConsumableArray(this.containerBox.querySelectorAll(obj[key])));
+	                    this.domMap[key] = doms.length === 1 ? doms[0] : doms;
+	                } catch (e) {
+	                    console.error(key + 'need the right domMap');
+	                }
 	            }
-	            console.log(this.domMap);
 	            return this;
 	        }
 	    }, {
@@ -153,7 +159,7 @@ webpackJsonp([2],[
 	                var domName = _key$split2[0];
 	                var eventType = _key$split2[1];
 	                var eventName = eventMap[key];
-	                this.domMap[domName].addEventListener(eventType, this.eventCache[eventName]);
+	                this.domMap[domName].addEventListener(eventType, this.eventCache[eventName].bind(this));
 	            }
 	            return this;
 	        }
@@ -166,7 +172,7 @@ webpackJsonp([2],[
 	    }, {
 	        key: 'getViewInit',
 	        value: function getViewInit(fn) {
-	            this.viewInit = fn.bind(this) || function () {};
+	            this.viewInit = fn && fn.bind(this) || function () {};
 	            return this;
 	        }
 	
@@ -175,7 +181,7 @@ webpackJsonp([2],[
 	    }, {
 	        key: 'getViewDestory',
 	        value: function getViewDestory(fn) {
-	            this.viewDestory = fn.bind(this) || function () {};
+	            this.viewDestory = fn && fn.bind(this) || function () {};
 	            return this;
 	        }
 	
@@ -185,6 +191,11 @@ webpackJsonp([2],[
 	        key: 'getInitedStatus',
 	        get: function get() {
 	            return this.inited;
+	        }
+	    }, {
+	        key: 'getRoute',
+	        get: function get() {
+	            return location.hash.split('/').join('.');
 	        }
 	    }]);
 
@@ -940,6 +951,8 @@ webpackJsonp([2],[
 	                templateUrl: templateUrl,
 	                viewBox: viewBox
 	            });
+	
+	            return this;
 	        }
 	    }, {
 	        key: 'handleRoute',
@@ -947,6 +960,7 @@ webpackJsonp([2],[
 	            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	            var isFromHistory = arguments[1];
 	
+	            console.log(path);
 	            var curContext = void 0,
 	                //上下文
 	            oldPath = location.hash.slice(2);
@@ -1007,6 +1021,15 @@ webpackJsonp([2],[
 	        key: 'back',
 	        value: function back() {}
 	    }, {
+	        key: 'registerCtrl',
+	        value: function registerCtrl(path, ctrl) {
+	            this.routes.forEach(function (item, index) {
+	                if (item.path === path) {
+	                    item.viewDestory = ctrl.viewDestory;
+	                }
+	            });
+	        }
+	    }, {
 	        key: 'bootstrap',
 	        value: function bootstrap() {
 	            var _this = this;
@@ -1015,6 +1038,8 @@ webpackJsonp([2],[
 	
 	            if (!this.useHash) {
 	                window.addEventListener('popstate', function (e) {
+	                    console.log('popstate');
+	
 	                    var state = e.state;
 	
 	                    if (state && state.path) _this.handleRoute(state.path, true);
@@ -1034,6 +1059,7 @@ webpackJsonp([2],[
 	                //将data-href数据形式转化为路由形式
 	                href = href.split('-').join('/'); //将data-href='ccc-aaa' --->>> 转化为 ccc/aaa  外部写法可能存在出入,但是在内部统一转化为a/b/c/d的形式
 	
+	
 	                if (href) {
 	                    //添加钩子 路由进行跳转时模型model上数据的处理
 	                    if (href === oldHash) return;
@@ -1048,7 +1074,8 @@ webpackJsonp([2],[
 	            document.addEventListener('DOMContentLoaded', function (e) {
 	                var router = _this.routes[0],
 	                    currHash = location.hash.slice(2),
-	                    flag = false;
+	                    flag = false,
+	                    viewBox = null;
 	
 	                var lastArr = currHash.split('/')[0];
 	
@@ -1056,6 +1083,13 @@ webpackJsonp([2],[
 	                _this.routes.forEach(function (item, index) {
 	                    if (item.path === lastArr) {
 	                        flag = true;
+	
+	                        viewBox = document.querySelector(item.viewBox);
+	
+	                        if (!viewBox) return;
+	                        //渲染视图
+	                        viewBox.innerHTML = item.template;
+	
 	                        return item.viewInit.call(item.context || window);
 	                    }
 	                });
@@ -1063,6 +1097,13 @@ webpackJsonp([2],[
 	                if (lastArr !== currHash) {
 	                    _this.routes.forEach(function (item, index) {
 	                        if (item.path === currHash) {
+	
+	                            viewBox = document.querySelector(item.viewBox);
+	
+	                            if (!viewBox) return;
+	                            //渲染视图
+	                            viewBox.innerHTML = item.template;
+	
 	                            return item.viewInit.call(item.context || window);
 	                        }
 	                    });
@@ -1072,6 +1113,13 @@ webpackJsonp([2],[
 	                _this.routeClassHandle(currHash);
 	
 	                if (!flag) {
+	
+	                    viewBox = document.querySelector(router.viewBox);
+	
+	                    if (!viewBox) return;
+	                    //渲染视图
+	                    viewBox.innerHTML = router.template;
+	
 	                    router.viewInit.call(router.context || window);
 	
 	                    if (!_this.useHash) {

@@ -5,7 +5,10 @@ import {Route} from 'jsLib/index';
 const Router = new Route();
 
 
-Router.addRoute({
+Router.home('account');
+
+Router
+.addRoute({
     path: 'account',
     viewBox: '.public-container',
     template: require('modules/account/index.html'),
@@ -18,10 +21,8 @@ Router.addRoute({
     viewDestory() {
 
     }
-});
-
-
-Router.addRoute({
+})
+.addRoute({
     path: 'verify',
     viewBox: '.public-container',
     template: require('modules//verify/index.html'),
@@ -29,11 +30,10 @@ Router.addRoute({
         require.ensure([], () => {
             let controller = require('modules/verify/controller');
             controller.init();
-        }, 'account-verify');
+        }, 'verify');
     }
 })
-
-Router.addRoute({
+.addRoute({
     path: 'password',
     viewBox: '.public-container',
     template: require('modules/password/index.html'),
@@ -41,7 +41,29 @@ Router.addRoute({
         require.ensure([], function () {
             let controller = require('modules/password/controller');
             controller.init();
-        }, 'password')
+        }, 'password');
+    }
+})
+.addRoute({
+    path: 'info',
+    viewBox: '.public-container',
+    template: require('modules/info/index.html'),
+    viewInit() {
+        require.ensure([], function() {
+            let controller = require('modules/info/controller');
+            controller.init();
+        }, 'info');
+    }
+})
+.addRoute({
+    path: 'info.car',
+    viewBox: '.info-container',
+    template: require('modules/info/car/index.html'),
+    viewInit() {
+        require.ensure([], function() {
+            let controller = require('modules/info/car/controller');
+            controller.init();
+        }, 'info-car');
     }
 })
 

@@ -2,65 +2,84 @@ import {dialog} from 'jsLib/index';
 
 export default class Route {
     constructor() {
-        this.routes = [];
+        this.routes = {};
+        this.default = '';
         this.useHash = false;
+        this.id = 0;
         this.pageCache = {};    //在内存中进行缓存
+    }
+
+    home(path = '/') {
+        this.default = path;
+        return this;
     }
 
     addRoute({path, viewInit, viewDestory, context, template, templateUrl, viewBox}) {
         path = path.split('.').join('/');
 
-        this.routes.push({
+        let id = this.id++;
+
+        this.routes[path] = {
             path,
             viewInit,
             viewDestory,
             context,
             template,
             templateUrl,
-            viewBox
-        });
+            viewBox,
+            id
+        }
+
+        return this;
     }
     handleRoute(path = '', isFromHistory) {
-        console.log(path);
         let curContext,                     //上下文
-            oldPath = location.hash.slice(2);
+            oldPath = location.hash.slice(2),
+            oldRoute, newRoute;
 
         //页面销毁
-        this.routes.forEach((route, index) => {
-            if (route.path === oldPath) {
-                route.viewDestory && route.viewDestory();
-            }
-        });
-
-        for (let i = 0, routeItem; routeItem = this.routes[i++];) {
-            if (routeItem.path === path) {
-                //如果是嵌套内的路由被匹配,那么还应该还调用外层的路由回调
-                curContext = routeItem.context ? routeItem.context : window;
-
-                let viewBox = document.querySelector(routeItem.viewBox);
-
-                if (!viewBox) return;
-                //渲染视图
-                viewBox.innerHTML = routeItem.template;
-
-                routeItem.viewInit.apply(curContext, [path]);
-
-                if (!this.useHash) {
-                    //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
-                    if (!isFromHistory) {
-                        history.pushState({ path: path }, null, '#/' + path);
-                    }
-                } else {
-                    location.hash = '/' + path;
-                }
-
-                //激活状路由样式处理
-                this.routeClassHandle(path);
-
-                return true;
-            }
+        if (oldRoute = this.routes[oldPath]) {
+            oldRoute.viewDestory && oldRoute.viewDestory();
         }
+
+        let pathArr = path.split('/');
+
+        pathArr.forEach((item, index) => {
+
+            let _path = pathArr.filter((a, b) => b <= index).join('/');
+
+            let _route, _viewBox;
+
+            if (_route = this.routes[_path]) {
+                _viewBox = document.querySelector(_route.viewBox);
+
+                if (!_viewBox) return;
+
+                _viewBox.innerHTML = _route.template;
+
+                _route.viewInit.call(_route.context || window);
+
+
+                if ((index + 1) === pathArr.length) {
+                    if (!this.useHash) {
+                        //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
+                        if (!isFromHistory) {
+                            history.pushState({ path: _path }, null, '#/' + _path);
+                        }
+                    } else {
+                        location.hash = '/' + _path;
+                    }
+
+                    //激活状路由样式处理
+                    this.routeClassHandle(_path);
+
+                    return true;
+                }
+            }
+        })
+
         return false;
+        
     }
 
     routeClassHandle(hash) {
@@ -81,11 +100,12 @@ export default class Route {
     }
 
     registerCtrl(path, ctrl) {
-        this.routes.forEach((item, index) => {
-            if(item.path === path) {
+        this.routes[path] ? this.routes[path].viewDestory = ctrl.viewDestory : '';
+        /*this.routes.forEach((item, index) => {
+            if (item.path === path) {
                 item.viewDestory = ctrl.viewDestory;
             }
-        })
+        })*/
     }
 
 
@@ -95,8 +115,6 @@ export default class Route {
 
         if (!this.useHash) {
             window.addEventListener('popstate', (e) => {
-                console.log('popstate');
-
                 let state = e.state;
 
                 if (state && state.path) this.handleRoute(state.path, true);
@@ -131,16 +149,54 @@ export default class Route {
         })
 
         document.addEventListener('DOMContentLoaded', (e) => {
-            let router = this.routes[0],
+            let router = this.routes[this.default],
                 currHash = location.hash.slice(2),
                 flag = false,
-                viewBox = null;
+                viewBox = null,
+                lastRoute;
 
             let lastArr = currHash.split('/')[0];
 
 
+            /*if(lastRoute = this.routes[lastArr]) {
+                flag = true;
+
+                viewBox = document.querySelector(lastRoute.viewBox);
+
+                if(!viewBox) return;
+
+                viewBox.innerHTML = lastRoute.template;
+
+                return item.viewInit.call(item.context || window);
+            }*/
+
+
+            let pathArr = currHash.split('/');
+
+            pathArr.forEach((item, index) => {
+
+
+                let _path = pathArr.filter((a, b) => b <= index).join('/');
+
+                let _route, _viewBox;
+
+                if (_route = this.routes[_path]) {
+                    _viewBox = document.querySelector(_route.viewBox);
+
+                    if (!_viewBox) return;
+
+                    _viewBox.innerHTML = _route.template;
+
+                    _route.viewInit.call(_route.context || window);
+
+                    flag = true;
+                }
+            })
+
+
+
             //TODO 代码比较龊,可以优化的地方还很多
-            this.routes.forEach((item, index) => {
+            /*this.routes.forEach((item, index) => {
                 if (item.path === lastArr) {
                     flag = true;
 
@@ -168,16 +224,15 @@ export default class Route {
                         return item.viewInit.call(item.context || window);
                     }
                 })
-            }
+            }*/
 
+            console.log(flag);
             //初始化active.route样式处理
             this.routeClassHandle(currHash);
 
             if (!flag) {
 
                 viewBox = document.querySelector(router.viewBox);
-
-                if (!viewBox) return;
                 //渲染视图
                 viewBox.innerHTML = router.template;
 

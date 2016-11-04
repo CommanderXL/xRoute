@@ -1,7 +1,6 @@
 import model from './model';
 
-let controller = model.registerCtrl('infoCarCtrl', '.info-container');
-
+let controller = model.registerCtrl('infoCtrl', '.public-container');
 
 controller
     .getDomMap({

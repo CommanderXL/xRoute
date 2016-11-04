@@ -1,37 +1,34 @@
 webpackJsonp([4],{
 
-/***/ 29:
+/***/ 22:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _model = __webpack_require__(30);
+	var _model = __webpack_require__(23);
 	
 	var _model2 = _interopRequireDefault(_model);
 	
-	var _util = __webpack_require__(3);
+	var _index = __webpack_require__(9);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var controller = _model2.default.registerController('passwordCtrl', '#container');
+	var controller = _model2.default.registerCtrl('passwordCtrl', '.public-container');
 	
 	controller.getDomMap({
 	    firPassWord: '.first-password',
 	    confirmPassWord: '.confirm-password'
-	}).getBindEvents({
-	    firPassWord: {
-	        actionName: 'blur',
-	        action: function action() {
-	            var value = this.value;
-	            //show some tips
-	            (value.length < 6 || value.length > 32 || _util.util.isNumAndStr(value)) && console.log(123);
-	        }
+	}).getEvents({
+	    'firPassWord blur': 'firBlur',
+	    'confirmPassWord blur': 'confBlur'
+	}).getEventsFn({
+	    firBlur: function firBlur(e) {
+	        var value = e.target.value;
+	        //show some tips
+	        (value.length < 6 || value.length > 32 || _index.util.isNumAndStr(value)) && console.log(123);
 	    },
-	    confirmPassWord: {
-	        actionName: 'blur',
-	        action: function action() {
-	            console.log(this.value);
-	        }
+	    confBlur: function confBlur(e) {
+	        console.log(e.target.value);
 	    }
 	}).getViewInit(function () {});
 	
@@ -39,7 +36,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 30:
+/***/ 23:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61,13 +58,6 @@ webpackJsonp([4],{
 	model.save();
 	
 	exports.default = model;
-
-/***/ },
-
-/***/ 31:
-/***/ function(module, exports) {
-
-	module.exports = "<p>当前注册账号为18811002289</p>\n<input type=\"password\" maxlength=32 placeholder=\"请输入密码\" class=\"first-password\">\n<br/>\n<input type=\"password\" maxlength=32 placeholder=\"请再次输入密码\" class=\"confirm-password\">"
 
 /***/ }
 
