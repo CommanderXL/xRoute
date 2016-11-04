@@ -37,7 +37,8 @@ export class Controller {
         let obj = this.domMapCache;
         for (let key in obj) {
             try {
-                this.domMap[key] = this.containerBox.querySelector(obj[key]);
+                let doms = [...this.containerBox.querySelectorAll(obj[key])];
+                this.domMap[key] = doms.length === 1 ? doms[0] : doms;
             }
             catch (e) {
                 console.error(`${key}need the right domMap`);

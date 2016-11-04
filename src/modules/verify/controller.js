@@ -7,7 +7,8 @@ let controller = model.registerCtrl('verify-ctrl', '.public-container');
 
 controller
     .getDomMap({
-        inputEle: 'input'
+        inputEle: 'input',
+        itemArrs: '.arr-item'
     })
     .getEvents({
         'inputEle input': 'getInputEvent',
@@ -25,7 +26,6 @@ controller
                 util.addClass(this.domMap.itemArrs[value.length], 'red');
             } else {
                 if (value.length === 4) {
-                    console.log(123);
                     //验证码验证
                     model.get('/api')
                         .then(function (data) {
@@ -58,7 +58,7 @@ controller
         }
     })
     .getViewInit(function () {
-        this.domMap.itemArrs = this.containerBox.querySelectorAll('.arr-item');
+
     })
 
 
