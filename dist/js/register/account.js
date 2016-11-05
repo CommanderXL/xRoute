@@ -1,17 +1,17 @@
 webpackJsonp([2],{
 
-/***/ 20:
+/***/ 25:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _model = __webpack_require__(21);
+	var _model = __webpack_require__(26);
 	
 	var _model2 = _interopRequireDefault(_model);
 	
-	var _index = __webpack_require__(9);
+	var _index = __webpack_require__(14);
 	
-	var _route = __webpack_require__(8);
+	var _route = __webpack_require__(13);
 	
 	var _route2 = _interopRequireDefault(_route);
 	
@@ -46,7 +46,7 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 21:
+/***/ 26:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55,7 +55,7 @@ webpackJsonp([2],{
 	    value: true
 	});
 	
-	var _model = __webpack_require__(11);
+	var _model = __webpack_require__(16);
 	
 	var model = _model.totalModel.init();
 	

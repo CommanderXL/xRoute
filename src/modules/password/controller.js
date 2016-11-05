@@ -8,7 +8,7 @@ controller
     .getDomMap({
         firPassWord: '.first-password',
         confirmPassWord: '.confirm-password',
-        btn: '.btn'
+        btn: '.btn-orange'
     })
     .getEvents({
         'firPassWord blur': 'firBlur',

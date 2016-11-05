@@ -89,7 +89,7 @@ module.exports ={
         alias: {
             src: path.join(__dirname, 'src'),
             modules: path.join(__dirname, 'src/modules'),
-            cssLib: path.join(__dirname, 'src/lib/css'),  
+            lessLib: path.join(__dirname, 'src/lib/less'),  
             jsLib: path.join(__dirname, 'src/lib/js'),
             components: path.join(__dirname, 'src/components')
         },

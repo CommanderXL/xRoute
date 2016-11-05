@@ -4,18 +4,21 @@ webpackJsonp([1],[
 
 	'use strict';
 	
-	__webpack_require__(8);
+	__webpack_require__(13);
 	
-	__webpack_require__(30);
-	__webpack_require__(34);
-	__webpack_require__(36);
-	__webpack_require__(38);
+	/*require('lessLib/merged-common-ui.less');
+	require('lessLib/table.less');
+	require('lessLib/base.less');
+	require('components/city-select/index.less');
 	
-	__webpack_require__(40);
-	__webpack_require__(42);
+	require('modules/pageA/a.less');
+	require('modules/pageA/a-1/index.less');
 	
-	__webpack_require__(44);
 	
+	require('modules/info/index.less');
+	*/
+	
+	__webpack_require__(35);
 	//import 'babel-polyfill';
 
 /***/ },
@@ -26,7 +29,12 @@ webpackJsonp([1],[
 /* 5 */,
 /* 6 */,
 /* 7 */,
-/* 8 */
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35,7 +43,7 @@ webpackJsonp([1],[
 	    value: true
 	});
 	
-	var _index = __webpack_require__(9);
+	var _index = __webpack_require__(14);
 	
 	//model只涉及到数据模型,而controller即要和model同时还要和view进行交互.因此这里应该是引入controller
 	//import {controller} from 'modules/pageA/a-controller';
@@ -47,10 +55,10 @@ webpackJsonp([1],[
 	Router.addRoute({
 	    path: 'account',
 	    viewBox: '.public-container',
-	    template: __webpack_require__(15),
+	    template: __webpack_require__(20),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(2, function () {
-	            var controller = __webpack_require__(20);
+	            var controller = __webpack_require__(25);
 	            controller.init();
 	        });
 	    },
@@ -58,40 +66,40 @@ webpackJsonp([1],[
 	}).addRoute({
 	    path: 'verify',
 	    viewBox: '.public-container',
-	    template: __webpack_require__(16),
+	    template: __webpack_require__(21),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(3, function () {
-	            var controller = __webpack_require__(22);
+	            var controller = __webpack_require__(27);
 	            controller.init();
 	        });
 	    }
 	}).addRoute({
 	    path: 'password',
 	    viewBox: '.public-container',
-	    template: __webpack_require__(17),
+	    template: __webpack_require__(22),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(4, function () {
-	            var controller = __webpack_require__(24);
+	            var controller = __webpack_require__(29);
 	            controller.init();
 	        });
 	    }
 	}).addRoute({
 	    path: 'info',
 	    viewBox: '.public-container',
-	    template: __webpack_require__(18),
+	    template: __webpack_require__(23),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(5, function () {
-	            var controller = __webpack_require__(26);
+	            var controller = __webpack_require__(31);
 	            controller.init();
 	        });
 	    }
 	}).addRoute({
 	    path: 'info.car',
 	    viewBox: '.info-container',
-	    template: __webpack_require__(19),
+	    template: __webpack_require__(24),
 	    viewInit: function viewInit() {
 	        __webpack_require__.e/* nsure */(6, function () {
-	            var controller = __webpack_require__(28);
+	            var controller = __webpack_require__(33);
 	            controller.init();
 	        });
 	    }
@@ -176,7 +184,7 @@ webpackJsonp([1],[
 	exports.default = Router;
 
 /***/ },
-/* 9 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -186,19 +194,19 @@ webpackJsonp([1],[
 	});
 	exports.util = exports.dialog = exports.Route = exports.totalModel = exports.Controller = undefined;
 	
-	var _controller = __webpack_require__(10);
+	var _controller = __webpack_require__(15);
 	
-	var _model = __webpack_require__(11);
+	var _model = __webpack_require__(16);
 	
-	var _xRoute = __webpack_require__(14);
+	var _xRoute = __webpack_require__(19);
 	
 	var _xRoute2 = _interopRequireDefault(_xRoute);
 	
-	var _dialog = __webpack_require__(4);
+	var _dialog = __webpack_require__(9);
 	
 	var _dialog2 = _interopRequireDefault(_dialog);
 	
-	var _util = __webpack_require__(3);
+	var _util = __webpack_require__(8);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -209,7 +217,7 @@ webpackJsonp([1],[
 	exports.util = _util.util;
 
 /***/ },
-/* 10 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -365,7 +373,7 @@ webpackJsonp([1],[
 	}();
 
 /***/ },
-/* 11 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -377,11 +385,11 @@ webpackJsonp([1],[
 	
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 	
-	__webpack_require__(12);
+	__webpack_require__(17);
 	
-	var _controller = __webpack_require__(10);
+	var _controller = __webpack_require__(15);
 	
-	var _eventEmitter = __webpack_require__(13);
+	var _eventEmitter = __webpack_require__(18);
 	
 	var _eventEmitter2 = _interopRequireDefault(_eventEmitter);
 	
@@ -551,7 +559,7 @@ webpackJsonp([1],[
 	exports.totalModel = totalModel;
 
 /***/ },
-/* 12 */
+/* 17 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -990,7 +998,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 13 */
+/* 18 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1058,7 +1066,7 @@ webpackJsonp([1],[
 	exports.default = EventEmitter;
 
 /***/ },
-/* 14 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1069,7 +1077,7 @@ webpackJsonp([1],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _index = __webpack_require__(9);
+	var _index = __webpack_require__(14);
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -1302,91 +1310,47 @@ webpackJsonp([1],[
 	exports.default = Route;
 
 /***/ },
-/* 15 */
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = "<input type=\"number\" maxlength=12 class=\"account-phone\" placeholder=\"请输入手机号\">\n<a class=\"btn btn-orange\">获取验证码</a>"
 
 /***/ },
-/* 16 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = "<div table class=\"confirm-num\">\n    <p table=\"cell v-m h-c\">验证码已发送至 18510027836</p>\n</div>\n<div table class=\"input-arr\">\n    <input type=\"number\">\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n            \n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n</div>\n\n"
 
 /***/ },
-/* 17 */
+/* 22 */
 /***/ function(module, exports) {
 
 	module.exports = "<p>当前注册账号为18811002289</p>\n<input type=\"password\" maxlength=32 placeholder=\"请输入密码\" class=\"first-password\">\n<br/>\n<input type=\"password\" maxlength=32 placeholder=\"请再次输入密码\" class=\"confirm-password\">\n\n<a class=\"btn btn-orange\">点击我跳转至info页面</a>"
 
 /***/ },
-/* 18 */
+/* 23 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"info\" table>\n    <div table=\"cell v-m h-c\">\n        1. 身份信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        2. 公司信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        3. 车辆信息\n    </div>\n    <div table=\"cell v-m h-c\">\n        4. 从业信息\n    </div>\n</div>\n\n<div class=\"info-container\">\n\n</div>"
 
 /***/ },
-/* 19 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = "<h1>This is info-car page</h1>"
 
 /***/ },
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
 /* 25 */,
 /* 26 */,
 /* 27 */,
 /* 28 */,
 /* 29 */,
-/* 30 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 30 */,
 /* 31 */,
 /* 32 */,
 /* 33 */,
-/* 34 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 35 */,
-/* 36 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 37 */,
-/* 38 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 39 */,
-/* 40 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 41 */,
-/* 42 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 43 */,
-/* 44 */
+/* 34 */,
+/* 35 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

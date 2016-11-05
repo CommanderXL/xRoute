@@ -7,7 +7,7 @@ let controller = model.registerCtrl('account-ctrl', '.public-container');
 controller
     .getDomMap({
         phoneInputEle: '.account-phone',
-        btnEle: '.btn',
+        btnEle: '.btn-orange',
     })
     .getEvents({
         'phoneInputEle blur': 'checkPhone',

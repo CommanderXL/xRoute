@@ -153,7 +153,6 @@ export default class Route {
 
             pathArr.forEach((item, index) => {
 
-
                 let _path = pathArr.filter((a, b) => b <= index).join('/');
 
                 let _route, _viewBox;
