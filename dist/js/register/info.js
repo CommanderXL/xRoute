@@ -13,7 +13,11 @@ webpackJsonp([5],{
 
 	var controller = _model2.default.registerCtrl('infoCtrl', '.public-container');
 
-	controller.getDomMap({}).getEvents({}).getEventsFn({}).getViewInit(function () {});
+	controller.getDomMap({}).getEvents({}).getEventsFn({}).getViewInit(function () {
+	    for (var key in _model2.default.parent.records) {
+	        console.log(_model2.default.parent.records[key].pageInit.valueOf());
+	    }
+	});
 
 	module.exports = controller;
 
@@ -25,14 +29,15 @@ webpackJsonp([5],{
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
-	var _model = __webpack_require__(17);
+	var _index = __webpack_require__(15);
 
-	var model = _model.Model.init();
-
-	model.name = 'info';
+	var model = _index.Model.init({
+	    name: 'info',
+	    pageInit: function pageInit() {}
+	});
 
 	model.save();
 

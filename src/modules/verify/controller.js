@@ -7,7 +7,7 @@ let controller = model.registerCtrl('verify-ctrl', '.public-container');
 
 controller
     .getDomMap({
-        inputEle: 'input',
+        inputEle: '.numInput',
         itemArrs: '.arr-item'
     })
     .getEvents({
@@ -58,7 +58,7 @@ controller
         }
     })
     .getViewInit(function () {
-
+        this.domMap.inputEle.focus();
     })
 
 

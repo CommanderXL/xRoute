@@ -540,9 +540,13 @@ div {
   position: absolute;
   top: 0;
   height: 40px;
-  left: 0;
+  left: -1000px;
   width: 100%;
   z-index: 500;
+}
+.input-arr input:focus {
+  -webkit-tap-highlight-color: #fff;
+  -webkit-user-modify: read-write-plaintext-only;
 }
 .input-arr [table~="cell"] {
   padding: 0 10px;

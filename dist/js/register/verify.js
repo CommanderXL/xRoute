@@ -20,7 +20,7 @@ webpackJsonp([3],{
 	var controller = _model2.default.registerCtrl('verify-ctrl', '.public-container');
 
 	controller.getDomMap({
-	    inputEle: 'input',
+	    inputEle: '.numInput',
 	    itemArrs: '.arr-item'
 	}).getEvents({
 	    'inputEle input': 'getInputEvent',
@@ -64,7 +64,9 @@ webpackJsonp([3],{
 	            len = value.length;
 	        len < 4 && _index.util.addClass(this.domMap.itemArrs[len], 'red');
 	    }
-	}).getViewInit(function () {});
+	}).getViewInit(function () {
+	    this.domMap.inputEle.focus();
+	});
 
 	module.exports = controller;
 
@@ -76,16 +78,15 @@ webpackJsonp([3],{
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _index = __webpack_require__(15);
 
-	var model = _index.Model.init();
-
-	model.name = 'verify';
-
-	model.pageInit = function () {};
+	var model = _index.Model.init({
+	    name: 'verify',
+	    pageInit: function pageInit() {}
+	});
 
 	model.save();
 

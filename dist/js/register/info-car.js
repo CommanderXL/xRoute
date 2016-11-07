@@ -25,14 +25,15 @@ webpackJsonp([6],{
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
-	var _model = __webpack_require__(17);
+	var _index = __webpack_require__(15);
 
-	var model = _model.Model.init();
-
-	model.name = 'infoCar';
+	var model = _index.Model.init({
+	    name: 'infoCar',
+	    pageInit: function pageInit() {}
+	});
 
 	model.save();
 

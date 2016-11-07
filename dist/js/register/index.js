@@ -385,10 +385,22 @@ webpackJsonp([1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ModelClass = Object.create(_eventEmitter2.default);
+	if (typeof Object.create !== 'function') {
+	    Object.create = function (o) {
+	        function F() {};
+	        F.prototype = o;
+	        return new F();
+	    };
+	};
 
-	//Model用以创建新模型(类),新模型用以创建实例
-	ModelClass = {
+	/*class ModelClass extends EventEmitter {
+	    constructor() {
+	        super();
+	    }
+	}*/
+
+	//Model用以创建新模型父类),新模型用以创建实例
+	var ModelClass = {
 	    records: {},
 	    //model创建后的回调
 	    created: function created() {
@@ -416,14 +428,16 @@ webpackJsonp([1],[
 	    },
 
 	    prototype: {
-	        init: function init() {}
+	        init: function init() {},
+	        initializer: function initializer() {}
 	    },
+	    //创建父类
 	    create: function create() {
 	        var include = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	        var extend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 	        var object = Object.create(this); //新模型继承至Model,调用init方法产生新实例
-	        object.parent = this; //新模型.parent = Model
+	        object.parent = this; //新模型.parent = ModelClass
 
 	        object.prototype = object.fn = Object.create(this.prototype);
 
@@ -434,16 +448,49 @@ webpackJsonp([1],[
 
 	        return object;
 	    },
-	    init: function init() {
+
+	    //实例化
+	    init: function init(_ref) {
+	        var _ref$name = _ref.name;
+	        var name = _ref$name === undefined ? '' : _ref$name;
+	        var _ref$pageInit = _ref.pageInit;
+	        var pageInit = _ref$pageInit === undefined ? function () {} : _ref$pageInit;
+
 	        var instance = Object.create(this.prototype);
 	        instance.parent = this; //实例.parent = 新模型
 
-	        instance.init.apply(instance, arguments); //Model.prototype.init();
+	        instance.initializer.call(instance, pageInit);
+	        instance.init.call(instance, name); //Model.prototype.init();
 	        return instance;
 	    }
 	};
 
-	var Model = ModelClass.create();
+	//事件继承
+	ModelClass.include(_eventEmitter2.default);
+
+	//原型上添加方法. 父类
+	var Model = ModelClass.create({
+	    init: function init() {
+	        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+	        this.name = name;
+	    },
+	    initializer: function initializer() {
+	        var fn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
+
+	        this.pageInit = fn;
+	    }
+	    //initializer model初始化的方法
+
+	});
+
+	//Model类创建新子类
+	/*
+	Model.extend({
+	    create() {
+
+	    }
+	})*/
 
 	//ajax  实例继承
 	Model.include({
@@ -502,10 +549,15 @@ webpackJsonp([1],[
 	        this.parent.records[this.name] = this.dup();
 	    },
 	    dup: function dup() {
-	        return Object.assign({}, this);
+	        //对象复制
+	        var result = this.parent.init({ name: this.name, pageInit: this.pageInit });
+	        result.newRecord = this.newRecord;
+	        return this;
+	        //return Object.assign({}, this);     //对象复制
 	    },
 	    save: function save() {
 	        this.newRecord ? this.create() : this.update();
+	        return this;
 	    }
 	});
 
@@ -513,7 +565,7 @@ webpackJsonp([1],[
 	    find: function find() {
 	        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-	        return this.records[name] || console.log('Unkonwn record');
+	        return this.records[name] || console.error('Unkonwn record');
 	    }
 	});
 
@@ -1005,67 +1057,84 @@ webpackJsonp([1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var EventEmitter = function () {
-	    function EventEmitter() {
-	        _classCallCheck(this, EventEmitter);
-
+	/*export default class EventEmitter {
+	    constructor() {
 	        this.cache = {};
 	    }
 	    //事件订阅
+	    listen(type, fn, context = this) {
+	        !this.cache[type] && (this.cache[type] = []);
+	        this.cache[type].push(fn);
+	    }
+	    //事件触发
+	    trigger() {
+	        let type = [].shift.call(arguments),
+	            fns = this.cache[type];
 
+	        if(!fns || fns.length === 0) return false;
 
-	    _createClass(EventEmitter, [{
-	        key: "listen",
-	        value: function listen(type, fn) {
-	            var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this;
+	        for(let i = 0, fn; fn = fns[i++];) {
+	            fn[i].apply(this, [].slice.call(arguments, 1));
+	        }    
+	        
+	    }
+	    //fn参数不传时,默认清除所有绑定事件
+	    remove(type, fn) {
+	        let fns = this.cache[type];
 
-	            !this.cache[type] && (this.cache[type] = []);
-	            this.cache[type].push(fn);
-	        }
-	        //事件触发
+	        if(!fns) return false;
 
-	    }, {
-	        key: "trigger",
-	        value: function trigger() {
-	            var type = [].shift.call(arguments),
-	                fns = this.cache[type];
-
-	            if (!fns || fns.length === 0) return false;
-
-	            for (var i = 0, fn; fn = fns[i++];) {
-	                fn[i].apply(this, [].slice.call(arguments, 1));
-	            }
-	        }
-	        //fn参数不传时,默认清除所有绑定事件
-
-	    }, {
-	        key: "remove",
-	        value: function remove(type, fn) {
-	            var fns = this.cache[type];
-
-	            if (!fns) return false;
-
-	            if (!fn) {
-	                fns && (fns.length = 0);
-	            } else {
-	                for (var i = 0, _fn; _f = fns[i++];) {
-	                    if (_fn === fn) {
-	                        fns.splice(i, 1);
-	                    }
+	        if(!fn) {
+	            fns && (fns.length = 0);
+	        } else {
+	            for(let i = 0, _fn; _f = fns[i++];) {
+	                if(_fn === fn) {
+	                    fns.splice(i, 1);
 	                }
 	            }
 	        }
-	    }]);
+	    }
+	}*/
 
-	    return EventEmitter;
-	}();
+	exports.default = {
+	    cache: [],
+	    //事件订阅
+	    listen: function listen(type, fn) {
+	        var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this;
 
-	exports.default = EventEmitter;
+	        !this.cache[type] && (this.cache[type] = []);
+	        this.cache[type].push(fn);
+	    },
+
+	    //事件触发
+	    trigger: function trigger() {
+	        var type = [].shift.call(arguments),
+	            fns = this.cache[type];
+
+	        if (!fns || fns.length === 0) return false;
+
+	        for (var i = 0, fn; fn = fns[i++];) {
+	            fn[i].apply(this, [].slice.call(arguments, 1));
+	        }
+	    },
+
+	    //fn参数不传时,默认清除所有绑定事件
+	    remove: function remove(type, fn) {
+	        var fns = this.cache[type];
+
+	        if (!fns) return false;
+
+	        if (!fn) {
+	            fns && (fns.length = 0);
+	        } else {
+	            for (var i = 0, _fn; _f = fns[i++];) {
+	                if (_fn === fn) {
+	                    fns.splice(i, 1);
+	                }
+	            }
+	        }
+	    }
+	};
 
 /***/ },
 /* 20 */
@@ -1321,7 +1390,7 @@ webpackJsonp([1],[
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "<div table class=\"confirm-num\">\n    <p table=\"cell v-m h-c\">验证码已发送至 18510027836</p>\n</div>\n<div table class=\"input-arr\">\n    <input type=\"number\">\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n            \n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n</div>\n\n"
+	module.exports = "<div table class=\"confirm-num\">\n    <p table=\"cell v-m h-c\">验证码已发送至 18510027836</p>\n</div>\n<div table class=\"input-arr\">\n    <input type=\"number\" class=\"numInput\">\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n            \n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n    <div table=\"cell v-m h-c p25\">\n        <div class=\"arr-item\">\n        </div>\n    </div>\n</div>\n\n\n<input type=\"text\" class=\"test\">\n\n"
 
 /***/ },
 /* 23 */

@@ -55,15 +55,16 @@ webpackJsonp([2],{
 	    value: true
 	});
 
-	var _model = __webpack_require__(17);
+	var _index = __webpack_require__(15);
 
-	var model = _model.Model.init();
+	var model = _index.Model.init({
+	    name: 'account',
+	    pageInit: function pageInit() {
+	        this.phone = this.getLocItem('phone');
+	    }
+	});
 
-	model.name = 'account';
-
-	model.pageInit = function () {
-	    this.phone = this.getLocItem('phone');
-	};
+	console.log(model);
 
 	model.save();
 

@@ -54,15 +54,14 @@ webpackJsonp([4],{
 	    value: true
 	});
 
-	var _model = __webpack_require__(17);
+	var _index = __webpack_require__(15);
 
-	var model = _model.Model.init();
-
-	model.name = 'password';
-
-	model.password = {
-	    num: null
-	};
+	var model = _index.Model.init({
+	    name: 'password',
+	    pageInit: function pageInit() {
+	        console.log('This\'s is password page');
+	    }
+	});
 
 	model.save();
 

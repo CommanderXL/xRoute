@@ -2,18 +2,22 @@ import 'whatwg-fetch';
 import {Controller} from './controller';
 import EventEmitter from './eventEmitter';
 
-let ModelClass = Object.create(EventEmitter);
-
 if(typeof Object.create !== 'function') {
     Object.create = function(o) {
         function F() {};
         F.prototype = o;
         return new F();
     };
-}
+};
 
-//Model用以创建新模型(类),新模型用以创建实例
-ModelClass = {
+/*class ModelClass extends EventEmitter {
+    constructor() {
+        super();
+    }
+}*/
+
+//Model用以创建新模型父类),新模型用以创建实例
+let ModelClass = {
     records: {},
     //model创建后的回调
     created() {
@@ -39,6 +43,7 @@ ModelClass = {
         init() {},
         initializer() {}
     },
+    //创建父类
     create(include = {}, extend = {}) {
         let object = Object.create(this);   //新模型继承至Model,调用init方法产生新实例
         object.parent = this;               //新模型.parent = ModelClass
@@ -52,6 +57,7 @@ ModelClass = {
 
         return object;
     },
+    //实例化
     init({name = '', pageInit = function() {}}) {
         let instance = Object.create(this.prototype);
         instance.parent = this;                     //实例.parent = 新模型
@@ -62,7 +68,10 @@ ModelClass = {
     }
 }
 
-//原型上添加方法
+//事件继承
+ModelClass.include(EventEmitter);
+
+//原型上添加方法. 父类
 let Model = ModelClass.create({
     init(name = '') {
         this.name = name;
@@ -81,8 +90,6 @@ Model.extend({
 
     }
 })*/
-
-
 
 //ajax  实例继承
 Model.include({
@@ -134,8 +141,11 @@ Model.include({
     update() {
         this.parent.records[this.name] = this.dup();
     },
-    dup() {
-        return Object.assign({}, this);     //对象复制
+    dup() {     //对象复制
+        let result = this.parent.init({name: this.name, pageInit: this.pageInit});
+        result.newRecord = this.newRecord;
+        return this;
+        //return Object.assign({}, this);     //对象复制
     },
     save() {
         this.newRecord ? this.create() : this.update();
@@ -145,7 +155,7 @@ Model.include({
 
 Model.extend({
     find(name = '') {
-        return this.records[name] || console.log('Unkonwn record');
+        return this.records[name] || console.error('Unkonwn record');
     }
 });
 
