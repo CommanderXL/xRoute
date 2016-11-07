@@ -13,7 +13,9 @@ controller
 
     })
     .getViewInit(function() {
-
+        for(var key in model.parent.records) {
+            console.log(model.parent.records[key].pageInit.valueOf());
+        }
     });
 
 

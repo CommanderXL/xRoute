@@ -1,12 +1,11 @@
 import {Model} from 'jsLib/index';
 
-let model = Model.init();
-
-model.name = 'password';
-
-model.password = {
-    num: null
-}
+let model = Model.init({
+    name: 'password',
+    pageInit() {
+        console.log('This\'s is password page');
+    }
+});
 
 model.save();
 

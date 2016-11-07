@@ -1,9 +1,11 @@
 import {Model} from 'jsLib/index';
 
+let model = Model.init({
+    name: 'infoCar',
+    pageInit() {
 
-let model = Model.init();
-
-model.name = 'infoCar';
+    }
+});
 
 model.save();
 

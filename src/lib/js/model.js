@@ -4,6 +4,14 @@ import EventEmitter from './eventEmitter';
 
 let ModelClass = Object.create(EventEmitter);
 
+if(typeof Object.create !== 'function') {
+    Object.create = function(o) {
+        function F() {};
+        F.prototype = o;
+        return new F();
+    };
+}
+
 //Model用以创建新模型(类),新模型用以创建实例
 ModelClass = {
     records: {},
@@ -28,11 +36,12 @@ ModelClass = {
         return this;
     },
     prototype: {
-        init() {}
+        init() {},
+        initializer() {}
     },
     create(include = {}, extend = {}) {
         let object = Object.create(this);   //新模型继承至Model,调用init方法产生新实例
-        object.parent = this;               //新模型.parent = Model
+        object.parent = this;               //新模型.parent = ModelClass
 
         object.prototype = object.fn = Object.create(this.prototype);
 
@@ -43,16 +52,36 @@ ModelClass = {
 
         return object;
     },
-    init() {
+    init({name = '', pageInit = function() {}}) {
         let instance = Object.create(this.prototype);
         instance.parent = this;                     //实例.parent = 新模型
 
-        instance.init.apply(instance, arguments);   //Model.prototype.init();
+        instance.initializer.call(instance, pageInit);
+        instance.init.call(instance, name);   //Model.prototype.init();
         return instance;
     }
 }
 
-let Model = ModelClass.create();
+//原型上添加方法
+let Model = ModelClass.create({
+    init(name = '') {
+        this.name = name;
+    },
+    initializer(fn = function() {}) {
+        this.pageInit = fn;
+    }
+    //initializer model初始化的方法
+});
+
+
+//Model类创建新子类
+/*
+Model.extend({
+    create() {
+
+    }
+})*/
+
 
 
 //ajax  实例继承
@@ -106,10 +135,11 @@ Model.include({
         this.parent.records[this.name] = this.dup();
     },
     dup() {
-        return Object.assign({}, this);
+        return Object.assign({}, this);     //对象复制
     },
     save() {
         this.newRecord ? this.create() : this.update();
+        return this;
     }
 });
 
@@ -141,8 +171,6 @@ Model.include({
         return localStorage.removeItem(key);
     }
 });
-
-
 
 
 //controller在Model上进行注册
