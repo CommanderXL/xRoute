@@ -1,6 +1,6 @@
-import {totalModel} from 'jsLib/model';
+import {Model} from 'jsLib/index';
 
-let model = totalModel.init();
+let model = Model.init();
 
 model.name = 'password';
 

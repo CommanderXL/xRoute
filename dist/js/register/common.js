@@ -22,48 +22,48 @@
 /******/ 			return __webpack_require__(0);
 /******/ 		}
 /******/ 	};
-/******/
+
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// object to store loaded and loading chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
 /******/ 		8:0
 /******/ 	};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+
 /******/ 	// This file contains only the entry chunk.
 /******/ 	// The chunk loading function for additional chunks
 /******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
 /******/ 		// "0" is the signal for "already loaded"
 /******/ 		if(installedChunks[chunkId] === 0)
 /******/ 			return callback.call(null, __webpack_require__);
-/******/
+
 /******/ 		// an array means "currently loading".
 /******/ 		if(installedChunks[chunkId] !== undefined) {
 /******/ 			installedChunks[chunkId].push(callback);
@@ -75,42 +75,42 @@
 /******/ 			script.type = 'text/javascript';
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
-/******/
+
 /******/ 			script.src = __webpack_require__.p + "js/register/" + ({"0":"components","1":"index","2":"account","3":"verify","4":"password","5":"info","6":"info-car","7":"lib"}[chunkId]||chunkId) + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
-/******/
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/static/taxi-driver/";
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 8:
+/***/ 9:
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
+
 	var Util = function () {
 	    function Util() {
 	        _classCallCheck(this, Util);
 	    }
-	
+
 	    _createClass(Util, [{
 	        key: 'hasClass',
 	        value: function hasClass(ele, cls) {
@@ -162,7 +162,7 @@
 	                val = void 0,
 	                res = {};
 	            var queryStr = window.location.search ? window.location.search.substring(1) : '';
-	
+
 	            if (queryStr.indexOf('&') === -1 && queryStr.indexOf('=') > -1) {
 	                item = queryStr.split('=');
 	                key = decodeURIComponent(item[0]);
@@ -208,7 +208,7 @@
 	            return Object.prototype.toString.call(arr) === '[object Array]';
 	        }
 	        //对模块进行配置
-	
+
 	    }, {
 	        key: 'setConfigModule',
 	        value: function setConfigModule(arg_map) {
@@ -226,14 +226,14 @@
 	            }
 	        }
 	        //埋点配置
-	
+
 	    }, {
 	        key: 'omegaCb',
 	        value: function omegaCb() {
 	            var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	            var obj = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 	            var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
-	
+
 	            Omega.trackEvent(name, obj, cb);
 	        }
 	    }, {
@@ -248,19 +248,19 @@
 	            return location.hash.slice(2).split('/').join('.');
 	        }
 	    }]);
-	
+
 	    return Util;
 	}();
-	
+
 	var util = new Util();
-	
+
 	//可以使用继承来继承这些方法
-	
+
 	var ElementSet = function () {
 	    function ElementSet() {
 	        _classCallCheck(this, ElementSet);
 	    }
-	
+
 	    _createClass(ElementSet, [{
 	        key: 'css',
 	        value: function css(dom, obj) {
@@ -268,11 +268,11 @@
 	            var _iteratorNormalCompletion = true;
 	            var _didIteratorError = false;
 	            var _iteratorError = undefined;
-	
+
 	            try {
 	                for (var _iterator = Object.keys(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                    var key = _step.value;
-	
+
 	                    dom.style[key] = obj[key];
 	                }
 	            } catch (err) {
@@ -289,7 +289,7 @@
 	                    }
 	                }
 	            }
-	
+
 	            return this;
 	        }
 	    }, {
@@ -308,28 +308,28 @@
 	            return dom.classList.removeClass(cls);
 	        }
 	    }]);
-	
+
 	    return ElementSet;
 	}();
-	
+
 	var elementSet = new ElementSet();
-	
+
 	exports.util = util;
 	exports.elementSet = elementSet;
 
 /***/ },
 
-/***/ 9:
+/***/ 10:
 /***/ function(module, exports) {
 
 	"use strict";
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
+
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
+
 	!function (window, undefined) {
 	  var dd = window.dd || {};if (!dd || !dd.base) {
 	    window.dd = dd;var b = dd.base || {},
@@ -554,12 +554,11 @@
 	    }, n.time);
 	  }, e.dialog.Fn = s, t.dd = e;
 	}(window);
-	
+
 	var dialog = dd.dialog;
-	
+
 	exports.default = dialog;
 
 /***/ }
 
 /******/ });
-//# sourceMappingURL=common.js.map

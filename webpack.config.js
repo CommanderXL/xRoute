@@ -12,6 +12,10 @@ var PATHS = {
 var PKG = require('./package.json');
 var TARGET = process.env.npm_lifecycle_event;   //获取当前正在运行的脚本名称
 
+var isProduction = function() {
+    return process.env.NODE_ENV === 'production';
+}
+
 //TODO  [name]-[contenthash:8].css
 //TODO  样式文件单独抽离出来打包.文件名带上路径信息
 /**
@@ -34,15 +38,17 @@ module.exports ={
         'lib': ['./src/lib/js/index.js'],
         //'js/components': ['./src/components/city-select/index.js', './src/components/time-select/index.js', './src/components/uipicker/picker.min.js']
     },
+    //filename是主入口文件的名称,即对应的entry
+    //chunkFilename对应的是非主入口文件的名称,chunk
     output: {
         path: PATHS.dist,
-        publicPath: '/static/taxi-driver/',    //配置publicPath文件. 路径一定要写完整
+        publicPath: '/static/taxi-driver/',    //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
         filename: 'js/register/[name].js',
         chunkFilename: 'js/register/[name].js',
         //TODO: build文件中加入hash值
     },
     //生成source-map文件
-    devtool: 'source-map',
+    devtool: isProduction ? null : 'source-map',
     devServer: {
         proxy: {
             '/api/*': {

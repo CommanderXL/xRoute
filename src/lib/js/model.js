@@ -2,10 +2,10 @@ import 'whatwg-fetch';
 import {Controller} from './controller';
 import EventEmitter from './eventEmitter';
 
-let Model = Object.create(EventEmitter);
+let ModelClass = Object.create(EventEmitter);
 
-//Model用以创建新模型,新模型用以创建实例
-Model = {
+//Model用以创建新模型(类),新模型用以创建实例
+ModelClass = {
     records: {},
     //model创建后的回调
     created() {
@@ -17,6 +17,7 @@ Model = {
             this[key] = obj[key];
         }
         if (extended) extended.call(this);
+        return this;
     },
     include(obj = {}) {
         let included = obj.included;
@@ -24,17 +25,19 @@ Model = {
             this.prototype[key] = obj[key];
         }
         if (included) included.call(this);
+        return this;
     },
     prototype: {
-        init() {
-
-        }
+        init() {}
     },
-    create() {
+    create(include = {}, extend = {}) {
         let object = Object.create(this);   //新模型继承至Model,调用init方法产生新实例
         object.parent = this;               //新模型.parent = Model
 
         object.prototype = object.fn = Object.create(this.prototype);
+
+        if(include) object.include(include);
+        if(extend) object.extend(extend);
 
         object.created();
 
@@ -43,10 +46,13 @@ Model = {
     init() {
         let instance = Object.create(this.prototype);
         instance.parent = this;                     //实例.parent = 新模型
+
         instance.init.apply(instance, arguments);   //Model.prototype.init();
         return instance;
     }
 }
+
+let Model = ModelClass.create();
 
 
 //ajax  实例继承
@@ -148,8 +154,4 @@ Model.include({
     }
 })
 
-
-let totalModel = Model.create();
-
-
-export {totalModel}
+export default Model;

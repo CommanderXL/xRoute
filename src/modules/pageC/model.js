@@ -1,7 +1,7 @@
 import {Controller} from 'jsLib/controller';
-import {totalModel} from 'jsLib/model';
+import {Model} from 'jsLib/model';
 
-let modelC = totalModel.init();
+let modelC = Model.init();
 
 modelC.name = 'modelC';
 

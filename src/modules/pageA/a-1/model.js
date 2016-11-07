@@ -1,7 +1,7 @@
-import {totalModel} from 'jsLib/model';
+import {Model} from 'jsLib/model';
 
 
-var modelAA = totalModel.init();
+var modelAA = Model.init();
 
 modelAA.name = 'AA';
 

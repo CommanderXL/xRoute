@@ -1,7 +1,7 @@
-import {totalModel} from 'jsLib/model'
+import {Model} from 'jsLib/model'
 
 
-var modelB = totalModel.init();
+var modelB = Model.init();
 modelB.name = 'modelB';
 modelB.pageInit = function() {
     //console.log('This\'s is page B');
@@ -11,7 +11,7 @@ modelB.save();
 
 //console.log(modelB.pageInit.valueOf());
 
-//console.log(totalModel.find('modelA'), totalModel.find('modelB'));
+//console.log(Model.find('modelA'), Model.find('modelB'));
 
 
 

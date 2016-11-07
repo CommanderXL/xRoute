@@ -1,28 +1,28 @@
 webpackJsonp([4],{
 
-/***/ 29:
+/***/ 30:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
-	var _model = __webpack_require__(30);
-	
+
+	var _model = __webpack_require__(31);
+
 	var _model2 = _interopRequireDefault(_model);
-	
-	var _index = __webpack_require__(14);
-	
-	var _route = __webpack_require__(13);
-	
+
+	var _index = __webpack_require__(15);
+
+	var _route = __webpack_require__(14);
+
 	var _route2 = _interopRequireDefault(_route);
-	
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
+
 	var controller = _model2.default.registerCtrl('passwordCtrl', '.public-container');
-	
+
 	controller.getDomMap({
 	    firPassWord: '.first-password',
 	    confirmPassWord: '.confirm-password',
-	    btn: '.btn'
+	    btn: '.btn-orange'
 	}).getEvents({
 	    'firPassWord blur': 'firBlur',
 	    'confirmPassWord blur': 'confBlur',
@@ -40,35 +40,34 @@ webpackJsonp([4],{
 	        _route2.default.go('info.car');
 	    }
 	}).getViewInit(function () {});
-	
+
 	module.exports = controller;
 
 /***/ },
 
-/***/ 30:
+/***/ 31:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
-	var _model = __webpack_require__(16);
-	
-	var model = _model.totalModel.init();
-	
+
+	var _model = __webpack_require__(17);
+
+	var model = _model.Model.init();
+
 	model.name = 'password';
-	
+
 	model.password = {
 	    num: null
 	};
-	
+
 	model.save();
-	
+
 	exports.default = model;
 
 /***/ }
 
 });
-//# sourceMappingURL=password.js.map

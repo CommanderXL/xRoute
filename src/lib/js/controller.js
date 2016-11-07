@@ -41,7 +41,7 @@ export class Controller {
                 this.domMap[key] = doms.length === 1 ? doms[0] : doms;
             }
             catch (e) {
-                console.error(`${key}need the right domMap`);
+                console.error(`${key} need the right domMap`);
             }
 
         }

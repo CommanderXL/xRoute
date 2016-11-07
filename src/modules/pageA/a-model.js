@@ -1,6 +1,6 @@
-import {totalModel} from 'jsLib/model';
+import {Model} from 'jsLib/model';
 
-let modelA = totalModel.init();
+let modelA = Model.init();
 
 modelA.name = 'modelA';
 modelA.setLocItem(modelA.name, 'HELLO WORLD');
@@ -15,7 +15,7 @@ modelA.pageInit = function() {
 }
 modelA.save();
 
-//console.log(totalModel);
+//console.log(Model);
 //console.log(modelA.pageInit.valueOf());
 
 export default modelA;
