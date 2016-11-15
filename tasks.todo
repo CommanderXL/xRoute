@@ -7,7 +7,7 @@ Projects:
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
             Person:
-                ☐ 修改uipicker组件为单例,同时适配多个选择控件 @high 
+                ✔ 修改uipicker组件为单例,同时适配多个选择控件 @high @done (11/15/2016, 5:59:13 PM)
                 ✔ 完成person页面的所有业务逻辑 @today @done (11/12/2016, 10:57:47 AM)
                 ☐ 添加新的弹层组件,还需要添加"确认"和"取消"的UI @critical 
                 ☐ 
@@ -29,5 +29,6 @@ Projects:
                 ☐
             Employ:
                 ☐ 
+
 
 
