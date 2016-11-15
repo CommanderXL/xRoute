@@ -14,6 +14,7 @@ Projects:
             Company:
                 ☐ 11.14日完成info.company业务逻辑 @today 
                 ✔ 迁移selectCity-compnent组件 @today @done (11/14/2016, 2:13:09 PM)
+                ☐ 添加公司过滤功能
             Car: 
                 ✔ register.js 城市id修复 @today @done (11/14/2016, 9:20:05 PM)
                 ☐ 添加显示缩略图的组件
