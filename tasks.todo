@@ -1,0 +1,33 @@
+Projects:
+    注册部分(9个页面): 
+         ☐ 全局事件机制 @high 
+         ✔ 发生页面跳转的时候,pageModel会重新初始化,这个时候绑定的全局事件对多次添加,导致多次执行(当前解决方案是默认多次执行) --->>> 当前解决方案是将DOM的操作放到子页面中进行 @critical @done (11/13/2016, 10:36:03 PM)
+         ✔ 页面之间进行切换,是否能消除history? 解决方案： replaceState或者维护一个path栈, 不加入历史栈？  方法: 使用history.go(-1).当前页面没有向前发生跳转，则不会入栈 @critical @done (11/13/2016, 10:34:09 PM)
+         ☐ 添加对于css权重的样式书写规范.查看《前端早读课》  @today 
+        Info: 
+            ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
+            Person:
+                ☐ 修改uipicker组件为单例,同时适配多个选择控件 @high 
+                ✔ 完成person页面的所有业务逻辑 @today @done (11/12/2016, 10:57:47 AM)
+                ☐ 添加新的弹层组件,还需要添加"确认"和"取消"的UI @critical 
+                ☐ 
+            Company:
+                ☐ 11.14日完成info.company业务逻辑 @today 
+                ✔ 迁移selectCity-compnent组件 @today @done (11/14/2016, 2:13:09 PM)
+            Car: 
+                ✔ register.js 城市id修复 @today @done (11/14/2016, 9:20:05 PM)
+                ☐ 添加显示缩略图的组件
+            Employ:
+                ☐ 
+     认证资料部分(4个页面):
+        Info: 
+            Person:
+                ☐ 
+            Company:
+                ☐
+            Car:
+                ☐
+            Employ:
+                ☐ 
+
+

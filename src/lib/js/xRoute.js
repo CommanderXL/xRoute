@@ -14,6 +14,10 @@ export default class Route {
         return this;
     }
 
+    pageLoading(fn = function() {}) {
+        this.loading = fn;
+    }
+
     addRoute({path, viewInit, viewDestory, context, template, templateUrl, viewBox}) {
         path = path.split('.').join('/');
 
@@ -41,6 +45,9 @@ export default class Route {
         if (oldRoute = this.routes[oldPath]) {
             oldRoute.viewDestory && oldRoute.viewDestory();
         }
+
+        //转场
+        this.loading();
 
         let pathArr = path.split('/');
 

@@ -52,8 +52,8 @@ export default {
 
         if (!fns || fns.length === 0) return false;
 
-        for (let i = 0, fn; fn = fns[i++];) {
-            fn[i].apply(this, [].slice.call(arguments, 1));
+        for (let i = 0, fn; i < fns.length; i++) {
+            fns[i].apply(this, [].slice.call(arguments));
         }
     },
     //fn参数不传时,默认清除所有绑定事件

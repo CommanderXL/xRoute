@@ -14,7 +14,8 @@ controller
 
     })
     .getViewInit(function() {
-
+        //触发事件
+        //model.trigger('test', 'well done');
     });
 
 

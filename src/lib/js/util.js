@@ -123,6 +123,6 @@ class ElementSet {
 let elementSet = new ElementSet();
 
 export {
-util,
-elementSet,
+    util,
+    elementSet,
 }

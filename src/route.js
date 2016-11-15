@@ -1,11 +1,33 @@
-import {Route} from 'jsLib/index';
-//model只涉及到数据模型,而controller即要和model同时还要和view进行交互.因此这里应该是引入controller
-//import {controller} from 'modules/pageA/a-controller';
+import {Route, Model, dialog} from 'jsLib/index';
 
 const Router = new Route();
 
+//添加全局事件绑定
+const App = Model.init({name: 'App'});
 
-Router.home('account');
+App
+.listen('test', function(str) {     //转场动画
+    let opts = {
+        icon: {
+            width: '43px',
+            height: '34px',
+            url: "http://static.xiaojukeji.com/webapp/images/i-loading.gif"
+        }
+    }
+    console.log('添加转场动画');
+    //dialog.flatLoading(opts);
+})
+/*.listen('error', function(str) {    //监听错误事件
+    dialog.alert(str);
+})*/
+
+
+Router
+.home('account')
+.pageLoading(function() {
+    App.trigger('test', 'well done');
+});
+
 
 Router
 .addRoute({
