@@ -6,6 +6,8 @@ Projects:
          ☐ 添加对于css权重的样式书写规范.查看《前端早读课》,部分css属性已经受此影响比较大了  @critical 
          ✔ 完善弹层组件 @high @done (11/19/2016, 10:07:14 AM)
          ✔ 找UI同学要银行，对勾的ICON. 另外check-icon留白太多 @done (11/19/2016, 12:06:20 AM)
+         ☐ 添加转场动画 @critical 
+         ☐ 404页面 @critical 
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
             Person:
@@ -14,7 +16,7 @@ Projects:
                 ☐ 添加新的弹层组件,还需要添加"确认"和"取消"的UI @critical 
                 ☐ 
             Company:
-                ☐ 11.14日完成info.company业务逻辑 @today 
+                ✔ 11.14日完成info.company业务逻辑 @today @done (11/19/2016, 4:24:29 PM)
                 ✔ 迁移selectCity-compnent组件 @today @done (11/14/2016, 2:13:09 PM)
                 ✔ 添加公司过滤功能 @done (11/16/2016, 11:39:04 AM)
             Car: 
@@ -25,7 +27,7 @@ Projects:
      认证资料部分(4个页面):
         Info: 
             ✔ 梳理业务流程,11.18日和API同学对接口 @done (11/19/2016, 12:06:13 AM)
-            ☐ 选择出租车公司添加选择车辆逻辑
+            ✔ 选择出租车公司添加选择车辆逻辑 @done (11/19/2016, 4:24:04 PM)
             ☐ 处理飘红样式的问题,以及每一行的横线  @critical 
             Person:
                 ☐ 
