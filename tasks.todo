@@ -26,10 +26,11 @@ Projects:
         Info: 
             ✔ 梳理业务流程,11.18日和API同学对接口 @done (11/19/2016, 12:06:13 AM)
             ☐ 选择出租车公司添加选择车辆逻辑
+            ☐ 处理飘红样式的问题,以及每一行的横线  @critical 
             Person:
                 ☐ 
             Company:
-                ☐ 完成company业务逻辑,注意不同状态间切换的处理
+                ☐ 完成company业务逻辑,注意不同状态间切换的处理 @critical 
             Car:
                 ☐
             Employ:
