@@ -8,7 +8,7 @@ Projects:
          ✔ 找UI同学要银行，对勾的ICON. 另外check-icon留白太多 @done (11/19/2016, 12:06:20 AM)
          ☐ 添加转场动画 @critical 
          ☐ 404页面 @critical 
-         ☐ 页面重复加载的问题, 点击同一个路由 @critical 
+         ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
             Person:
