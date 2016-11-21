@@ -12,7 +12,9 @@ Projects:
          ☐ search icon / 对勾icon @critical 
          ☐ 省市区是否存在不返回数据的情况?  
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
-         ☐ info/company模板数据还需要提供公司的id号
+         ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候时候需要添加id的值
+         ☐ 关于事件穿透的提问
+         ☐ es6-promise + whatwg-fetch
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
@@ -34,7 +36,7 @@ Projects:
         Info: 
             ✔ 梳理业务流程,11.18日和API同学对接口 @done (11/19/2016, 12:06:13 AM)
             ✔ 选择出租车公司添加选择车辆逻辑 @done (11/19/2016, 4:24:04 PM)
-            ☐ 处理飘红样式的问题,以及每一行的横线  @critical 
+            ✔ 处理飘红样式的问题,以及每一行的横线  @critical @done (11/21/2016, 5:58:24 PM)
             Person:
                 ☐ 
             Company:
