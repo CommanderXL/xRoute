@@ -21,6 +21,8 @@ Projects:
          ☐ 浏览器后退需要缓存数据(在router上注册viewBack的方法) @critical 
             ☐ 方案1: 直接在Router上挂载
             ☐ 方案2: 通过一层回调
+         ☐ promise添加错误处理
+         ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
