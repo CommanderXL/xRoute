@@ -15,6 +15,7 @@ Projects:
          ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值
          ☐ 关于事件穿透的提问
          ☐ es6-promise + whatwg-fetch
+         ☐ 解决Router.go()的bug
          ✔ 添加需要提交照片的字段值 @done (11/22/2016, 1:25:12 PM)
          ☐ 添加从缓存获取数据,picker初始化的
          ☐ 浏览器后退需要缓存数据
