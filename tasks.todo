@@ -3,7 +3,7 @@ Projects:
          ✔ 全局事件机制 @high @done (11/19/2016, 12:06:25 AM)
          ✔ 发生页面跳转的时候,pageModel会重新初始化,这个时候绑定的全局事件对多次添加,导致多次执行(当前解决方案是默认多次执行) --->>> 当前解决方案是将DOM的操作放到子页面中进行 @critical @done (11/13/2016, 10:36:03 PM)
          ✔ 页面之间进行切换,是否能消除history? 解决方案： replaceState或者维护一个path栈, 不加入历史栈？  方法: 使用history.go(-1).当前页面没有向前发生跳转，则不会入栈 @critical @done (11/13/2016, 10:34:09 PM)
-         ☐ 添加对于css权重的样式书写规范.查看《前端早读课》,部分css属性已经受此影响比较大了(避免多级嵌套)  @critical 
+         ✔ 添加对于css权重的样式书写规范.查看《前端早读课》,部分css属性已经受此影响比较大了(避免多级嵌套)  @critical @done (11/21/2016, 9:47:38 PM)
          ✔ 完善弹层组件 @high @done (11/19/2016, 10:07:14 AM)
          ✔ 找UI同学要银行，对勾的ICON. 另外check-icon留白太多 @done (11/19/2016, 12:06:20 AM)
          ☐ 添加转场动画 @critical 
@@ -12,9 +12,10 @@ Projects:
          ☐ search icon / 对勾icon @critical 
          ☐ 省市区是否存在不返回数据的情况?  
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
-         ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候时候需要添加id的值
+         ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值
          ☐ 关于事件穿透的提问
          ☐ es6-promise + whatwg-fetch
+         ☐ 添加需要提交照片的字段值
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
