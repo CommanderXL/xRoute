@@ -18,9 +18,9 @@ Projects:
          ✔ 解决Router.go()的bug    @critical @done (11/23/2016, 12:23:46 AM)
          ✔ 添加需要提交照片的字段值 @done (11/22/2016, 1:25:12 PM)
          ✔ 添加从缓存获取数据,picker初始化的 @critical @done (11/23/2016, 11:00:05 AM)
-         ☐ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical   
-            ☐ 方案1: 直接在Router上挂载
-            ☐ 方案2: 通过一层回调
+         ✔ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical @done (11/23/2016, 11:48:39 AM)
+            ✔ 方案1: 直接在Router上挂载 （this.way） @done (11/23/2016, 11:50:32 AM)
+            ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
          ☐ promise添加错误处理
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
