@@ -8,17 +8,17 @@ Projects:
          ✔ 找UI同学要银行，对勾的ICON. 另外check-icon留白太多 @done (11/19/2016, 12:06:20 AM)
          ☐ 添加转场动画 @critical 
          ☐ 404页面 @critical 
-         ☐ dialog添加tips提示信息 @critical 
-         ☐ search icon / 对勾icon @critical 
+         ✔ dialog添加tips提示信息 @critical @done (11/23/2016, 1:52:57 AM)
+         ✔ search icon / 对勾icon @critical @done (11/23/2016, 2:01:41 AM)
          ☐ 省市区是否存在不返回数据的情况?  
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
          ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值
          ☐ 关于事件穿透的提问
          ☐ es6-promise + whatwg-fetch
-         ☐ 解决Router.go()的bug    @critical 
+         ✔ 解决Router.go()的bug    @critical @done (11/23/2016, 12:23:46 AM)
          ✔ 添加需要提交照片的字段值 @done (11/22/2016, 1:25:12 PM)
-         ☐ 添加从缓存获取数据,picker初始化的 @critical 
-         ☐ 浏览器后退需要缓存数据(在router上注册viewBack的方法) @critical 
+         ✔ 添加从缓存获取数据,picker初始化的 @critical @done (11/23/2016, 11:00:05 AM)
+         ☐ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical   
             ☐ 方案1: 直接在Router上挂载
             ☐ 方案2: 通过一层回调
          ☐ promise添加错误处理
