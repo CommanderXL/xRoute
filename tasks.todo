@@ -23,6 +23,8 @@ Projects:
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
          ☐ promise添加错误处理
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
+         ☐ 是否需要将route部分独立出来 @low 
+         ☐ 添加loading动画 @high 
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
