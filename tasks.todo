@@ -27,7 +27,8 @@ Projects:
          ☐ 添加loading icon @high
          ☐ 认证页面时间初始化
          ☐ xRoute添加对search params的处理 @high 
-         ☐ picker时间初始化的处理
+         ☐ picker时间初始化的处理 @high 
+         ☐ 未通过全局状态的处理 @high 
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
