@@ -10,7 +10,7 @@ Projects:
          ☐ 404页面 @critical 
          ✔ dialog添加tips提示信息 @critical @done (11/23/2016, 1:52:57 AM)
          ✔ search icon / 对勾icon @critical @done (11/23/2016, 2:01:41 AM)
-         ☐ 省市区是否存在不返回数据的情况?  
+         ✔ 省市区是否存在不返回数据的情况? @done (11/25/2016, 12:44:57 PM)
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
          ☐ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值
          ☐ 关于事件穿透的提问
@@ -25,13 +25,14 @@ Projects:
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
          ☐ 是否需要将route部分独立出来 @low 
          ☐ 添加loading icon @high
-         ☐ 认证页面时间初始化
-         ☐ xRoute添加对search params的处理 @high 
+         ☐ 认证页面时间初始化 @critical 
+         ☐ xRoute添加对search params的处理(需要编码处理) @high 
          ☐ picker时间初始化的处理 @high 
          ☐ 未通过全局状态的处理 @high 
-         ☐ 信息审核部分的离开页面的弹窗处理 @high 
+         ☐ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)  @critical  
          ☐ 字段的重新梳理(和mis全部对应上) @high 
-         ☐ tab的显示状态(根据权重值来显示tab)
+         ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
+         ☐ 公司信息的数据来源 @critical 
          ☐ 当前运营车辆的状态
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ☐ company_id这个字段没有下发
