@@ -21,7 +21,7 @@ Projects:
          ✔ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical @done (11/23/2016, 11:48:39 AM)
             ✔ 方案1: 直接在Router上挂载 （this.way） @done (11/23/2016, 11:50:32 AM)
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
-         ☐ promise添加错误处理
+         ☐ promise添加错误处理, 主要是对网络请求失败的错误处理 @today 
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
          ☐ 是否需要将route部分独立出来 @low 
          ☐ 添加loading icon @high
@@ -29,6 +29,8 @@ Projects:
          ☐ xRoute添加对search params的处理 @high 
          ☐ picker时间初始化的处理 @high 
          ☐ 未通过全局状态的处理 @high 
+         ☐ 信息审核部分的离开页面的弹窗处理 @high 
+         ☐ 字段的重新梳理 @high 
          ✔ 页面重复加载的问题, 点击同一个路由(解决方案: 在certify部分做成组件呈现,而非路由的呈现) @critical @done (11/20/2016, 8:50:37 PM)
         Info: 
             ✔ 修复样式问题(font-size/rem) @done (11/12/2016, 10:58:33 AM)
