@@ -26,9 +26,9 @@ Projects:
          ☐ 是否需要将route部分独立出来
          ☐ picker的31号处理 @today 
          ☐ 添加loading icon @high
-         ☐ 认证页面时间初始化 @critical 
+         ✔ 认证页面时间初始化 @critical @done (11/26/2016, 9:49:02 AM)
          ☐ xRoute添加对search params的处理(需要编码处理) @high 
-         ☐ picker时间初始化的处理 @high 
+         ✔ picker时间初始化的处理 @high @done (11/26/2016, 9:49:04 AM)
          ☐ 未通过全局状态的处理 @high 
          ☐ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)  @critical  
          ☐ 字段的重新梳理(和mis全部对应上) @high 
