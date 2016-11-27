@@ -42,9 +42,9 @@ Projects:
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
          ☐ open_ssl 密码加密
          ☐ promise里面this的指向问题
-         ☐ 选择城市loading处理的位置 @today @critical 
+         ✔ 选择城市loading处理的位置 @today @critical @done (11/27/2016, 10:06:19 PM)
          ☐ info/person缺少头像字段? 
-         ☐ 完成tips页面 @today 
+         ✔ 完成tips页面 @today @done (11/28/2016, 12:11:59 AM)
          ☐ native存在销毁webView历史记录的bridge
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed 
