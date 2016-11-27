@@ -45,8 +45,8 @@ Projects:
          ☐ 选择城市loading处理的位置 @today 
          ☐ info/person缺少头像字段? 
          ☐ native存在销毁webView历史记录的bridge
-         ☐ 滑动穿透 @today @critical 
-         ☐ 
+         ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
+         ☐ position: absolute/fixed 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)
