@@ -13,7 +13,7 @@ Projects:
          ✔ 省市区是否存在不返回数据的情况? @done (11/25/2016, 12:44:57 PM)
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
          ✔ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值 @done (11/25/2016, 8:32:12 PM)
-         ☐ 关于事件穿透的提问
+         ☐ 关于事件穿透的提问(事件代理，滑动穿透(3个平级div))
          ☐ es6-promise + whatwg-fetch
          ✔ 解决Router.go()的bug    @critical @done (11/23/2016, 12:23:46 AM)
          ✔ 添加需要提交照片的字段值 @done (11/22/2016, 1:25:12 PM)
@@ -44,6 +44,7 @@ Projects:
          ☐ promise里面this的指向问题
          ☐ 选择城市loading处理的位置 @today 
          ☐ info/person缺少头像字段? 
+         ☐ 完成tips页面 @today 
          ☐ native存在销毁webView历史记录的bridge
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed 
