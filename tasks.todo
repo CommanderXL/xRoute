@@ -35,7 +35,7 @@ Projects:
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
          ☐ 当前运营车辆的状态
-         ☐ uploadImg组件的优化, 添加Loading效果 @today 
+         ☐ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理 @today 
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ☐ 完成注册页面的联调 @today 
          ☐ token的处理,是放到url上还是localstorage里
