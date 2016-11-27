@@ -42,7 +42,7 @@ Projects:
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
          ☐ open_ssl 密码加密
          ☐ promise里面this的指向问题
-         ☐ 选择城市loading处理的位置 @today 
+         ☐ 选择城市loading处理的位置 @today @critical 
          ☐ info/person缺少头像字段? 
          ☐ 完成tips页面 @today 
          ☐ native存在销毁webView历史记录的bridge
