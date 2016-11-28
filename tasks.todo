@@ -54,7 +54,7 @@ Projects:
          ☐ native存在销毁webView历史记录的bridge
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed 
-         ☐ 统计缺少的字段 @critical
+         ✔ 统计缺少的字段 @critical @done (11/28/2016, 8:34:08 PM)
          ☐ 飘红的横线处理 @today 
          ☐ 完成所有示例图的弹层 @today 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
