@@ -36,6 +36,8 @@ Projects:
          ☐ 从localstorage获取数据的错误处理 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
+         ☐ Https 密码加密 @critical 
+         ☐ 获取城市配置 @critical 
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
          ☐ 当前运营车辆的状态
          ☐ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical 
