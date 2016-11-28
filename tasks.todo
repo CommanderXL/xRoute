@@ -30,12 +30,15 @@ Projects:
          ✔ xRoute添加对search params的处理(需要编码处理) @high @done (11/26/2016, 3:39:06 PM)
          ✔ picker时间初始化的处理 @high @done (11/26/2016, 9:49:04 AM)
          ☐ 未通过全局状态的处理(由后端下发数据?) @high 
+         ☐ 通过的身份信息是否可以修改? @high 
          ✔ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)   (入栈，但是出来的时候使用history出栈)  @critical @done (11/26/2016, 11:23:29 AM)
-         ☐ 字段的重新梳理(和mis全部对应上) @high 
+         ☐ 字段的重新梳理(和mis全部对应上) @high
+         ☐ 从localstorage获取数据的错误处理 @critical 
+         ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
          ☐ 当前运营车辆的状态
-         ☐ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理 @today @critical 
+         ☐ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical 
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ☐ token的处理,是放到url上还是localstorage里
