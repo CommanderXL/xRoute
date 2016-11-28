@@ -29,7 +29,7 @@ Projects:
          ✔ 认证页面时间初始化 @critical @done (11/26/2016, 9:49:02 AM)
          ✔ xRoute添加对search params的处理(需要编码处理) @high @done (11/26/2016, 3:39:06 PM)
          ✔ picker时间初始化的处理 @high @done (11/26/2016, 9:49:04 AM)
-         ☐ 未通过全局状态的处理(由后端下发数据?) @high 
+         ✔ 未通过全局状态的处理(由后端下发数据?) @high @done (11/28/2016, 8:24:05 PM)
          ☐ 通过的身份信息是否可以修改? @high 
          ✔ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)   (入栈，但是出来的时候使用history出栈)  @critical @done (11/26/2016, 11:23:29 AM)
          ☐ 字段的重新梳理(和mis全部对应上) @high
@@ -37,22 +37,26 @@ Projects:
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
          ☐ Https 密码加密 @critical 
-         ☐ 获取城市配置 @critical 
+         ✔ 获取城市配置 @critical @done (11/28/2016, 8:23:59 PM)
+         ✔ password 对勾样式 @high @done (11/28/2016, 6:08:58 PM)
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
-         ☐ 当前运营车辆的状态
+         ✔ 当前运营车辆的状态 @done (11/28/2016, 8:23:55 PM)
          ☐ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical 
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ☐ token的处理,是放到url上还是localstorage里
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
-         ☐ open_ssl 密码加密
+         ✔ open_ssl 密码加密 @done (11/28/2016, 5:11:04 PM)
          ☐ promise里面this的指向问题
          ✔ 选择城市loading处理的位置 @today @critical @done (11/27/2016, 10:06:19 PM)
-         ☐ info/person缺少头像字段? 
+         ✔ info/person缺少头像字段? @done (11/28/2016, 8:23:49 PM)
          ✔ 完成tips页面 @today @done (11/28/2016, 12:11:59 AM)
          ☐ native存在销毁webView历史记录的bridge
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed 
+         ☐ 统计缺少的字段 @critical
+         ☐ 飘红的横线处理 @today 
+         ☐ 完成所有示例图的弹层 @today 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)
