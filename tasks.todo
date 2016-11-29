@@ -33,7 +33,7 @@ Projects:
          ✔ 通过的身份信息是否可以修改? @high @done (11/29/2016, 1:25:26 AM)
          ✔ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)   (入栈，但是出来的时候使用history出栈)  @critical @done (11/26/2016, 11:23:29 AM)
          ☐ 字段的重新梳理(和mis全部对应上) @high
-         ☐ 从localstorage获取数据的错误处理 @critical 
+         ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
          ☐ Https 密码加密 @critical 
@@ -46,6 +46,7 @@ Projects:
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ☐ token的处理,是放到url上还是localstorage里
+         ☐ php后台json处理 @low 
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
          ✔ open_ssl 密码加密 @done (11/28/2016, 5:11:04 PM)
          ☐ promise里面this的指向问题
