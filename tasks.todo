@@ -21,7 +21,7 @@ Projects:
          ✔ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical @done (11/23/2016, 11:48:39 AM)
             ✔ 方案1: 直接在Router上挂载 （this.way） @done (11/23/2016, 11:50:32 AM)
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
-         ☐ promise添加错误处理, 主要是对网络请求失败的错误处理 @today 
+         ☐ promise添加错误处理, 主要是对网络请求失败的错误处理, 超时处理 @today 
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
          ☐ 是否需要将route部分独立出来
          ✔ picker的31号处理, 大于当前时间报错的处理,不同年月导致日期不同的切换 @today @done (11/26/2016, 3:30:27 PM)
@@ -36,6 +36,7 @@ Projects:
          ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
+         ☐ info/person 头像的loading图
          ✔ Https 密码加密 @critical @done (11/29/2016, 12:10:26 PM)
          ✔ 获取城市配置 @critical @done (11/28/2016, 8:23:59 PM)
          ✔ password 对勾样式 @high @done (11/28/2016, 6:08:58 PM)
