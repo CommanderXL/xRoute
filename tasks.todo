@@ -23,7 +23,7 @@ Projects:
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
          ☐ promise添加错误处理, 主要是对网络请求失败的错误处理, 超时处理 @today 
          ☐ info/person页面存在滑动事件穿透. dialog存在滑动事件穿透
-         ☐ 是否需要将route部分独立出来
+         ☐ 是否需要将route部分独立出来 @low 
          ✔ picker的31号处理, 大于当前时间报错的处理,不同年月导致日期不同的切换 @today @done (11/26/2016, 3:30:27 PM)
          ✔ 添加loading icon @high @done (11/26/2016, 7:37:04 PM)
          ✔ 认证页面时间初始化 @critical @done (11/26/2016, 9:49:02 AM)
@@ -48,7 +48,7 @@ Projects:
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ☐ token的处理,是放到url上还是localstorage里
          ☐ php后台json处理 @low 
-         ☐ chooseCar的样式 @today 
+         ☐ chooseCar的样式(选择公司的样式处理) @today 
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
          ✔ open_ssl 密码加密 @done (11/28/2016, 5:11:04 PM)
          ☐ promise里面this的指向问题
@@ -59,11 +59,11 @@ Projects:
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed bugFix @critical 
          ✔ 统计缺少的字段 @critical @done (11/28/2016, 8:34:08 PM)
-         ☐ 飘红的横线处理 @today 
+         ☐ 飘红的横线(样式)处理 @today 
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
-         ☐ button置灰情况下弹窗的处理 @low 
-         ☐ picker偶尔出现的日期全部消失的情况
-         ☐ 选择的时间大于当前时间的弹窗提醒 @high 
+         ✔ button置灰情况下弹窗的处理 @low @done (11/29/2016, 8:51:30 PM)
+         ☐ picker偶尔出现的日期全部消失的情况 @low 
+         ☐ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态   @high 
          ☐ 完成所有示例图的弹层, 缺省图的展示 @low 
          ☐ 测试银行卡号: 6226095711989751
          ☐ 添加车辆的时候获取的company_config信息(认证资料部分,必须要下发)
