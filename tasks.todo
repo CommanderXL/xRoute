@@ -36,7 +36,7 @@ Projects:
          ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
-         ☐ Https 密码加密 @critical 
+         ✔ Https 密码加密 @critical @done (11/29/2016, 12:10:26 PM)
          ✔ 获取城市配置 @critical @done (11/28/2016, 8:23:59 PM)
          ✔ password 对勾样式 @high @done (11/28/2016, 6:08:58 PM)
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
