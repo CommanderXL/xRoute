@@ -35,7 +35,7 @@ Projects:
          ☐ 字段的重新梳理(和mis全部对应上) @high
          ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
-         ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置)
+         ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置, sessionStorage来配置?)
          ✔ info/person 头像的loading图 @done (11/29/2016, 5:06:49 PM)
          ✔ Https 密码加密 @critical @done (11/29/2016, 12:10:26 PM)
          ✔ 获取城市配置 @critical @done (11/28/2016, 8:23:59 PM)
@@ -72,12 +72,23 @@ Projects:
          ☐ info/person 等4个页面出现白框的情况
          http://10.94.105.96:9999/static/taxiimg/do1_GHygwIvRwRLPwZtzZqP3.jpg
 
+        Dones:
+            1. 获取审核状态
+            2. 身份信息修改
+            3. 公司信息修改
+            4. 
+            5. 
+            6. 新增车辆
+            7. 删除车辆
+            8. 
+            
 
-        a. 公司信息变更接口通过
-        b. employ变更信息接口通过
-        c. 添加车辆接口通过 (字段还是改回去比较好) @high 
-        d. 获取身份信息接口OK (是否为全量提交有待确认?)
-        e. 删除车辆接口有问题
+        Todos: 
+            4. 从业信息修改
+            5. 修改车辆信息(需要下发resource_key字段)
+            8. 设置当前运营车辆
+
+
 
         Bugs:
 
@@ -92,7 +103,7 @@ Projects:
          9. 截止日期设为2096年
          10. 手动添加公司, input标签应该要用一个div包裹起来? input标签横线是圆弧?
          11. 暂无公司的样式
-         12. mis下发的car_prefix会带字幕吗？
+         12. mis下发的car_prefix会带字段吗？
          13. iphone手机拍照时，前后摄像头不一致的情况
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
