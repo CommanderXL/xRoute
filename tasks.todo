@@ -70,27 +70,21 @@ Projects:
          ☐ 和端的同学确认bridge所需字段信息
          ☐ 测试银行卡号: 6226095711989751
          ☐ 添加车辆的时候获取的company_config信息(认证资料部分,必须要下发)
-         ☐ info/person 等4个页面出现白框的情况
+         ☐ info/person 等4个页面出现白框的情况 @high 底部
          http://10.94.105.96:9999/static/taxiimg/do1_GHygwIvRwRLPwZtzZqP3.jpg
 
 
         
-
+         (接口调试)
         Dones:
             1. 获取审核状态
             2. 身份信息修改接口
             3. 公司信息修改/更新接口
             4. 从业信息修改/更新接口
-            5. 
+            5. 修改车辆信息(需要下发resource_key字段 //Todo)
             6. 新增车辆 (需要根据下发的通过数据进行数据的配置) @critical 情况特殊
             7. 删除车辆
             8. 设置当前运营车辆
-            
-
-        Todos: 
-            5. 修改车辆信息(需要下发resource_key字段 //Todo)
-
-
 
         Bugs:
 
@@ -103,7 +97,7 @@ Projects:
          7. 填写手机获取验证码页面,不勾选协议的提示文案? (TODO 还需要确认文案信息)
          8. 每次从手机填写页面进入到验证码页面都需要清空本地的smscode缓存 @done 
          9. 截止日期设为2096年,并消除/添加时间判断 (@TODO)
-         10. 手动添加公司, input标签应该要用一个div包裹起来? input标签横线是圆弧? (TODO)
+         10. 手动添加公司, input标签应该要用一个div包裹起来? input标签横线是圆弧? (@TODO)
          11. 暂无公司的样式
          12. mis下发的car_prefix会带字段吗 @done  
          13. iphone手机拍照时，前后摄像头不一致的情况 @done
@@ -118,9 +112,13 @@ Projects:
         19. 设置当前运营车辆传递gvid参数 @done
         20. 下发的status到底是字符还是数字. 
         21. 和交互沟通错误消失的时机
-        22. 银行只能输入数字的限制
-        23. 出租车公司List
+        22. 银行只能输入数字的限制 （@TODO）
+        23. 出租车公司List @done
         24. 修改出租车状态变化(@TODO)
+        25. token sessionStorage  @done
+        26. 车辆不通过的UI显示图 
+        27. tips提示的替换信息???(和PM确认是否每次都会下发remark)
+        28. head tips 未通过信息的提示文案
         
 
         UI：
