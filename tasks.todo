@@ -59,14 +59,15 @@ Projects:
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed bugFix @critical 
          ✔ 统计缺少的字段 @critical @done (11/28/2016, 8:34:08 PM)
-         ☐ 飘红的横线(样式)处理 @today 
+         ☐ 飘红的横线(样式)处理 @critical  
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
          ✔ button置灰情况下弹窗的处理 @low @done (11/29/2016, 8:51:30 PM)
-         ☐ 自动唤起键盘 @low
+         ☐ 自动唤起键盘 @high
          ☐ app端下发的url参数格式问题 @high 
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ☐ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high 
-         ☐ 完成所有示例图的弹层, 缺省图的展示 @low 
+         ☐ 完成所有示例图的弹层, 缺省图的展示 @low
+         ☐ 和端的同学确认bridge所需字段信息
          ☐ 测试银行卡号: 6226095711989751
          ☐ 添加车辆的时候获取的company_config信息(认证资料部分,必须要下发)
          ☐ info/person 等4个页面出现白框的情况
@@ -105,7 +106,7 @@ Projects:
          10. 手动添加公司, input标签应该要用一个div包裹起来? input标签横线是圆弧? (TODO)
          11. 暂无公司的样式
          12. mis下发的car_prefix会带字段吗 @done  
-         13. iphone手机拍照时，前后摄像头不一致的情况
+         13. iphone手机拍照时，前后摄像头不一致的情况 @done
          14. 选择公司页面的公司List需要单独获取? (TODO)
          15. 每个页面title的展示
          16. 上传图片的错误提示文案（再上传一次次吧? ） @done
