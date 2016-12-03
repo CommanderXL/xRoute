@@ -3,7 +3,7 @@ class Node {
         this._parent = parent;
         this._children = new Set();
 
-        if(this.isRoot) {
+        if (this.isRoot) {
             Node.addRoot(this);
         }
     }
@@ -26,12 +26,12 @@ class Node {
 
     get size() {
         let size = 0;
-        for(const node of this._children) {
+        for (const node of this._children) {
             size += node.size;
         }
 
         size = size ? size + 1 : 1;
-        
+
         return size;
     }
 
