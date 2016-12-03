@@ -35,7 +35,7 @@ Projects:
          ☐ 字段的重新梳理(和mis全部对应上) @high
          ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
-         ☐ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置, sessionStorage来配置?)
+         ✔ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置, sessionStorage来配置?) @done (12/3/2016, 4:56:49 PM)
          ✔ info/person 头像的loading图 @done (11/29/2016, 5:06:49 PM)
          ✔ Https 密码加密 @critical @done (11/29/2016, 12:10:26 PM)
          ✔ 获取城市配置 @critical @done (11/28/2016, 8:23:59 PM)
@@ -46,7 +46,7 @@ Projects:
          ✔ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical @done (11/29/2016, 1:24:46 AM)
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
-         ☐ token的处理,是放到url上还是localstorage里
+         ✔ token的处理,是放到url上还是localstorage里 @done (12/3/2016, 4:57:01 PM)
          ☐ php后台json处理 @low 
          ☐ chooseCar的样式(选择公司的样式处理) @today 
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
@@ -63,7 +63,7 @@ Projects:
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
          ✔ button置灰情况下弹窗的处理 @low @done (11/29/2016, 8:51:30 PM)
          ☐ 自动唤起键盘 @high
-         ☐ app端下发的url参数格式问题 @high 
+         ☐ app端下发的url参数格式问题 @critical 
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 完成所有示例图的弹层, 缺省图的展示 @low
