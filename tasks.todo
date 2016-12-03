@@ -67,10 +67,12 @@ Projects:
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 完成所有示例图的弹层, 缺省图的展示 @low
-         ☐ 和端的同学确认bridge所需字段信息
+         ☐ 和端的同学确认bridge所需字段信息 @high 
          ☐ 测试银行卡号: 6226095711989751
          ☐ 添加车辆的时候获取的company_config信息(认证资料部分,必须要下发)
          ☐ info/person 等4个页面出现白框的情况 @high 底部
+         ☐ 2个部分的构建工作
+         ☐ :not(:last-child) 不起作用   :not(:last-of-type)
          http://10.94.105.96:9999/static/taxiimg/do1_GHygwIvRwRLPwZtzZqP3.jpg
 
 
@@ -101,7 +103,7 @@ Projects:
          11. 暂无公司的样式
          12. mis下发的car_prefix会带字段吗 @done  
          13. iphone手机拍照时，前后摄像头不一致的情况 @done
-         14. 选择公司页面的公司List需要单独获取? (@DONE)
+         14. 选择公司页面的公司List需要单独获取? (@done)
          15. 每个页面title的展示 @done
          16. 上传图片的错误提示文案（再上传一次次吧? ） @done
          17. 全局组件的消除
@@ -111,7 +113,7 @@ Projects:
                city_id --->>> driver_city
         19. 设置当前运营车辆传递gvid参数 @done
         20. 下发的status到底是字符还是数字. 
-        21. 和交互沟通错误消失的时机
+        21. 和交互沟通错误消失的时机 ()
         22. 银行只能输入数字的限制 （@TODO）
         23. 出租车公司List @done
         24. 修改出租车状态变化(@TODO)
@@ -119,7 +121,7 @@ Projects:
         26. 车辆不通过的UI显示图 @done (使用文字来展示)
         27. tips提示的替换信息???(和PM确认是否每次都会下发remark)
         28. head tips 未通过信息的提示文案
-        29. certify/car返回的字段内容错误. 外层的status应该遍历内层的status
+        29. certify/car返回的字段内容错误. 外层的status应该遍历内层的status (@todo)
         
 
         UI：
