@@ -55,11 +55,11 @@ Projects:
          ✔ 选择城市loading处理的位置 @today @critical @done (11/27/2016, 10:06:19 PM)
          ✔ info/person缺少头像字段? @done (11/28/2016, 8:23:49 PM)
          ✔ 完成tips页面 @today @done (11/28/2016, 12:11:59 AM)
-         ☐ native存在销毁webView历史记录的bridge
+         ✔ native存在销毁webView历史记录的bridge (nativeClose) @done (12/3/2016, 4:56:24 PM)
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
          ☐ position: absolute/fixed bugFix @critical 
          ✔ 统计缺少的字段 @critical @done (11/28/2016, 8:34:08 PM)
-         ☐ 飘红的横线(样式)处理 @critical  
+         ✔ 飘红的横线(样式)处理 @critical @done (12/3/2016, 4:56:11 PM)
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
          ✔ button置灰情况下弹窗的处理 @low @done (11/29/2016, 8:51:30 PM)
          ☐ 自动唤起键盘 @high
