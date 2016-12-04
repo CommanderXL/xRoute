@@ -131,11 +131,15 @@ Projects:
         12.4 afternoon todo:
             1. cerity构建环境配置,及端上下发url的处理
             2. cerity动态渲染视图 (@done)
-            3. companyConfigList配置的获取 (如果有temp数据,则从temp数据中获取)
-            4. heade-tips提示信息的展示(待审核时间的下发)
+            3. companyConfigList配置的获取 (如果有temp数据,则从temp数据中获取) @done
+            4. heade-tips提示信息的展示(待审核时间的下发) @done
             5. clearHistory()的时机 (???)
-            6. 所有对于errno的处理
+            6. 所有对于errno的处理 
             7. 梳理biz_status信息 @critical 
+            8. 时间转化函数  @done
+            9. 检查spread符 @done
+            10. 时间变更结束时间??? curr/temp
+            11. 页面的提示信息(到底是放到页面的上部,还是以弹窗的形式出现)
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
