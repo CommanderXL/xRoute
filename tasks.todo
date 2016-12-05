@@ -122,7 +122,7 @@ Projects:
             6. 银行渐现效果
             7. 选择后的字体颜色变化
             9. certify应该是动态渲染出来的视图 @critical 
-            11. 通过的icon
+            11. 通过的icon (弹窗)
             12. 下发的城市配置信息?
             13. Employ没有下发url的value和url的值
             14. ceritfy构建环境配置,及端上下发url的处理 @critical 
@@ -135,14 +135,14 @@ Projects:
             3. companyConfigList配置的获取 (如果有temp数据,则从temp数据中获取) @done
             4. heade-tips提示信息的展示(待审核时间的下发) @done
             5. clearHistory()的时机 (???)
-            6. 所有对于errno的处理 
+            6. 所有对于errno的处理 @critical 
             7. 梳理biz_status信息 @critical 
             8. 时间转化函数  @done
             9. 检查spread符 @done
             10. 时间变更结束时间??? curr/temp
             11. 页面的提示信息(到底是放到页面的上部,还是以弹窗的形式出现)
             12. 模块中显示：身份信息审核通过后，无法修改。如需修改，请通过服务中心咨询在线客服
-            13. 当前公司信息已变更，如果车辆信息和从业资格信息与之不符将无法审核通过。请一并核实
+            13. 当前公司信息已变更，如果车辆信息和从业资格信息与之不符将无法审核通过。请一并核实 
             14. 封禁状态的提示
             15. 端上的同学bridge需要带上什么参数
 
