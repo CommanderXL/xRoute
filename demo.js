@@ -45,3 +45,36 @@ class Node {
             .reduce((a, b) => a + b);
     }
 }
+
+
+(function (window) {
+    // 连接DidiJSBridge
+    var connectDidiJSBridge = function (callback) {
+        if (window.DidiJSBridge) {
+            callback(DidiJSBridge);
+        } else {
+            document.addEventListener('DidiJSBridgeReady', function () {
+                callback(DidiJSBridge);
+            }, false);
+        }
+    };
+
+    var btn = document.querySelector('button');
+
+    btn.addEventListener('click', function () {
+        var obj = {
+            "phone": 13000000000,
+            "uid": 873,
+            "token": "felldoo_pofelr",
+            "districtInfo": {
+                "cityName": "\u5e38\u5dde\u5e02",
+                "no": "0519",
+                "cityId": "45"
+            }
+        };
+        connectDidiJSBridge(function (bridge) {
+
+            bridge.callHandler('register_success', JSON.stringify(obj));
+        });
+    }, false);
+})(window);

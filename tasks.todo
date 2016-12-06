@@ -78,7 +78,8 @@ Projects:
 
      account页面:
          1. 手机号注册 font-size
-         2. title字体大小
+         2. title字体大小 (和端上同学确认)
+         3. 协议是否通过改用图片来实现
 
 
         
@@ -111,6 +112,7 @@ Projects:
         27. tips提示的替换信息???(和PM确认是否每次都会下发remark)
         28. head tips 未通过信息的提示文案
         29. certify/car返回的字段内容错误. 外层的status应该遍历内层的status (@todo)
+        
         
 
         UI：
@@ -148,8 +150,14 @@ Projects:
             17. 下发双份数据的时机???????? @critical 
             18. checkCar文字显示的时机的处理,(查看详情态时,部分信息是不显示的) @done
             19. 变更信息相当于新添加数据 (@TODO)
+            
             20. 删除车辆的gvid更新
-
+            30. 请求城市的接口是否还需要带上fmf_cn字段和need_company字段
+            31. 城市配置发生变更,不通过的数据需要修改时,根据最新的城市配置信息来进行修改(@critical)
+            32. background-repeat: no-repeat;
+            33. 从业信息不通过，公司不通过, 最后的显示字段???
+            34. 添加删除viewDestory()的逻辑
+            35. company_id ???
 
         转场动画实现思路:
 
