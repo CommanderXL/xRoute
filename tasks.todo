@@ -65,7 +65,6 @@ Projects:
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 完成所有示例图的弹层, 缺省图的展示 @low
-         ☐ 和端的同学确认bridge所需字段信息 @high 
          ☐ 测试银行卡号: 6226095711989751
          ☐ 2个部分的构建工作
          ☐ :not(:last-child) 不起作用   :not(:last-of-type) @critical 
@@ -75,7 +74,7 @@ Projects:
      account页面:
          1. 手机号注册 font-size
          2. title字体大小 (和端上同学确认)
-         3. 协议是否通过改用图片来实现
+         3. 协议的ICON是否通过改用图片来实现?
      verity页面:
          1. 弹窗
          2. 服务条款页
@@ -88,7 +87,7 @@ Projects:
          5. 颜色#333，字号32px
      company页面:
          1. 热力区覆盖所有
-         2. 颜色修改
+         2. 颜色修改 (注册部分文字颜色修改完成, 认证部分未完成)
          3. 城市选择组件箭头和之前的保持统一
          4. 选择城市的二态
          5. 检查城市页面的border-bottom的毛刺
@@ -144,7 +143,7 @@ Projects:
             6. 银行渐现效果
             7. 选择后的字体颜色变化  @todo
             11. 通过的icon (弹窗)
-            15. header-tips提示信息的逻辑
+            15. header-tips提示信息的逻辑 @done
 
         12.4 afternoon todo:
             es6-promise + whatwg-fetch
@@ -187,10 +186,23 @@ TODO:
     和黎舒确认删除车辆的传参(删除当前运营车辆时,需要带上gvid参数)
     
     promise添加超时处理(消除弹窗)  (网络繁忙,请稍后重试tips icon)
+   
     viewDestory()添加消除dialog的事件推送
     
     删除运营车辆的时候带上gvid(@done)
     设置common-hide时的双目运算 (@done)
+
+    首页的初始化.避免两次返回操作
+
+    选择城市返回,城市页面依然存在. dialog弹窗的销毁
+
+    注册成功,locstorage的销毁, bridge有问题(register_success)
+
+    图片的路径都有问题
+
+    头像的路径?
+
+    
     
 
     
