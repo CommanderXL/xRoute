@@ -14,7 +14,6 @@ Projects:
          ✔ 初次领取驾照的数据格式转化 @done (11/21/2016, 5:57:24 PM)
          ✔ info/company模板数据还需要提供公司的id号. 以及单独添加company的时候是否需要添加id的值 @done (11/25/2016, 8:32:12 PM)
          ☐ 关于事件穿透的提问(事件代理，滑动穿透(3个平级div))
-         ☐ es6-promise + whatwg-fetch
          ✔ 解决Router.go()的bug    @critical @done (11/23/2016, 12:23:46 AM)
          ✔ 添加需要提交照片的字段值 @done (11/22/2016, 1:25:12 PM)
          ✔ 添加从缓存获取数据,picker初始化的 @critical @done (11/23/2016, 11:00:05 AM)
@@ -48,7 +47,6 @@ Projects:
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ✔ token的处理,是放到url上还是localstorage里 @done (12/3/2016, 4:57:01 PM)
          ☐ php后台json处理 @low 
-         ☐ chooseCar的样式(选择公司的样式处理) @today 
          ✔ vertify页面input的处理 @done (11/26/2016, 10:17:52 PM)
          ✔ open_ssl 密码加密 @done (11/28/2016, 5:11:04 PM)
          ☐ promise里面this的指向问题
@@ -69,8 +67,6 @@ Projects:
          ☐ 完成所有示例图的弹层, 缺省图的展示 @low
          ☐ 和端的同学确认bridge所需字段信息 @high 
          ☐ 测试银行卡号: 6226095711989751
-         ☐ 添加车辆的时候获取的company_config信息(认证资料部分,必须要下发)
-         ☐ info/person 等4个页面出现白框的情况 @high 底部
          ☐ 2个部分的构建工作
          ☐ :not(:last-child) 不起作用   :not(:last-of-type) @critical 
          http://10.94.105.96:9999/static/taxiimg/do1_GHygwIvRwRLPwZtzZqP3.jpg
@@ -95,7 +91,7 @@ Projects:
          2. 颜色修改
          3. 城市选择组件箭头和之前的保持统一
          4. 选择城市的二态
-         5. 添加城市页面的border-bottom的毛刺
+         5. 检查城市页面的border-bottom的毛刺
 
 
 协议和Pm确认
@@ -147,7 +143,6 @@ Projects:
             5. 查看实例图弹窗2个图(能否让UI合成一个图)
             6. 银行渐现效果
             7. 选择后的字体颜色变化  @todo
-            9. certify应该是动态渲染出来的视图 @critical 
             11. 通过的icon (弹窗)
             15. header-tips提示信息的逻辑
 
@@ -157,10 +152,8 @@ Projects:
             4. heade-tips提示信息的展示(待审核时间的下发) @done
             5. clearHistory()的时机 (???)
             6. 所有对于errno的处理 @critical @done
-            7. 梳理biz_status信息 @critical 
             8. 时间转化函数  @done
             9. 检查spread符  @TODO   @critical 
-            10. 时间变更结束时间??? curr/temp 
             11. 页面的提示信息(到底是放到页面的上部,还是以弹窗的形式出现)
             12. 模块中显示：身份信息审核通过后，无法修改。如需修改，请通过服务中心咨询在线客服
             13. 当前公司信息已变更，如果车辆信息和从业资格信息与之不符将无法审核通过。请一并核实 
@@ -168,7 +161,7 @@ Projects:
             16. input 监听输入事件，输入中文时会带入字母的bug @done
             18. checkCar文字显示的时机的处理,(查看详情态时,部分信息是不显示的) @done
             19. 变更信息相当于新添加数据 (@TODO)
-            20. 删除车辆的gvid更新
+            20. 删除车辆的gvid更新 (@done)
             30. 请求城市的接口是否还需要带上fmf_cn字段和need_company字段
             31. 城市配置发生变更,不通过的数据需要修改时,根据最新的城市配置信息来进行修改(@critical)
             32. background-repeat: no-repeat;
@@ -192,9 +185,12 @@ Projects:
 
 TODO: 
     和黎舒确认删除车辆的传参(删除当前运营车辆时,需要带上gvid参数)
+    
     promise添加超时处理(消除弹窗)  (网络繁忙,请稍后重试tips icon)
+    viewDestory()添加消除dialog的事件推送
+    
     删除运营车辆的时候带上gvid(@done)
-    设置common-hide时的双目运算
+    设置common-hide时的双目运算 (@done)
     
 
     
