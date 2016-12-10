@@ -80,7 +80,7 @@ Projects:
          2. 服务条款页
          3. 图片出现虚化
     info页面:
-         1. 展示图片(确认)
+         1. 展示图片 @done
          2. error: last-pic 向下移动了
          3. 导航栏是否滚动 (和PM确认)
          4. 和native同学确认app是否缩放 
@@ -91,7 +91,8 @@ Projects:
          3. 城市选择组件箭头和之前的保持统一 @done
          4. 选择城市的二态
          5. 检查城市页面的border-bottom的毛刺 @done (使用div的padding-bottom来撑开，如果使用input的padding-bottom的话,底部会产生毛刺)
-
+     Employ页面:
+         1. 文案内容会发生变化 ??? 图片该如何处理
 
 
 协议和Pm确认
@@ -122,12 +123,10 @@ Projects:
             b. province_id --->>> driver_province
                city_id --->>> driver_city
         20. 下发的status到底是字符还是数字. 
-        22. 银行只能输入数字的限制 （@DONE）不做限制
         24. 修改出租车状态变化(@TODO)
         26. 车辆不通过的UI显示图 @done (使用文字来展示)
         27. tips提示的替换信息???(和PM确认是否每次都会下发remark)
         28. head tips 未通过信息的提示文案
-        29. certify/car返回的字段内容错误. 外层的status应该遍历内层的status (@todo)
         
         
 
@@ -159,7 +158,6 @@ Projects:
             14. 封禁状态的提示
             16. input 监听输入事件，输入中文时会带入字母的bug @done
             18. checkCar文字显示的时机的处理,(查看详情态时,部分信息是不显示的) @done
-            19. 变更信息相当于新添加数据 (@TODO)
             20. 删除车辆的gvid更新 (@done)
             30. 请求城市的接口是否还需要带上fmf_cn字段和need_company字段
             31. 城市配置发生变更,不通过的数据需要修改时,根据最新的城市配置信息来进行修改(@critical)
@@ -192,23 +190,27 @@ TODO:
     删除运营车辆的时候带上gvid(@done)
     设置common-hide时的双目运算 (@done)
 
-    首页的初始化.避免两次返回操作
+    首页的初始化.避免两次返回操作 
 
     选择城市返回,城市页面依然存在. dialog弹窗的销毁
 
-    注册成功,locstorage的销毁, bridge有问题(register_success)
+    注册成功,locstorage的销毁, bridge有问题(register_success, 需要和端上同学确认)
 
     图片的路径都有问题
 
-    头像的路径?
-
     添加全局Event错误处理函数
 
-    certify/person唤不起picker
+    certify/person唤不起picker ???
 
     
 vue-resource:
     timeout 和 promise添加超时处理
+
+
+Tonight:
+    1. 避免2次返回的处理
+    2. 全局Event处理函数
+    3. 构建的整理
 
     
 
