@@ -64,7 +64,6 @@ Projects:
          ✔ app端下发的url参数格式问题(将certify部分从register中独立出来) @critical @done (12/5/2016, 12:16:20 PM)
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
-         ☐ 完成所有示例图的弹层, 缺省图的展示 @low
          ☐ 测试银行卡号: 6226095711989751
          ☐ 2个部分的构建工作
          ☐ :not(:last-child) 不起作用   :not(:last-of-type) @critical 
@@ -78,7 +77,7 @@ Projects:
      verity页面:
          1. 弹窗
          2. 服务条款页
-         3. 图片出现虚化
+         3. 图片出现虚化 @done 微信传图会自动压缩图片
     info页面:
          1. 展示图片 @done
          2. error: last-pic 向下移动了
@@ -93,6 +92,9 @@ Projects:
          5. 检查城市页面的border-bottom的毛刺 @done (使用div的padding-bottom来撑开，如果使用input的padding-bottom的话,底部会产生毛刺)
      Employ页面:
          1. 文案内容会发生变化 ??? 图片该如何处理
+
+
+     弹窗的样式处理 @critical 
 
 
 协议和Pm确认
@@ -211,6 +213,7 @@ Tonight:
     1. 避免2次返回的处理
     2. 全局Event处理函数
     3. 构建的整理
+    4. 对勾/叹号 icon
 
     
 
