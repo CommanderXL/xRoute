@@ -82,15 +82,16 @@ Projects:
     info页面:
          1. 展示图片(确认)
          2. error: last-pic 向下移动了
-         3. 导航栏是否滚动
+         3. 导航栏是否滚动 (和PM确认)
          4. 和native同学确认app是否缩放
-         5. 颜色#333，字号32px
+         5. 颜色#333，字号32px  @done
      company页面:
-         1. 热力区覆盖所有
-         2. 颜色修改 (注册部分文字颜色修改完成, 认证部分未完成)
-         3. 城市选择组件箭头和之前的保持统一
+         1. 热力区覆盖所有  @done
+         2. 颜色修改 @done
+         3. 城市选择组件箭头和之前的保持统一 @done
          4. 选择城市的二态
-         5. 检查城市页面的border-bottom的毛刺
+         5. 检查城市页面的border-bottom的毛刺 @done (使用div的padding-bottom来撑开，如果使用input的padding-bottom的话,底部会产生毛刺)
+
 
 
 协议和Pm确认
@@ -141,13 +142,12 @@ Projects:
             4. es6-promise/fetch 集成 (@done) @critical 
             5. 查看实例图弹窗2个图(能否让UI合成一个图)
             6. 银行渐现效果
-            7. 选择后的字体颜色变化  @todo
+            7. 选择后的字体颜色变化  @done
             11. 通过的icon (弹窗)
             15. header-tips提示信息的逻辑 @done
 
         12.4 afternoon todo:
             es6-promise + whatwg-fetch
-            3. companyConfigList配置的获取 (如果有temp数据,则从temp数据中获取) @todo
             4. heade-tips提示信息的展示(待审核时间的下发) @done
             5. clearHistory()的时机 (???)
             6. 所有对于errno的处理 @critical @done
@@ -203,6 +203,8 @@ TODO:
     头像的路径?
 
     添加全局Event错误处理函数
+
+    certify/person唤不起picker
 
     
 vue-resource:
