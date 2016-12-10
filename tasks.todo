@@ -202,8 +202,11 @@ TODO:
 
     头像的路径?
 
+    添加全局Event错误处理函数
+
     
-    
+vue-resource:
+    timeout 和 promise添加超时处理
 
     
 
