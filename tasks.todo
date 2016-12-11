@@ -192,9 +192,7 @@ TODO:
     删除运营车辆的时候带上gvid(@done)
     设置common-hide时的双目运算 (@done)
 
-    首页的初始化.避免两次返回操作 
-
-    选择城市返回,城市页面依然存在. dialog弹窗的销毁
+    选择城市返回,城市页面依然存在. dialog弹窗的销毁 (@done)
 
     注册成功,locstorage的销毁, bridge有问题(register_success, 需要和端上同学确认)
 
@@ -212,10 +210,12 @@ vue-resource:
 Tonight:
     1. 避免2次返回的处理 (@done) 页面初始化时使用replaceState来替换本次的历史栈
     2. 全局Event处理函数
-    3. 构建的整理
-    4. 对勾/叹号 icon
+    3. 构建的整理 (完善构建，看一下图片是如何打包的)
+    4. 找一下 对勾/叹号 icon
     5. 和帅兵确认后端的下发的资格证中是名字不一样还是字段不一样???
     6. images放到images/(register|certify)
+    7. webpack文件依赖的问题???
+    8. certify/company的cityList缓存问题
 
     
 
