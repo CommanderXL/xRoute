@@ -210,12 +210,12 @@ vue-resource:
 Tonight:
     1. 避免2次返回的处理 (@done) 页面初始化时使用replaceState来替换本次的历史栈
     2. 全局Event处理函数
-    3. 构建的整理 (完善构建，看一下图片是如何打包的)
+    3. 构建的整理 (完善构建，看一下图片是如何打包的, 图片先压缩)
     4. 找一下 对勾/叹号 icon
     5. 和帅兵确认后端的下发的资格证中是名字不一样还是字段不一样???
     6. images放到images/(register|certify)
     7. webpack文件依赖的问题???
-    8. certify/company的cityList缓存问题
+    8. certify/company的cityList缓存问题 (@high 现阶段是本地做缓存? 明天和黎舒确认)
 
     
 
