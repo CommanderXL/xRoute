@@ -156,7 +156,7 @@ Projects:
         12.4 afternoon todo:
             es6-promise + whatwg-fetch
             4. heade-tips提示信息的展示(待审核时间的下发) @done
-            5. clearHistory()的时机 (???)
+            5. clearHistory()的时机 @done
             6. 所有对于errno的处理 @critical @done
             8. 时间转化函数  @done
             9. 检查spread符  @TODO   @critical 
@@ -167,7 +167,7 @@ Projects:
             16. input 监听输入事件，输入中文时会带入字母的bug @done
             18. checkCar文字显示的时机的处理,(查看详情态时,部分信息是不显示的) @done
             20. 删除车辆的gvid更新 (@done)
-            30. 请求城市的接口是否还需要带上fmf_cn字段和need_company字段
+            30. 请求城市的接口是否还需要带上fmf_cn字段和need_company字段 @done
             31. 城市配置发生变更,不通过的数据需要修改时,根据最新的城市配置信息来进行修改(@critical)
             32. background-repeat: no-repeat;
             33. 从业信息不通过，公司不通过, 最后的显示字段???
@@ -206,7 +206,7 @@ TODO:
 
     添加全局Event错误处理函数
 
-    certify/person唤不起picker @done
+    certify/person唤不起picker @done selectComponent为单例
 
     
 vue-resource:
@@ -225,10 +225,13 @@ Tonight:
     11. 背景图使用position来控制位置???
     12. changeCompany的时候保存了renewData的数据???
     13. company获取城市数据
-    14. position 不同造成的样式问题.  header-tips
-    15. Andriod机器下的样式调试
+    14. position 不同造成的样式问题.  header-tips @done
+    15. Andriod机器下的样式调试  @critical 
     16. 图片上传提示 (黎舒修改超时时间, 1000ms超时) @done
-    17. tips页面的图片替换
+    17. tips页面的图片替换 
+    18. es6-promise包的添加
+    19. 构建问题
+    20. 和安卓的同学沟通bridge的事情
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)
