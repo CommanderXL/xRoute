@@ -72,18 +72,17 @@ Projects:
 
      account页面:
          1. 手机号注册 font-size  @done
-         2. title字体大小 (端)
-         3. 协议的ICON是否通过改用图片来实现?
+         2. title字体大小 @done
+         3. 协议的ICON是否通过改用图片来实现? @done
      verity页面:
          1. 弹窗
          2. 服务条款页
          3. 图片出现虚化 @done 微信传图会自动压缩图片
     info页面:
          1. 展示图片 @done
-         2. error: last-pic 向下移动了
-         3. 导航栏是否滚动 (和PM确认)
-         4. 和native同学确认app是否缩放 
-         5. 颜色#333，字号32px  @done
+         2. 导航栏是否滚动 @done
+         3. 和native同学确认app是否缩放 
+         4. 颜色#333，字号32px  @done
      company页面:
          1. 热力区覆盖所有  @done
          2. 颜色修改 
@@ -91,18 +90,18 @@ Projects:
          4. 选择城市的二态
          5. 检查城市页面的border-bottom的毛刺 @done (使用div的padding-bottom来撑开，如果使用input的padding-bottom的话,底部会产生毛刺)
      Employ页面:
-         1. 文案内容会发生变化 ??? 图片该如何处理
 
      
 
      certify:
          car页面:
-             部分icon的查看
+            对勾icon有点细
 
 
 
 
      弹窗的样式处理 @critical 
+     err: last-type 有点靠下了?
 
 
 协议和Pm确认
@@ -220,11 +219,10 @@ Tonight:
     2. 全局Event处理函数 @done 单独组织成一个文件
     3. 构建的整理 (完善构建，看一下图片是如何打包的, 图片先压缩) @done
     4. 找一下 对勾 icon  ??
-    5. 和帅兵确认后端的下发的资格证中是名字不一样还是字段不一样???
     6. images放到images/(register|certify) @done
     7. webpack文件依赖的问题???
     8. certify/company的cityList缓存问题 (@high 现阶段是本地做缓存? 明天和黎舒确认)
-
+    9. https链接问题
     
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
