@@ -200,9 +200,9 @@ TODO:
 
     选择城市返回,城市页面依然存在. dialog弹窗的销毁 (@done)
 
-    注册成功,locstorage的销毁, bridge有问题(register_success, 需要和端上同学确认)
+    注册成功,locstorage的销毁, bridge有问题(register_success, 需要和端上同学确认） @done
 
-    图片的路径都有问题
+    图片的路径都有问题 ??
 
     添加全局Event错误处理函数
 
@@ -221,25 +221,26 @@ Tonight:
     6. images放到images/(register|certify) @done
     7. webpack文件依赖的问题???
     8. certify/company的cityList缓存问题 (@high 现阶段是本地做缓存? 明天和黎舒确认)
-    9. https链接问题
+    9. https链接问题 @done
     11. 背景图使用position来控制位置???
     12. changeCompany的时候保存了renewData的数据???
     13. company获取城市数据
     14. position 不同造成的样式问题.  header-tips @done
-    15. Andriod机器下的样式调试  @critical 
+    15. Andriod机器下的样式调试  @critical @done
     16. 图片上传提示 (黎舒修改超时时间, 1000ms超时) @done
     17. tips页面的图片替换 
-    18. es6-promise包的添加
+    18. es6-promise包的添加 @done
     19. 构建问题
     20. 和安卓的同学沟通bridge的事情
 
 
-    点击添加按钮太靠下
+    点击添加按钮太靠下 @done
     协议的提示文案
+    图片的替换(register)
     error-tips靠下 @done
 
 
-    给沈洁带发票
+    viewDestory() 页面销毁
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)
