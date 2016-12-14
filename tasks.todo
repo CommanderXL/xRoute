@@ -254,24 +254,41 @@ Tonight:
         一行文字统一使用tips，如果有title就单独设置  @done
     password:
         一次密码和二次都为空的情况下的判断. @done
+
+        字体太小(@TODO)
+
+        密码需要
     verity页面:
         验证码输入错误后清空验证码 @done
+        
+    tips页面:
+        文字距离图片的距离有点不一致
+    info/person:
+        header-tips文字间距,距离上部圆圈的距离
 
 
     account页面:
         圆圈按钮 @done
-    info/person:
-        间距及head-tips  (user-agent来判断) 
     info/car:
         页面渲染(渲染好后才出现) @done
     selectComponent组件样式:
         样式的处理 @done
         
+        @TODO 
         标题: 32px;
         取消/确认: 32px;
         item: 31px;
     certify/headers:
-        header-tab的横线
+        header-tab的横线 @done
+
+    
+    页面回退:
+        dialog销毁的问题
+
+    employ页面示例图:
+        padding做下处理
+
+    图片裁剪???
 
 
     安卓误差问题，首先将页面放大，然后缩小
