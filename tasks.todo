@@ -198,7 +198,7 @@ TODO:
     删除运营车辆的时候带上gvid(@done)
     设置common-hide时的双目运算 (@done)
 
-    选择城市返回,城市页面依然存在. dialog弹窗的销毁 (@done)
+    选择城市返回,城市页面依然存在. dialog弹窗的销毁 (@TODO)
 
     注册成功,locstorage的销毁, bridge有问题(register_success, 需要和端上同学确认） @done
 
@@ -228,14 +228,16 @@ Tonight:
     14. position 不同造成的样式问题.  header-tips @done
     15. Andriod机器下的样式调试  @critical @done
     16. 图片上传提示 (黎舒修改超时时间, 1000ms超时) @done
-    17. tips页面的图片替换 @todo
+    17. tips页面的图片替换 @done
     18. es6-promise包的添加 @done
     19. 构建问题 
     20. 和安卓的同学沟通bridge的事情 @done
+    
+
+    biz_status
 
 
     点击添加按钮太靠下 @done
-    协议的提示文案
     图片的替换(register)
     error-tips靠下 @done
 
@@ -251,22 +253,32 @@ Tonight:
     dialog弹窗: 
         一行文字统一使用tips，如果有title就单独设置  @done
     password:
-        一次密码和二次都为空的情况下的判断.
+        一次密码和二次都为空的情况下的判断. @done
+    verity页面:
+        验证码输入错误后清空验证码 @done
 
 
     account页面:
-        圆圈按钮
+        圆圈按钮 @done
     info/person:
-        间距及head-tips  (user-agent来判断)
+        间距及head-tips  (user-agent来判断) 
     info/car:
-        页面渲染(渲染好后才出现)
+        页面渲染(渲染好后才出现) @done
     selectComponent组件样式:
-        样式的处理
+        样式的处理 @done
+        
+        标题: 32px;
+        取消/确认: 32px;
+        item: 31px;
     certify/headers:
         header-tab的横线
 
 
     安卓误差问题，首先将页面放大，然后缩小
+
+    addCar 要有提示信息.弹窗
+
+
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)
