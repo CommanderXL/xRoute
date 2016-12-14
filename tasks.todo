@@ -97,8 +97,6 @@ Projects:
             对勾icon有点细
 
 
-
-
      弹窗的样式处理 @critical 
      err: last-type 有点靠下了?
 
@@ -260,11 +258,12 @@ Tonight:
         密码需要
     verity页面:
         验证码输入错误后清空验证码 @done
-        
+
     tips页面:
-        文字距离图片的距离有点不一致
+        文字距离图片的距离有点不一致 @TODO
     info/person:
-        header-tips文字间距,距离上部圆圈的距离
+        header-tips文字间距,距离上部圆圈的距离,安卓下面 @TODO
+        银行的圆不是很圆 @TODO
 
 
     account页面:
@@ -281,6 +280,8 @@ Tonight:
     certify/headers:
         header-tab的横线 @done
 
+    和IOS同学沟通title,导航栏的问题.
+
     
     页面回退:
         dialog销毁的问题
@@ -290,6 +291,10 @@ Tonight:
 
     图片裁剪???
 
+
+    1. 填写资料，输入时即时判断
+    2. 截止日期
+    3. 键盘问题
 
     安卓误差问题，首先将页面放大，然后缩小
 
