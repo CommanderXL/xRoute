@@ -60,7 +60,7 @@ Projects:
          ✔ 飘红的横线(样式)处理 @critical @done (12/3/2016, 4:56:11 PM)
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
          ✔ button置灰情况下弹窗的处理 @low @done (11/29/2016, 8:51:30 PM)
-         ☐ 自动唤起键盘 @high
+         ✔ 自动唤起键盘 @high @done 做一层玻璃,通过用户去主动触发 @done (12/15/2016, 10:25:12 AM)
          ✔ app端下发的url参数格式问题(将certify部分从register中独立出来) @critical @done (12/5/2016, 12:16:20 PM)
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
@@ -80,7 +80,7 @@ Projects:
     info页面:
          1. 展示图片 @done
          2. 导航栏是否滚动 @done
-         3. 和native同学确认app是否缩放 
+         3. 和native同学确认app是否缩放 @done
          4. 颜色#333，字号32px  @done
      company页面:
          1. 热力区覆盖所有  @done
@@ -297,6 +297,9 @@ Tonight:
 
     @high @TODO 构建的时候需要将webpackConfig的publicPath进行替换  publicPath: '/taxi-driver/'
     @TODO 构建后需要去除html多出的css样式
+
+
+    @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
