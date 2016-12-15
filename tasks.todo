@@ -41,7 +41,7 @@ Projects:
          ✔ password 对勾样式 @high @done (11/28/2016, 6:08:58 PM)
          ✔ 公司信息的数据来源 @critical @done (11/25/2016, 5:33:14 PM)
          ✔ 当前运营车辆的状态 @done (11/28/2016, 8:23:55 PM)
-         ☐ 上传图片超时问题的处理? 
+         ☐ 上传图片超时问题的处理? @done api现在设置的上传gift的超时时间为1s
          ✔ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical @done (11/29/2016, 1:24:46 AM)
          ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
@@ -242,9 +242,6 @@ Tonight:
 
     viewDestory() 页面销毁
 
-
-    注册成功后employ图片数据没有下发 @张晶晶
-
     title/tips梳理 @done
     现在biz_status写死的,headerTips
     
@@ -289,8 +286,6 @@ Tonight:
     employ页面示例图:
         padding做下处理
 
-    图片裁剪???
-
 
     1. 填写资料，输入时即时判断
     2. 截止日期判断 (注册部分完成, 认证资料部分还未完成)
@@ -299,6 +294,9 @@ Tonight:
     安卓误差问题，首先将页面放大，然后缩小
 
     addCar 要有提示信息.弹窗
+
+    @high @TODO 构建的时候需要将webpackConfig的publicPath进行替换  publicPath: '/taxi-driver/'
+    @TODO 构建后需要去除html多出的css样式
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
