@@ -299,12 +299,18 @@ Tonight:
     @TODO 构建后需要去除html多出的css样式
     @TODO 注册部分,图片的替换
     @TODO info/person,名称的空格处理
-    @TODO certify/employ查看的示例图的逻辑
+    @TODO certify/employ查看的示例图的逻辑 @done
+    @TODO certify/changeEmploy页面时间选择报错 @done
+    @TODO 郭菲 审核不通过不能审核通过车辆?
+    @TODO 变更信息成功后，消除弹窗处理viewDestory()的处理 @done
+    @TODO 周报 @done
 
 
-    @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面
+    @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面  @done
 
     @critical @high xRouter需要添加页面初始化的钩子函数
+
+    
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
