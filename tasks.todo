@@ -307,7 +307,8 @@ Tonight:
     @TODO 键盘遮挡问题
     @TODO 填写资料的及时判断
     @TODO companyList数据可放到前一个页面来获取
-
+    @TODO 变更公司时.有个接口调用不成功公司也发生的了变更.
+    @TODO headTips的位置
 
     @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面  @done
 
