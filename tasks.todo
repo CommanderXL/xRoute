@@ -260,7 +260,7 @@ Tonight:
         文字距离图片的距离有点不一致 @TODO
     info/person:
         header-tips文字间距,距离上部圆圈的距离,安卓下面 @TODO
-        银行的圆不是很圆 @TODO
+        银行的圆不是很圆 @TODO (需要一个30x30的图)
 
 
     account页面:
@@ -281,7 +281,7 @@ Tonight:
 
     
     页面回退:
-        dialog销毁的问题
+        dialog销毁的问题 @done
 
     employ页面示例图:
         padding做下处理
@@ -297,13 +297,16 @@ Tonight:
 
     @high @TODO 构建的时候需要将webpackConfig的publicPath进行替换  publicPath: '/taxi-driver/'
     @TODO 构建后需要去除html多出的css样式
-    @TODO 注册部分,图片的替换
+    @TODO 注册部分,图片的替换 @done
     @TODO info/person,名称的空格处理
     @TODO certify/employ查看的示例图的逻辑 @done
     @TODO certify/changeEmploy页面时间选择报错 @done
     @TODO 郭菲 审核不通过不能审核通过车辆?
     @TODO 变更信息成功后，消除弹窗处理viewDestory()的处理 @done
-    @TODO 周报 @done
+    @TODO 和黎舒沟通 川流 项目 @done
+    @TODO 键盘遮挡问题
+    @TODO 填写资料的及时判断
+    @TODO companyList数据可放到前一个页面来获取
 
 
     @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面  @done
