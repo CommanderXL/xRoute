@@ -21,7 +21,7 @@ Projects:
             ✔ 方案1: 直接在Router上挂载 （this.way） @done (11/23/2016, 11:50:32 AM)
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
          ☐ promise添加错误处理, 主要是对网络请求失败的错误处理, 超时处理 @today 
-         ☐ info/person页面存在滑动事件穿透(done).   dialog存在滑动事件穿透
+         ☐ info/person页面存在滑动事件穿透(done).   dialog存在滑动事件穿透 @done (通过在container上监听touchmove事件,并消除相应的事件 e. preventDefault)
          ☐ 是否需要将route部分独立出来 @low 
          ✔ picker的31号处理, 大于当前时间报错的处理,不同年月导致日期不同的切换 @today @done (11/26/2016, 3:30:27 PM)
          ✔ 添加loading icon @high @done (11/26/2016, 7:37:04 PM)
@@ -43,7 +43,7 @@ Projects:
          ✔ 当前运营车辆的状态 @done (11/28/2016, 8:23:55 PM)
          ☐ 上传图片超时问题的处理? @done api现在设置的上传gift的超时时间为1s
          ✔ uploadImg组件的优化, 添加Loading效果, promise catch的上传失败处理(调试的时候处理) @today @critical @done (11/29/2016, 1:24:46 AM)
-         ☐ dialog组件(少一个叹号, 以及样式优化) @critical 
+         ✔ dialog组件(少一个叹号, 以及样式优化) @critical @done  没有这个处理 @done (12/17/2016, 9:57:08 AM)
          ✔ 完成注册页面的联调 @today @done (11/27/2016, 4:21:50 PM)
          ✔ token的处理,是放到url上还是localstorage里 @done (12/3/2016, 4:57:01 PM)
          ☐ php后台json处理 @low 
@@ -312,6 +312,8 @@ Tonight:
     @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面  @done
 
     @critical @high xRouter需要添加页面初始化的钩子函数
+
+    安卓机下的圆不够圆
 
     
 
