@@ -308,9 +308,10 @@ Tonight:
     @TODO 变更公司时.有个接口调用不成功公司也发生的了变更. @done 有个字段错误
     @TODO headTips的位置.无车辆的情况下。
     @TODO Employ页面和config对应不上，隐藏字段内容
+    @TODO spread操作符的处理. register/password
 
     @hight @critical IOS的992.998版本需要出弹窗.跳转到appstore里面  @done
-
+    
     @critical @high xRouter需要添加页面初始化的钩子函数
 
     安卓机下的圆不够圆
