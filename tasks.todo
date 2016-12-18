@@ -66,8 +66,8 @@ Projects:
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 测试银行卡号: 6226095711989751
          ☐ 2个部分的构建工作
-         ☐ :not(:last-child) 不起作用   :not(:last-of-type) @critical 
-         http://10.94.105.96:9999/static/taxiimg/do1_GHygwIvRwRLPwZtzZqP3.jpg
+         ✔ :not(:last-child) 不起作用  :not(:last-of-type) @critical @done (12/18/2016, 5:42:43 PM)
+         ✔ :last-child  :last-of-type的区别 @done (12/18/2016, 5:42:44 PM)
 
 
      account页面:
