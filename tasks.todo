@@ -317,9 +317,11 @@ Tonight:
 
     @critical @high xRouter需要添加页面初始化的钩子函数
 
-    @critical 键盘遮挡问题
+    @critical 键盘遮挡问题 @done
 
     @critical car.tips页面的调试
+
+    @critical certfiy的title确认
 
     安卓机下的圆不够圆
 
