@@ -258,7 +258,7 @@ Tonight:
     tips页面:
         文字距离图片的距离有点不一致 @TODO
     info/person:
-        header-tips文字间距,距离上部圆圈的距离,安卓下面 @TODO
+        header-tips文字间距,距离上部圆圈的距离,安卓下面 @done
         银行的圆不是很圆 @TODO (需要一个30x30的图)
 
 
@@ -287,7 +287,7 @@ Tonight:
 
 
     1. 填写资料，输入时即时判断
-    2. 截止日期判断 (注册部分完成, 认证资料部分还未完成)
+    2. 截止日期判断 (注册部分完成, 认证资料部分还未完成) @done
     3. 键盘问题
 
     安卓误差问题，首先将页面放大，然后缩小
@@ -318,6 +318,8 @@ Tonight:
     @critical @high xRouter需要添加页面初始化的钩子函数
 
     @critical 键盘遮挡问题
+
+    @critical car.tips页面的调试
 
     安卓机下的圆不够圆
 
