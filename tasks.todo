@@ -332,8 +332,8 @@ Tonight:
     ☐ certify的title的确认
     ☐ 安卓机下要一个info/person check bank num的icon
     ☐ car.tips页面的调试
-    ☐ 请求超时,dialog.loading的处理
-    ☐ companyList数据可放到前一个页面来获取   info.person @done
+    ✔ 请求超时,dialog.loading的处理 (当前设置的时间为15s) @done (12/19/2016, 12:53:27 PM)
+    ✔ companyList数据可放到前一个页面来获取   info.person @done @done (12/19/2016, 12:53:11 PM)
     ☐ 构建的2个问题(css和publicPath)
 
 
