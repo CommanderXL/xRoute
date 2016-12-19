@@ -328,12 +328,12 @@ Tonight:
 
 12.19:
     ☐ certify的title的确认
-    ☐ 安卓机下要一个info/person check bank num的icon
+    ☐ 安卓机要一个info/person check bank num的icon
     ☐ car.tips页面的调试
     ✔ 请求超时,dialog.loading的处理 (当前设置的时间为15s) @done (12/19/2016, 12:53:27 PM)
     ✔ companyList数据可放到前一个页面来获取   info.person @done @done (12/19/2016, 12:53:11 PM)
     ☐ 构建的2个问题(css和publicPath)
-    ☐ employ页面滚动的情况
+    ☐ employ页面跳转滚动的情况 @done 页面进行跳转时,先清空页面,然后再填充页面
     ✔ 时间NaN @done new Date().getTime() 转化为时间戳 @done (12/19/2016, 9:15:00 PM)
     ☐ employ页面的error-tips,展示结构
     ✔ showRemarks信息展示 certify/checkCar页面 @done 原页面有做处理 @done (12/19/2016, 9:14:36 PM)
