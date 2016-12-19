@@ -304,7 +304,7 @@ Tonight:
     @TODO 和黎舒沟通 川流 项目 @done
     @TODO 键盘遮挡问题 @done
     @TODO 填写资料的及时判断  (info/person页面完成逻辑)
-    @TODO companyList数据可放到前一个页面来获取
+    @TODO companyList数据可放到前一个页面来获取 @done
     @TODO 变更公司时.有个接口调用不成功公司也发生的了变更. @done 有个字段错误
     @TODO headTips的位置.无车辆的情况下。 @done
     @TODO Employ页面和config对应不上，隐藏字段内容 @done
@@ -323,8 +323,6 @@ Tonight:
 
     @critical certfiy的title确认
 
-    安卓机下的圆不够圆
-
 
 
 
@@ -335,6 +333,10 @@ Tonight:
     ✔ 请求超时,dialog.loading的处理 (当前设置的时间为15s) @done (12/19/2016, 12:53:27 PM)
     ✔ companyList数据可放到前一个页面来获取   info.person @done @done (12/19/2016, 12:53:11 PM)
     ☐ 构建的2个问题(css和publicPath)
+    ☐ employ页面滚动的情况
+    ☐ 时间NaN
+    ☐ employ页面的error-tips,展示结构
+    ☐ showRemarks信息展示 certify/checkCar页面 @done 原页面有做处理
 
 
     
