@@ -324,18 +324,28 @@ Tonight:
     @critical certfiy的title确认
 
 
+4935
+4529
 
 
 12.19:
     ☐ certify的title的确认
     ☐ 安卓机要一个info/person check bank num的icon
-    ☐ car.tips页面的调试
+    ✔ car.tips页面的调试 @done @done (12/20/2016, 12:09:38 AM)
     ✔ 请求超时,dialog.loading的处理 (当前设置的时间为15s) @done (12/19/2016, 12:53:27 PM)
     ✔ companyList数据可放到前一个页面来获取   info.person @done @done (12/19/2016, 12:53:11 PM)
     ☐ 构建的2个问题(css和publicPath)
-    ☐ employ页面跳转滚动的情况 @done 页面进行跳转时,先清空页面,然后再填充页面
+    ✔ employ页面跳转滚动的情况 @done 页面进行跳转时,先清空页面,然后再填充页面 @done (12/19/2016, 9:30:31 PM)
     ✔ 时间NaN @done new Date().getTime() 转化为时间戳 @done (12/19/2016, 9:15:00 PM)
     ☐ employ页面的error-tips,展示结构
+    ✔ renewCar和renewEmploy需要提供2个接口,如果一个接口成功,另外一个接口失败的情况如何处理 @done (12/20/2016, 4:54:32 PM)
+    ✔ certify通过后header-tips的样式问题 @done @done (12/20/2016, 8:33:43 PM)
+    ☐ 获取公司失败 dialog弹窗
+    ☐ failed-car-tips-active
+    ☐ 卡机问题???
+    ☐ 选择时间不能大于当前时间的文案的确认？
+    ☐ renewEmploy清空缓存
+    ☐ 出现黑屏的情况. height: 100%.  overflow-y: auto;
     ✔ showRemarks信息展示 certify/checkCar页面 @done 原页面有做处理 @done (12/19/2016, 9:14:36 PM)
 
 
