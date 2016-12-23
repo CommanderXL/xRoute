@@ -334,7 +334,7 @@ Tonight:
     ✔ car.tips页面的调试 @done @done (12/20/2016, 12:09:38 AM)
     ✔ 请求超时,dialog.loading的处理 (当前设置的时间为15s) @done (12/19/2016, 12:53:27 PM)
     ✔ companyList数据可放到前一个页面来获取   info.person @done @done (12/19/2016, 12:53:11 PM)
-    ☐ 构建的2个问题(css和publicPath)
+    ☐ 构建的2个问题(css和publicPath)  --->>> /taxi-driver/
     ✔ employ页面跳转滚动的情况 @done 页面进行跳转时,先清空页面,然后再填充页面 @done (12/19/2016, 9:30:31 PM)
     ✔ 时间NaN @done new Date().getTime() 转化为时间戳 @done (12/19/2016, 9:15:00 PM)
     ☐ employ页面的error-tips,展示结构
@@ -343,11 +343,11 @@ Tonight:
     ☐ 获取公司失败 dialog弹窗 
     ☐ failed-car-tips-active
     ☐ 卡机问题???
-    ☐ 选择时间不能大于当前时间的文案的确认？
-    ☐ renewEmploy清空缓存
+    ☐ 选择时间不能大于当前时间的文案的确认？@done
+    ☐ renewEmploy清空缓存 @done
     ☐ 出现黑屏的情况,同时解决car.employ页面后退闪屏的情况. 解决方案: height: 100%.  overflow-y: auto; @done
-    ☐ 消除dialog弹窗
-    ☐ 页面销毁时, 所有的弹窗销毁,包括时间选择组件
+    ☐ 消除dialog弹窗 @done (可以继续优化)
+    ☐ 页面销毁时, 所有的弹窗销毁,包括时间选择组件 @done
     ☐ 模板引擎 handlerbars
     ☐ renewCar 
     ☐ 初次注册时间可以为今天 (@done)
@@ -358,6 +358,9 @@ Tonight:
 5369
 
 
+
+1. 需要单独安装handlerbars
+2. 图片定高,居中显示
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
