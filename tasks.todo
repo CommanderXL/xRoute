@@ -377,8 +377,11 @@ TODO:
 
 input-box padding: 0.13rem; @done
 v-shape-before 箭头和文字的间距info/person页面(视觉误差)
-1px的问题
+1px的问题 @critical 
 tabindex = -1 的处理
+
+
+verity倒计时结束后，应该主动的去消除玻璃遮罩
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
