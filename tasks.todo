@@ -362,7 +362,7 @@ Tonight:
 1. 需要单独安装handlerbars @done
 3. base.less的样式修改icon的位置和padding-left的值 @done
 4. employ页面不同提交信息后的测试 @done
-5. 所有的delete-icon的居中显示 
+5. 所有的delete-icon的居中显示 @done
 6. 图片放大的时的不限制高度处理, 及居中显示 @done
 7. tabindex = -1 🚫用户, 所有的input标签全部进行限制
 8. webpack异步加载的原理
@@ -375,10 +375,9 @@ TODO:
 
 
 
-verity  padding做下处理成24 @done
 input-box padding: 0.13rem; @done
 v-shape-before 箭头和文字的间距info/person页面(视觉误差)
-man-with-car  替换图片
+1px的问题
 tabindex = -1 的处理
 
 
