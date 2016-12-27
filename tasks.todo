@@ -375,9 +375,11 @@ TODO:
 
 
 
-verity  padding做下处理成24
-input-box padding: 0.13rem;
-v-shape-before 居中和长短显示
+verity  padding做下处理成24 @done
+input-box padding: 0.13rem; @done
+v-shape-before 箭头和文字的间距info/person页面(视觉误差)
+man-with-car  替换图片
+tabindex = -1 的处理
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
