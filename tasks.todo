@@ -375,6 +375,10 @@ TODO:
 
 
 
+verity  padding做下处理成24
+input-box padding: 0.13rem;
+v-shape-before 居中和长短显示
+
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
