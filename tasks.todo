@@ -230,15 +230,10 @@ Tonight:
     18. es6-promise包的添加 @done
     19. 构建问题 
     20. 和安卓的同学沟通bridge的事情 @done
-    
-
-    biz_status
-
 
     点击添加按钮太靠下 @done
     图片的替换 @done
     error-tips靠下 @done
-
 
     viewDestory() 页面销毁
 
@@ -379,6 +374,8 @@ input-box padding: 0.13rem; @done
 v-shape-before 箭头和文字的间距info/person页面(视觉误差)
 1px的问题 @critical 
 tabindex = -1 的处理
+
+IOS设置background的颜色，避免下拉出现黑色的情况
 
 
 verity倒计时结束后，应该主动的去消除玻璃遮罩
