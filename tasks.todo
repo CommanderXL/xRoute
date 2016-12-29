@@ -393,6 +393,8 @@ webpack.DefinePlugin({
 
 2.添加webpack.test.prod.js的配置文件,用以打包测试环境代码
 
+3.html-loader和raw-loader的区别(html-loader会对html中的src打包依赖处理,而raw-loader不会,只会将html当做字符串来进行处理)
+
 
 
 
