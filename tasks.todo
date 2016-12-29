@@ -362,7 +362,7 @@ Tonight:
 7. tabindex = -1 🚫用户, 所有的input标签全部进行限制
 8. webpack异步加载的原理
 
-构建： 路径的修改, api, 川流文案的修改
+构建： 路径的修改, api, 川流文案的修改 @done
 
 
 TODO: 
@@ -377,8 +377,28 @@ tabindex = -1 的处理
 
 IOS设置background的颜色，避免下拉出现黑色的情况
 
+cat /home/xiaoju/php/logs/v2/didi.log.wf | grep 手机号
 
-verity倒计时结束后，应该主动的去消除玻璃遮罩
+125环境密码:  JTXQ5mtbsb
+
+
+verity倒计时结束后，应该主动的去消除玻璃遮罩 @done
+
+
+
+1.webpack定义环境变量的插件
+webpack.DefinePlugin({
+
+})
+
+2.添加webpack.test.prod.js的配置文件,用以打包测试环境代码
+
+
+
+
+
+
+
 
 
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
