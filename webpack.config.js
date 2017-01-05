@@ -2,7 +2,9 @@ var path = require('path'),
     DashboardPlugin = require('webpack-dashboard/plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    WebpackMd5Hash = require('webpack-md5-hash'),
+    TestPlugin = require('./plugins/test');
 
 var PATHS = {
     app: path.join(__dirname, 'src'),
@@ -16,35 +18,19 @@ var isProduction = function() {
     return process.env.NODE_ENV === 'production';
 }
 
-//TODO  [name]-[contenthash:8].css
-//TODO  样式文件单独抽离出来打包.文件名带上路径信息
-/**
- * 打包策略：
- *  
- *  工具打包成一个文件
- *  组件打包成一个文件
- * 
- */
+
 
 module.exports ={
-    //2个打包的入口文件
-    //components是自身写的组件
-    //还可以打包通过npm安装的模块
-    //entry: path.join(__dirname, 'src/index.js'),
     entry: {
-        'index': path.join(__dirname, 'src/index.js'),
-        //'js/base': ['./src/lib/js/util.js', 'whatwg-fetch'],
-        'components': ['./src/components/index.js'],
-        'lib': ['./src/lib/js/index.js'],
-        //'js/components': ['./src/components/city-select/index.js', './src/components/time-select/index.js', './src/components/uipicker/picker.min.js']
+        'index': path.join(__dirname, 'src/index.js')
     },
     //filename是主入口文件的名称,即对应的entry
     //chunkFilename对应的是非主入口文件的名称,chunk
     output: {
         path: PATHS.dist,
         publicPath: '/static/taxi-driver/',    //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
-        filename: 'js/register/[name].js',
-        chunkFilename: 'js/register/[name].js',
+        filename: 'js/register/[name].[chunkhash:8].js',
+        chunkFilename: 'js/register/[name].[chunkhash:8].js',
         //TODO: build文件中加入hash值
     },
     //生成source-map文件
@@ -58,20 +44,11 @@ module.exports ={
         }
     },
     module: {
-        //noParse: [/node_modules/],
-       /* preLoaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules|picker.min.js$|dialog.js$|imgResize.js$/,
-                loader: 'eslint'
-            }
-        ],*/
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules|picker.min.js/,
                 loader: 'babel'
-                //添加对于uipicker过滤的处理
             },
             {
                 test: /\.less$/,
@@ -99,23 +76,22 @@ module.exports ={
             jsLib: path.join(__dirname, 'src/lib/js'),
             components: path.join(__dirname, 'src/components')
         },
-        extensions: ['', '.js', '.less', '.html', '.json'],
+        extensions: ['', '.js', '.less', '.html', '.json', '.css'],
     },
     plugins: [
+        new WebpackMd5Hash(),
         new HtmlWebpackPlugin({
             title: '认证资料',
             template: './dist/assets/info.html',
             inject: 'body',
             filename: 'pages/register/index.html'   //输出html文件的位置
         }),
-        new DashboardPlugin(),
-        new ExtractTextPlugin('css/register/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
-       /* new webpack.optimize.CommonsChunkPlugin('js/components', 'js/components.js'),
-        new webpack.optimize.CommonsChunkPlugin('js/lib', 'js/lib.js'),*/
+        //new DashboardPlugin(),
+        new ExtractTextPlugin('css/register/style.[contenthash:8].css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            filename: 'js/register/common.js',
-            minChunks: 3
-        })
+            filename: 'js/register/common.js'
+        }),
+        new TestPlugin()
     ]
 }

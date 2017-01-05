@@ -377,13 +377,7 @@ tabindex = -1 的处理
 
 IOS设置background的颜色，避免下拉出现黑色的情况
 
-cat /home/xiaoju/php/logs/v2/didi.log.wf | grep 手机号
-
-125环境密码:  JTXQ5mtbsb
-
-
 verity倒计时结束后，应该主动的去消除玻璃遮罩 @done
-
 
 
 1.webpack定义环境变量的插件
@@ -396,13 +390,16 @@ webpack.DefinePlugin({
 3.html-loader和raw-loader的区别(html-loader会对html中的src打包依赖处理,而raw-loader不会,只会将html当做字符串来进行处理)
 
 
+1. 城市修改后页面显示出来
+2. 顶部文案
+3. 注册审核中，变更公司的按钮是否要隐藏
 
 
 
+1. webpack.prod.js添加插件webpack.DefinePlugin() 优化webpack配置信息(dev/test/prod3种构建状态)
+2. 
 
-
-
-
+    todo:
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)
          ✔ 注意车辆多个车辆未通过的更改状态(状态始终是mis下发的) @done (11/25/2016, 12:22:02 PM)
          ✔ company_id这个字段没有下发 @done (11/25/2016, 8:02:26 PM)

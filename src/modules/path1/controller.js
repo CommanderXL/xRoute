@@ -1,4 +1,5 @@
 import Router from '../../route';
+import './index.less';
 
 class PageModel {
     constructor() {
@@ -8,7 +9,6 @@ class PageModel {
         console.log('This\'s path1 file');
 
         document.querySelector('.route-btn').addEventListener('click', () => {
-            console.log(123);
             Router.go('path2');
         })
     }

@@ -40,6 +40,7 @@
     "webpack": "^1.13.2",
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.16.2",
+    "webpack-md5-hash": "^0.0.5",
     "webpack-validator": "^2.2.9",
     "whatwg-fetch": "^1.0.0"
   }
