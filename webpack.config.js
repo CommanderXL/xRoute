@@ -92,6 +92,13 @@ module.exports ={
             name: 'common',
             filename: 'js/register/common.js'
         }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+            },
+            comments: false,
+            except: ['exports', 'require'] //避免关键字被混淆
+        }),
         new TestPlugin()
     ]
 }

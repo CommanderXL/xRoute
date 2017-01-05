@@ -55,7 +55,7 @@ Projects:
          ✔ 完成tips页面 @today @done (11/28/2016, 12:11:59 AM)
          ✔ native存在销毁webView历史记录的bridge (nativeClose) @done (12/3/2016, 4:56:24 PM)
          ✔ 滑动穿透(无法避免???) @today @critical @done (11/27/2016, 8:56:25 PM)
-         ☐ position: absolute/fixed bugFix @critical 
+         ✔ position: absolute/fixed bugFix @critical @done (1/5/2017, 8:33:23 PM)
          ✔ 统计缺少的字段 @critical @done (11/28/2016, 8:34:08 PM)
          ✔ 飘红的横线(样式)处理 @critical @done (12/3/2016, 4:56:11 PM)
          ✔ 头像的缺省图 @low @done (11/29/2016, 8:31:34 PM)
@@ -65,7 +65,7 @@ Projects:
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 测试银行卡号: 6226095711989751
-         ☐ 2个部分的构建工作
+         ✔ 2个部分的构建工作 @done (1/5/2017, 8:33:29 PM)
          ✔ :not(:last-child) 不起作用  :not(:last-of-type) @critical @done (12/18/2016, 5:42:43 PM)
          ✔ :last-child  :last-of-type的区别 @done (12/18/2016, 5:42:44 PM)
 
