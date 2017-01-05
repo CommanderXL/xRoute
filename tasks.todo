@@ -65,7 +65,7 @@ Projects:
          ✔ picker偶尔出现的日期全部消失的情况 @low @done (12/1/2016, 12:33:57 PM)
          ✔ 选择的时间大于当前时间的弹窗提醒, 判断技巧, 不仅需要判断是否有值, 同时需要判断这个值的状态(认证部分还未修改)   @high @done (12/3/2016, 11:10:18 AM)
          ☐ 测试银行卡号: 6226095711989751
-         ✔ 2个部分的构建工作 @done (1/5/2017, 8:33:29 PM)
+         ✔ 2个部分的构建工作 @done (1/5/2017, 8:53:00 PM)
          ✔ :not(:last-child) 不起作用  :not(:last-of-type) @critical @done (12/18/2016, 5:42:43 PM)
          ✔ :last-child  :last-of-type的区别 @done (12/18/2016, 5:42:44 PM)
 
@@ -396,8 +396,13 @@ webpack.DefinePlugin({
 
 
 
-1. webpack.prod.js添加插件webpack.DefinePlugin() 优化webpack配置信息(dev/test/prod3种构建状态)
-2. 
+1. webpack.prod.js添加插件webpack.DefinePlugin() 优化webpack配置信息(dev/test/prod3种构建状态) @done
+2. ExtractCss()插件的使用,避免输入2个link标签
+3. new webpack.DefinePlugin({
+    process.env: {
+        NODE_ENV: JSON.stringify('a')  /   'a'  //注意2个写法的区别
+    }
+})
 
     todo:
          ✔ 城市初始化选择(可以参照当前改写的组件) @high @done (11/26/2016, 10:28:25 AM)

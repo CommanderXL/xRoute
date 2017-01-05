@@ -4,7 +4,9 @@ var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     WebpackMd5Hash = require('webpack-md5-hash'),
-    TestPlugin = require('./plugins/test');
+    TestPlugin = require('./plugins/test'),
+    precss = require('precss'),
+    autoprefixer = require('autoprefixer');
 
 var PATHS = {
     app: path.join(__dirname, 'src'),
@@ -52,7 +54,7 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css!less')
+                loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
             },
             {
                 test: /\.html$/,
@@ -60,13 +62,16 @@ module.exports ={
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css')
+                loader: ExtractTextPlugin.extract('style', 'css!postcss')
             },
             {
                 test: /\.json$/,
                 loader: 'json'
             }
         ]
+    },
+    postcss: function() {
+        return [precss, autoprefixer];
     },
     resolve: {
         alias: {
