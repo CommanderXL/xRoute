@@ -1,4 +1,4 @@
-import { Event, util } from 'jsLib/index';
+import { util } from 'jsLib/index';
 
 export default class Route {
     constructor() {
@@ -24,7 +24,7 @@ export default class Route {
         path = '',
         pageInit,
         viewDestory,
-        context,
+        context = arguments[0],
         template = '',
         templateUrl = '',
         viewBox = '',
@@ -51,9 +51,6 @@ export default class Route {
 
     //通过物理键返回和前进的path和通过Router前进的所达到的效果不一样. 主要体现在oldPath的获取上.通过维护一个pathStack来保存历史path
     handleRoute(path = '', isFromHistory, stateObj) {
-
-        //消除弹窗
-        //Event.trigger('viewDestory');
 
         let curContext,                     //上下文
             oldPath = this.oldPath,
@@ -134,7 +131,7 @@ export default class Route {
                     //渲染视图
                     _viewBox.innerHTML = _route.template;
 
-                    //逻辑初始化
+                    //页面逻辑初始化
                     _route.pageInit.call(_route.context || window);
 
                 }
@@ -156,13 +153,17 @@ export default class Route {
     }
 
     back() {
-
+        history.go(-1);
     }
-
+    
+    //  注册控制器
     registerCtrl(path, ctrl) {
         path = path.split('.').join('/');
 
         this.routes[path] ? this.routes[path].ctrl = ctrl : '';
+
+        //  控制器初始化
+        ctrl.init();
     }
 
     bootstrap() {

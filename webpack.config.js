@@ -31,8 +31,8 @@ module.exports ={
     output: {
         path: PATHS.dist,
         publicPath: '/static/taxi-driver/',    //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
-        filename: 'js/register/[name].[chunkhash:8].js',
-        chunkFilename: 'js/register/[name].[chunkhash:8].js',
+        filename: 'js/register/[name].js',
+        chunkFilename: 'js/register/[name].js',
         //TODO: build文件中加入hash值
     },
     //生成source-map文件
@@ -97,13 +97,13 @@ module.exports ={
             name: 'common',
             filename: 'js/register/common.js'
         }),
-        new webpack.optimize.UglifyJsPlugin({
+        /*new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
             },
             comments: false,
             except: ['exports', 'require'] //避免关键字被混淆
-        }),
+        }),*/
         new TestPlugin()
     ]
 }

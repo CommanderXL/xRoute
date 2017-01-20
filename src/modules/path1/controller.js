@@ -1,9 +1,10 @@
 import Router from '../../route';
+import 'jsLib/imgResize';
 import './index.less';
 
 class PageModel {
     constructor() {
-        this.init();
+        //this.init();
     }
     init() {
         console.log('This\'s path1 file');

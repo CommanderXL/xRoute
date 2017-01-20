@@ -1,4 +1,4 @@
-webpackJsonp([0,3],[
+webpackJsonp([0,2],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -6,7 +6,7 @@ webpackJsonp([0,3],[
 
 	__webpack_require__(1);
 
-	__webpack_require__(12);
+	__webpack_require__(13);
 
 /***/ },
 /* 1 */
@@ -37,7 +37,7 @@ webpackJsonp([0,3],[
 	    viewBox: '.public-container',
 	    template: __webpack_require__(5),
 	    pageInit: function pageInit() {
-	        __webpack_require__.e/* nsure */(2, function () {
+	        __webpack_require__.e/* nsure */(1, function () {
 	            var controller = __webpack_require__(7);
 	            Router.registerCtrl('path2', new controller('.public-container'));
 	        });
@@ -428,7 +428,8 @@ webpackJsonp([0,3],[
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */
 /***/ function(module, exports) {
 
 	/*
@@ -484,7 +485,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -736,7 +737,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
