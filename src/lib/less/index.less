@@ -1,6 +1,39 @@
 @components-dir: '../../components';
 @module-dir: '../../modules';
 
+
+@import '../../modules/path1/index.less';
+
+
 div {
     box-sizing: border-box;
+}
+
+.slider-in-left {
+    position: relative;
+    animation: slider-in-left 1s;
+    background: red;
+}
+
+@keyframes slider-in-left {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+.slider-in-right {
+    position: relative;
+    animation: slider-in-right 1s;
+}
+
+@keyframes slider-in-right {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: 0;
+    }
 }

@@ -1,5 +1,7 @@
 import { util } from 'jsLib/index';
 
+const noop = function() {};
+
 export default class Route {
     constructor() {
         this.routes = {};
@@ -16,7 +18,7 @@ export default class Route {
         return this;
     }
 
-    pageLoading(fn = function () { }) {
+    pageLoading(fn = noop) {
         this.loading = fn;
     }
 
@@ -28,7 +30,10 @@ export default class Route {
         template = '',
         templateUrl = '',
         viewBox = '',
-        isHistory = true
+        animate = 'default',
+        isHistory = true,
+        beforeEnter = noop,
+        beforeLeave = noop
     }) {
         path = path.split('.').join('/');
 
@@ -41,9 +46,12 @@ export default class Route {
             context,
             template,
             templateUrl,
+            animate,
             viewBox,
             id,
-            inited: false   //是否实例化
+            inited: false,   //是否实例化
+            beforeEnter,
+            beforeLeave
         }
 
         return this;
@@ -56,11 +64,7 @@ export default class Route {
             oldPath = this.oldPath,
             oldRoute, newRoute;
 
-        /*Event.trigger('routeChange', {
-            oldPath,
-            path
-        })*/
-
+        let oldPathMap = this.routes[oldPath];
         let pathArr = path.split('.');
 
         //页面销毁(完全忘记怎么写的了...)
@@ -106,6 +110,8 @@ export default class Route {
 
                     if (!_viewBox) return;
 
+                    let _context = _route.context || window;
+
                     //先改变url
                     if ((index + 1) === pathArr.length) {
                         if (!this.useHash) {
@@ -125,15 +131,33 @@ export default class Route {
 
                         //return true;
                     }
+                    
+                    /*_route.beforeEnter.call(_route);
 
-                    //调整容器的滚动轴
-                    //_viewBox.scrollTop = '0';
                     //渲染视图
                     _viewBox.innerHTML = _route.template;
 
                     //页面逻辑初始化
-                    _route.pageInit.call(_route.context || window);
+                    _route.pageInit.call(_route);*/
 
+                    _route.beforeEnter.call(_route);
+
+                    let vb = document.createElement('div');
+                    vb.className = 'public-container slider-in-right';
+                    document.body.appendChild(vb);
+                    vb.innerHTML = _route.template;
+
+                    let viewBoxCls = oldPathMap.viewBox;
+                    vb.addEventListener('animationend', function animateEndHandler() {
+                        document.body.removeChild(document.querySelector(viewBoxCls));
+
+                        //  消除动画结束绑定事件
+                        vb.removeEventListener('animationend', animateEndHandler);
+                        //  页面初始化
+                        _route.pageInit.call(_route);
+                    })
+
+                    
                 }
 
             }
@@ -239,10 +263,8 @@ export default class Route {
 
                     if (!_viewBox) return;
 
-                    //TODO 钩子  页面加载前执行
-                    /*if(_route.ctrl && _route.ctrl.viewInit) {
-                        if(!_route.ctrl.viewInit()) return;
-                    }*/
+                    //上下文
+                    let _context = _route.context || window;
 
                     //TODO 将初始化的路由压入栈
                     if ((index + 1) === pathArr.length) {
@@ -253,9 +275,11 @@ export default class Route {
                         }
                     }
 
+                    _route.beforeEnter.call(_context);
+
                     _viewBox.innerHTML = _route.template;
 
-                    _route.pageInit.call(_route.context || window);
+                    _route.pageInit.call(_context);
 
                     flag = true;
                 }
@@ -266,10 +290,8 @@ export default class Route {
 
             //首页渲染
             if (!flag) {
-                //TODO 页面初始化钩子
-                /*if(router.ctrl && router.ctrl.viewInit) {
-                    if(!router.ctrl.viewInit()) return;
-                }*/
+
+                router.beforeEnter.call(router.context || window);
 
                 viewBox = document.querySelector(router.viewBox);
                 //渲染视图

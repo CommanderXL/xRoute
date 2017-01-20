@@ -8,6 +8,7 @@ class PageModel {
         console.log('This\'s path2 file');
 
         document.querySelector('.route-btn').addEventListener('click', () => {
+            console.log('path2');
             Router.go('path1');
         })
     }

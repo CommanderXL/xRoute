@@ -4,7 +4,7 @@ var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     WebpackMd5Hash = require('webpack-md5-hash'),
-    TestPlugin = require('./plugins/test'),
+    //TestPlugin = require('./plugins/test'),
     precss = require('precss'),
     autoprefixer = require('autoprefixer');
 
@@ -92,7 +92,7 @@ module.exports ={
             filename: 'pages/register/index.html'   //输出html文件的位置
         }),
         //new DashboardPlugin(),
-        new ExtractTextPlugin('css/register/style.[contenthash:8].css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
+        new ExtractTextPlugin('css/register/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/register/common.js'
@@ -104,6 +104,6 @@ module.exports ={
             comments: false,
             except: ['exports', 'require'] //避免关键字被混淆
         }),*/
-        new TestPlugin()
+        //new TestPlugin()
     ]
 }
