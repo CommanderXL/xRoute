@@ -46,10 +46,10 @@ export default class Route {
         template = '',
         templateUrl = '',
         viewBox = '',
-        animate = 'default',
+        animate = 'default',//转场动画
         isHistory = true,
-        beforeEnter = noop,
-        beforeLeave = noop
+        beforeEnter = noop, //触发路由前的钩子
+        beforeLeave = noop  //路由跳转前的钩子
     }) {
         path = path.split('.').join('/');
 
@@ -141,10 +141,6 @@ export default class Route {
                         } else {
                             location.hash = '/' + _path;
                         }
-
-                        //激活状路由样式处理
-                        this.routeClassHandle(_path);
-
                         //return true;
                     }
                     
@@ -156,17 +152,10 @@ export default class Route {
                     //页面逻辑初始化
                     _route.pageInit.call(_route);*/
 
-                    //  页面初始化前钩子
-                     _route.beforeEnter.call(_route);
+                    let vb = this.initContainer(_route, isFromHistory, oldPathMap);
 
-                    let vb = document.createElement('div');
-
+                    //如果是浏览器触发的回退操作
                     if (isFromHistory) {
-                        vb.className = `public-container ${_route.viewBox.slice(1)}`;
-                        vb.innerHTML = _route.template;
-                        document.body.appendChild(vb);
-                        _route.pageInit.call(_route);
-
                         let oldContainer = document.querySelector(oldPathMap.viewBox);
                         oldContainer.style.zIndex = 999;
                         oldContainer.classList.add('slide-out-right');
@@ -174,19 +163,12 @@ export default class Route {
                             document.body.removeChild(oldContainer);
                         })
                     } else {
-                        vb.className = `public-container ${_route.viewBox.slice(1)} ${animateMap[oldPathMap.animate]}`;
-                        vb.innerHTML = _route.template;
-                        document.body.appendChild(vb);
-                        _route.pageInit.call(_route);
-
                         let viewBoxCls = oldPathMap.viewBox;
                         vb.addEventListener('animationend', function animateEndHandler() {
                             //  消除上一个容器
                             document.body.removeChild(document.querySelector(viewBoxCls));
                             //  动画结束消除绑定事件
                             vb.removeEventListener('animationend', animateEndHandler);
-                            //  新的页面初始化
-
                         })
                     }
 
@@ -198,10 +180,6 @@ export default class Route {
 
         return false;
 
-    }
-
-    routeClassHandle(hash) {
-        hash = hash.split('/').join('-');
     }
 
     go(path, stateObj, flag = false) {
@@ -308,12 +286,7 @@ export default class Route {
                         }
                     }
 
-                    let vb = document.createElement('div');
-                    vb.className = `public-container ${_route.viewBox.slice(1)} ${animateMap[_route.animate]}`;
-                    vb.innerHTML = _route.template;
-                    document.body.appendChild(vb);
-                    _route.pageInit.call(_route.context || window);
-
+                    this.initContainer(_route);
                    /* _route.beforeEnter.call(_context);
 
                     _viewBox.innerHTML = _route.template;
@@ -323,21 +296,10 @@ export default class Route {
                     flag = true;
                 }
             })
-
-            //初始化active.route样式处理
-            this.routeClassHandle(currHash);
-
             //首页渲染
             if (!flag) {
 
-                router.beforeEnter.call(router.context || window);
-
-                let vb = document.createElement('div');
-                vb.className = `public-container ${router.viewBox.slice(1)} ${animateMap[router.animate]}`;
-                vb.innerHTML = router.template;
-                document.body.appendChild(vb);
-                router.pageInit.call(router.context || window);
-
+                this.initContainer(router);
                 /*viewBox = document.querySelector(router.viewBox);
                 //渲染视图
                 viewBox.innerHTML = router.template;
@@ -354,7 +316,17 @@ export default class Route {
             //!flag ? router.pageInit.call(router.context || window) : '';
         })
     }
+    initContainer(route, isFromHistory = false, oldPathMap = {}) {
+        route.beforeEnter.call(route.context);
 
+        let vb = document.createElement('div');
+        vb.className = `public-container ${route.viewBox.slice(1)} ${!isFromHistory && animateMap[oldPathMap.animate]}`;
+        vb.innerHTML = route.template;
+        document.body.appendChild(vb);
+        route.pageInit.call(route.context || window);
+
+        return vb;
+    }
 }
 
 
