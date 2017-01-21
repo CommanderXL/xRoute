@@ -41,6 +41,12 @@ Router
                 Router.registerCtrl('path2', new controller(this.viewBox));
                 console.timeEnd('route async path2');
             }, 'path');
+        },
+        beforeEnter() {
+
+        },
+        beforeLeave() {
+            
         }
     })
 

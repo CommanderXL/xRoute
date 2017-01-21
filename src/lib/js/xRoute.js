@@ -125,11 +125,6 @@ export default class Route {
 
                     _route.inited = true;
 
-                    /*_viewBox = document.querySelector(_route.viewBox);
-
-
-                    if (!_viewBox) return;*/
-
                     let _context = _route.context || window;
 
                     //先改变url
@@ -137,24 +132,14 @@ export default class Route {
                         if (!this.useHash) {
                             //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
                             if (!isFromHistory) {
-
                                 let search = stateObj ? `?${util.getUrlParams(stateObj, true)}` : '';
                                 history.pushState({ path: _path }, null, `${search}#/${_path}`);
-                                //history.pushState({ path: _path }, null, '#/' + _path);
                             }
                         } else {
                             location.hash = '/' + _path;
                         }
                         //return true;
                     }
-                    
-                    /*_route.beforeEnter.call(_route);
-
-                    //渲染视图
-                    _viewBox.innerHTML = _route.template;
-
-                    //页面逻辑初始化
-                    _route.pageInit.call(_route);*/
 
                     let vb = this.initContainer(_route, isFromHistory, oldPathMap);
 
@@ -175,10 +160,7 @@ export default class Route {
                             vb.removeEventListener('animationend', animateEndHandler);
                         })
                     }
-
-                    
                 }
-
             }
         })
 
@@ -274,10 +256,6 @@ export default class Route {
 
                     _route.inited = true;
 
-                    /*_viewBox = document.querySelector(_route.viewBox);
-
-                    if (!_viewBox) return;*/
-
                     //上下文
                     let _context = _route.context || window;
 
@@ -291,25 +269,13 @@ export default class Route {
                     }
 
                     this.initContainer(_route);
-                   /* _route.beforeEnter.call(_context);
-
-                    _viewBox.innerHTML = _route.template;
-
-                    _route.pageInit.call(_context);*/
 
                     flag = true;
                 }
             })
             //首页渲染
             if (!flag) {
-
                 this.initContainer(router);
-                /*viewBox = document.querySelector(router.viewBox);
-                //渲染视图
-                viewBox.innerHTML = router.template;
-
-                router.pageInit.call(router.context || window);*/
-
                 if (!this.useHash) {
                     history.replaceState({path: router.path}, null, '#/' + router.path);
                 } else {
@@ -320,11 +286,13 @@ export default class Route {
             //!flag ? router.pageInit.call(router.context || window) : '';
         })
     }
+    //  容器初始化并挂载
     initContainer(route, isFromHistory = false, oldPathMap = {}) {
+        //beforeEnter钩子
         route.beforeEnter.call(route.context);
 
         let vb = document.createElement('div');
-        vb.className = `public-container ${route.viewBox.slice(1)} ${!isFromHistory ? animateMap[oldPathMap.animate] : ''}`;
+        vb.className = `public-container ${route.viewBox.slice(1)} ${!isFromHistory ? animateMap[route.animate] : ''}`;
         vb.innerHTML = route.template;
         document.body.appendChild(vb);
         route.pageInit.call(route.context || window);
