@@ -79,6 +79,8 @@
   slideInLeft
   fadeIn
   fadeOut
+  zoomIn
+  zoomOut
 ```
 
 ## 使用方法
