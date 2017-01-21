@@ -4,6 +4,16 @@
 
 ### 高级浏览器使用H5 API,低级浏览器使用hash
 
+```javascript
+  html5Mode:
+  www.example.com/page1
+  www.example.com/page2
+
+  hashMode:
+  www.example.com/#/page1
+  www.example.com/#/page2
+```
+
 ### Router所管理的页面生命周期
 
 一共有5个阶段:
