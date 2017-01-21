@@ -18,8 +18,10 @@
       path: 'a',
       viewBox: '',  // 容器锚点
       template: '', // 页面模板
+      animate: 'slideInRight', //转场动画
       pageInit() {  // 异步加载ctrl,同时将ctrl挂载到route
-
+        const Controller = require('modules/path1/controller');
+        Router.registerCtrl('path1', new Controller(this.viewBox));
       },
       beforeEnter() {
         
@@ -31,9 +33,11 @@
     .addRoute({
       path: 'b',
       viewBox: '',  
-      template: '', 
+      template: '',
+      animate: 'slideInRight', //转场动画 
       pageInit() { 
-
+        const Controller = require('modules/path2/controller');
+        Router.registerCtrl('path2', new Controller(this.viewBox));
       },
       beforeEnter() {
 
@@ -48,8 +52,12 @@
 
 ```javascript
   export default class PageModel {
-    constructor() {
-
+    constructor(container) {  
+      //页面容器,获取dom通过这个容器root DOM来获取
+      this.container = document.querySelector(container);
+    }
+    setDomMap() {
+      let barDom = this.container.querySelector('.barDom');
     }
     viewInit() {
 
@@ -57,9 +65,21 @@
     viewDestory() {
       
     }
+    init() {
+      this.setDomMap();
+      this.viewInit();
+    }
   }
 ```
 
+## 转场动画
+
+```javascript
+  slideInRight
+  slideInLeft
+  fadeIn
+  fadeOut
+```
 
 ## 使用方法
 

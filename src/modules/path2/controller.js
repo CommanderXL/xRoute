@@ -1,13 +1,13 @@
 import Router from '../../route';
 
 class PageModel {
-    constructor(){
-        //this.init();
+    constructor(container){
+        this.container = document.querySelector(container);
     }
     init() {
         console.log('This\'s path2 file');
 
-        document.querySelector('.route-btn').addEventListener('click', () => {
+        this.container.querySelector('.route-btn').addEventListener('click', () => {
             console.log('path2');
             Router.go('path1');
         })

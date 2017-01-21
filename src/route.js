@@ -8,15 +8,15 @@ Router
     .home('path1')
     .addRoute({
         path: 'path1',
-        animate: 'slideInLeft',
-        viewBox: '.public-container',
+        animate: 'slideInRight',
+        viewBox: '.public-path1-container',
         template: require('modules/path1/index.html'),
         //  挂载controller
         pageInit() {
             console.time('route async path1');
             require.ensure([], () => {
                 let controller = require('modules/path1/controller');
-                Router.registerCtrl('path1', new controller('.public-container'));
+                Router.registerCtrl('path1', new controller(this.viewBox));
                 console.timeEnd('route async path1');
             }, 'path');
         },
@@ -31,14 +31,14 @@ Router
     })
     .addRoute({
         path: 'path2',
-        viewBox: '.public-container',
-        animate: 'slideInLeft',
+        viewBox: '.public-path2-container',
+        animate: 'slideInRight',
         template: require('modules/path2/index.html'),
         pageInit() {
             console.time('route async path2');
             require.ensure([], () => {
                 let controller = require('modules/path2/controller');
-                Router.registerCtrl('path2', new controller('.public-container'));
+                Router.registerCtrl('path2', new controller(this.viewBox));
                 console.timeEnd('route async path2');
             }, 'path');
         }

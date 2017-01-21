@@ -3,13 +3,13 @@ import 'jsLib/imgResize';
 import './index.less';
 
 class PageModel {
-    constructor() {
-        //this.init();
+    constructor(container) {
+        this.container = document.querySelector(container);
     }
     init() {
         console.log('This\'s path1 file');
 
-        document.querySelector('.route-btn').addEventListener('click', () => {
+        this.container.querySelector('.route-btn').addEventListener('click', () => {
             console.log('path1');
             Router.go('path2');
         })

@@ -2,6 +2,22 @@ import { util } from 'jsLib/index';
 
 const noop = function() {};
 
+//  动画类型映射
+const animateMap = {
+    slideInLeft: 'slide-in-left',
+    slideInRight: 'slide-in-right',
+    fadeIn: 'fade-in',
+    fadeOut: 'fade-out'
+}
+
+//  淡出动画类型映射
+const animateOutMap = {
+    slideInLeft: 'slide-out-left',
+    slideInRight: 'slide-out-right',
+    fadeIn: 'fade-out',
+    fadeOut: 'fade-in'
+}
+
 export default class Route {
     constructor() {
         this.routes = {};
@@ -105,10 +121,10 @@ export default class Route {
 
                     _route.inited = true;
 
-                    _viewBox = document.querySelector(_route.viewBox);
+                    /*_viewBox = document.querySelector(_route.viewBox);
 
 
-                    if (!_viewBox) return;
+                    if (!_viewBox) return;*/
 
                     let _context = _route.context || window;
 
@@ -140,22 +156,39 @@ export default class Route {
                     //页面逻辑初始化
                     _route.pageInit.call(_route);*/
 
-                    _route.beforeEnter.call(_route);
+                    //  页面初始化前钩子
+                     _route.beforeEnter.call(_route);
 
                     let vb = document.createElement('div');
-                    vb.className = 'public-container slider-in-right';
-                    document.body.appendChild(vb);
-                    vb.innerHTML = _route.template;
 
-                    let viewBoxCls = oldPathMap.viewBox;
-                    vb.addEventListener('animationend', function animateEndHandler() {
-                        document.body.removeChild(document.querySelector(viewBoxCls));
-
-                        //  消除动画结束绑定事件
-                        vb.removeEventListener('animationend', animateEndHandler);
-                        //  页面初始化
+                    if (isFromHistory) {
+                        vb.className = `public-container ${_route.viewBox.slice(1)}`;
+                        vb.innerHTML = _route.template;
+                        document.body.appendChild(vb);
                         _route.pageInit.call(_route);
-                    })
+
+                        let oldContainer = document.querySelector(oldPathMap.viewBox);
+                        oldContainer.style.zIndex = 999;
+                        oldContainer.classList.add('slide-out-right');
+                        oldContainer.addEventListener('animationend', function() {
+                            document.body.removeChild(oldContainer);
+                        })
+                    } else {
+                        vb.className = `public-container ${_route.viewBox.slice(1)} ${animateMap[oldPathMap.animate]}`;
+                        vb.innerHTML = _route.template;
+                        document.body.appendChild(vb);
+                        _route.pageInit.call(_route);
+
+                        let viewBoxCls = oldPathMap.viewBox;
+                        vb.addEventListener('animationend', function animateEndHandler() {
+                            //  消除上一个容器
+                            document.body.removeChild(document.querySelector(viewBoxCls));
+                            //  动画结束消除绑定事件
+                            vb.removeEventListener('animationend', animateEndHandler);
+                            //  新的页面初始化
+
+                        })
+                    }
 
                     
                 }
@@ -259,9 +292,9 @@ export default class Route {
 
                     _route.inited = true;
 
-                    _viewBox = document.querySelector(_route.viewBox);
+                    /*_viewBox = document.querySelector(_route.viewBox);
 
-                    if (!_viewBox) return;
+                    if (!_viewBox) return;*/
 
                     //上下文
                     let _context = _route.context || window;
@@ -275,11 +308,17 @@ export default class Route {
                         }
                     }
 
-                    _route.beforeEnter.call(_context);
+                    let vb = document.createElement('div');
+                    vb.className = `public-container ${_route.viewBox.slice(1)} ${animateMap[_route.animate]}`;
+                    vb.innerHTML = _route.template;
+                    document.body.appendChild(vb);
+                    _route.pageInit.call(_route.context || window);
+
+                   /* _route.beforeEnter.call(_context);
 
                     _viewBox.innerHTML = _route.template;
 
-                    _route.pageInit.call(_context);
+                    _route.pageInit.call(_context);*/
 
                     flag = true;
                 }
@@ -293,11 +332,17 @@ export default class Route {
 
                 router.beforeEnter.call(router.context || window);
 
-                viewBox = document.querySelector(router.viewBox);
+                let vb = document.createElement('div');
+                vb.className = `public-container ${router.viewBox.slice(1)} ${animateMap[router.animate]}`;
+                vb.innerHTML = router.template;
+                document.body.appendChild(vb);
+                router.pageInit.call(router.context || window);
+
+                /*viewBox = document.querySelector(router.viewBox);
                 //渲染视图
                 viewBox.innerHTML = router.template;
 
-                router.pageInit.call(router.context || window);
+                router.pageInit.call(router.context || window);*/
 
                 if (!this.useHash) {
                     history.replaceState({path: router.path}, null, '#/' + router.path);
