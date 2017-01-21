@@ -8,7 +8,7 @@ Router
     .home('path1')
     .addRoute({
         path: 'path1',
-        animate: 'slideInRight',
+        animate: 'zoomIn',
         viewBox: '.public-path1-container',
         template: require('modules/path1/index.html'),
         //  挂载controller
@@ -32,7 +32,7 @@ Router
     .addRoute({
         path: 'path2',
         viewBox: '.public-path2-container',
-        animate: 'slideInRight',
+        animate: 'zoomIn',
         template: require('modules/path2/index.html'),
         pageInit() {
             console.time('route async path2');

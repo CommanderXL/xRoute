@@ -79,3 +79,55 @@ div {
         left: 100%;
     }
 }
+
+.fade-in {
+    animation: fade-in .5s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fade-out .5s;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.zoom-in {
+    animation: zoom-in .5s;
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(0, 0);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.zoom-out {
+    animation: zoom-out .5s;
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(0, 0);
+    }
+}

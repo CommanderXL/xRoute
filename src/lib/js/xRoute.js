@@ -7,7 +7,9 @@ const animateMap = {
     slideInLeft: 'slide-in-left',
     slideInRight: 'slide-in-right',
     fadeIn: 'fade-in',
-    fadeOut: 'fade-out'
+    fadeOut: 'fade-out',
+    zoomIn: 'zoom-in',
+    zoomOut: 'zoom-out'
 }
 
 //  淡出动画类型映射
@@ -15,7 +17,9 @@ const animateOutMap = {
     slideInLeft: 'slide-out-left',
     slideInRight: 'slide-out-right',
     fadeIn: 'fade-out',
-    fadeOut: 'fade-in'
+    fadeOut: 'fade-in',
+    zoomIn: 'zoom-out',
+    zoomOut: 'zoom-in'
 }
 
 export default class Route {
@@ -158,7 +162,7 @@ export default class Route {
                     if (isFromHistory) {
                         let oldContainer = document.querySelector(oldPathMap.viewBox);
                         oldContainer.style.zIndex = 999;
-                        oldContainer.classList.add('slide-out-right');
+                        oldContainer.classList.add(animateOutMap[oldPathMap.animate]);
                         oldContainer.addEventListener('animationend', function() {
                             document.body.removeChild(oldContainer);
                         })
@@ -320,7 +324,7 @@ export default class Route {
         route.beforeEnter.call(route.context);
 
         let vb = document.createElement('div');
-        vb.className = `public-container ${route.viewBox.slice(1)} ${!isFromHistory && animateMap[oldPathMap.animate]}`;
+        vb.className = `public-container ${route.viewBox.slice(1)} ${!isFromHistory ? animateMap[oldPathMap.animate] : ''}`;
         vb.innerHTML = route.template;
         document.body.appendChild(vb);
         route.pageInit.call(route.context || window);
