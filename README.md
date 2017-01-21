@@ -1,6 +1,12 @@
-## 高级浏览器使用H5 API,低级浏览器使用hash
+一个小型的SPA框架.无依赖第三方的小型路由，搭配`webpack`作为构建工具,主要利用`webpack`的`code spilt`及异步加载功能。
 
-## Router所管理的页面生命周期
+## 路由
+
+### 高级浏览器使用H5 API,低级浏览器使用hash
+
+### Router所管理的页面生命周期
+
+一共有5个阶段:
 
 * beforeEnter
 * pageInit
@@ -8,7 +14,7 @@
 * viewDestory
 * beforeLeave
 
-## 路由配置
+### 路由配置
 
 ```javascript
   const Router = new Route();
