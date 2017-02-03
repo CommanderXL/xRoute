@@ -4,7 +4,6 @@ var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     WebpackMd5Hash = require('webpack-md5-hash'),
-    //TestPlugin = require('./plugins/test'),
     precss = require('precss'),
     autoprefixer = require('autoprefixer'),
     InlineWebpackManifest = require('inline-manifest-webpack-plugin');
@@ -53,7 +52,8 @@ module.exports = {
         }
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.js$/,
                 loader: 'babel-loader'
             },
@@ -79,34 +79,6 @@ module.exports = {
             }
         ]
     },
-    /*module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules|picker.min.js/,
-                loader: 'babel'
-            },
-            {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css!less')
-            },
-            {
-                test: /\.html$/,
-                loader: 'raw'
-            },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css')
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
-            }
-        ]
-    },*/
-    /*postcss: function() {
-        return [precss, autoprefixer];
-    },*/
     resolve: {
         alias: {
             src: path.join(__dirname, 'src'),
@@ -156,6 +128,5 @@ module.exports = {
             comments: false,
             except: ['exports', 'require'] //避免关键字被混淆
         }),*/
-        //new TestPlugin()
     ]
 }
