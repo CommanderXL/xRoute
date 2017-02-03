@@ -54,7 +54,7 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
+                loader: ExtractTextPlugin.extract('style', 'css!less')
             },
             {
                 test: /\.html$/,
@@ -62,7 +62,7 @@ module.exports ={
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css!postcss')
+                loader: ExtractTextPlugin.extract('style', 'css')
             },
             {
                 test: /\.json$/,
@@ -70,9 +70,9 @@ module.exports ={
             }
         ]
     },
-    postcss: function() {
+    /*postcss: function() {
         return [precss, autoprefixer];
-    },
+    },*/
     resolve: {
         alias: {
             src: path.join(__dirname, 'src'),

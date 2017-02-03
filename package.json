@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development webpack-dashboard -- webpack-dev-server --devtool eval-source-map --progress --port 3000 --colors --hot --inline --content-base ./dist",
     "mock": "json-server ./src/lib/mock/data.json --watch -p 3000",
     "build": "webpack --progress --colors",
-    "dist": "NODE_ENV=production webpack --progress --colors"
+    "dist": "rm -rf ./dist/css/register && rm -rf ./dist/js/register &&  NODE_ENV=production webpack --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "precss": "^1.4.0",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
+    "webpack": "^1.14.0",
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-md5-hash": "^0.0.5",
