@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>认证资料</title>
-    <script>/******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// install a JSONP callback for chunk loading
 /******/ 	var parentJsonpFunction = window["webpackJsonp"];
 /******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
@@ -99,12 +92,4 @@
 /******/ 	__webpack_require__.p = "/static/taxi-driver/";
 /******/ })
 /************************************************************************/
-/******/ ([]);</script>
-<link href="/static/taxi-driver/css/register/style.876bdf14.css" rel="stylesheet"></head>
-
-<body>
-    <section class="public-container">
-
-    </section>
-<script type="text/javascript" src="/static/taxi-driver/js/register/common.js"></script><script type="text/javascript" src="/static/taxi-driver/js/register/index.js"></script></body>
-</html>
+/******/ ([]);

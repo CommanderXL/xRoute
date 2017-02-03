@@ -1,4 +1,4 @@
-webpackJsonp([0,2],[
+webpackJsonp([0,2,3],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22,24 +22,37 @@ webpackJsonp([0,2],[
 
 	var Router = new _index.Route();
 
+	//  路由配置信息
+	//  页面销毁的回调放到的controller里面
 	Router.home('path1').addRoute({
 	    path: 'path1',
 	    viewBox: '.public-container',
 	    template: __webpack_require__(4),
+	    //  挂载controller
 	    pageInit: function pageInit() {
+	        console.time('route async path1');
 	        __webpack_require__.e/* nsure */(1, function () {
 	            var controller = __webpack_require__(6);
 	            Router.registerCtrl('path1', new controller('.public-container'));
+	            console.timeEnd('route async path1');
 	        });
-	    }
+	    },
+
+	    //  进入路由跳转之前
+	    beforeEnter: function beforeEnter() {},
+
+	    //  路由跳转前
+	    beforeLeave: function beforeLeave() {}
 	}).addRoute({
 	    path: 'path2',
 	    viewBox: '.public-container',
 	    template: __webpack_require__(5),
 	    pageInit: function pageInit() {
+	        console.time('route async path2');
 	        __webpack_require__.e/* nsure */(1, function () {
 	            var controller = __webpack_require__(7);
 	            Router.registerCtrl('path2', new controller('.public-container'));
+	            console.timeEnd('route async path2');
 	        });
 	    }
 	});
@@ -114,19 +127,20 @@ webpackJsonp([0,2],[
 	    }, {
 	        key: 'addRoute',
 	        value: function addRoute(_ref) {
-	            var _ref$path = _ref.path;
-	            var path = _ref$path === undefined ? '' : _ref$path;
-	            var pageInit = _ref.pageInit;
-	            var viewDestory = _ref.viewDestory;
-	            var context = _ref.context;
-	            var _ref$template = _ref.template;
-	            var template = _ref$template === undefined ? '' : _ref$template;
-	            var _ref$templateUrl = _ref.templateUrl;
-	            var templateUrl = _ref$templateUrl === undefined ? '' : _ref$templateUrl;
-	            var _ref$viewBox = _ref.viewBox;
-	            var viewBox = _ref$viewBox === undefined ? '' : _ref$viewBox;
-	            var _ref$isHistory = _ref.isHistory;
-	            var isHistory = _ref$isHistory === undefined ? true : _ref$isHistory;
+	            var _ref$path = _ref.path,
+	                path = _ref$path === undefined ? '' : _ref$path,
+	                pageInit = _ref.pageInit,
+	                viewDestory = _ref.viewDestory,
+	                _ref$context = _ref.context,
+	                context = _ref$context === undefined ? arguments[0] : _ref$context,
+	                _ref$template = _ref.template,
+	                template = _ref$template === undefined ? '' : _ref$template,
+	                _ref$templateUrl = _ref.templateUrl,
+	                templateUrl = _ref$templateUrl === undefined ? '' : _ref$templateUrl,
+	                _ref$viewBox = _ref.viewBox,
+	                viewBox = _ref$viewBox === undefined ? '' : _ref$viewBox,
+	                _ref$isHistory = _ref.isHistory,
+	                isHistory = _ref$isHistory === undefined ? true : _ref$isHistory;
 
 	            path = path.split('.').join('/');
 
@@ -159,9 +173,6 @@ webpackJsonp([0,2],[
 	            var isFromHistory = arguments[1];
 	            var stateObj = arguments[2];
 
-
-	            //消除弹窗
-	            //Event.trigger('viewDestory');
 
 	            var curContext = void 0,
 	                //上下文
@@ -246,7 +257,7 @@ webpackJsonp([0,2],[
 	                        //渲染视图
 	                        _viewBox.innerHTML = _route.template;
 
-	                        //逻辑初始化
+	                        //页面逻辑初始化
 	                        _route.pageInit.call(_route.context || window);
 	                    }
 	                }
@@ -269,13 +280,21 @@ webpackJsonp([0,2],[
 	        }
 	    }, {
 	        key: 'back',
-	        value: function back() {}
+	        value: function back() {
+	            history.go(-1);
+	        }
+
+	        //  注册控制器
+
 	    }, {
 	        key: 'registerCtrl',
 	        value: function registerCtrl(path, ctrl) {
 	            path = path.split('.').join('/');
 
 	            this.routes[path] ? this.routes[path].ctrl = ctrl : '';
+
+	            //  控制器初始化
+	            ctrl.init();
 	        }
 	    }, {
 	        key: 'bootstrap',
@@ -415,13 +434,13 @@ webpackJsonp([0,2],[
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"route-btn\">This is path1 file</div>"
+	module.exports = "<div class=\"route-btn\">This is path1 file</div>";
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"route-btn\">This is path2 file</div>"
+	module.exports = "<div class=\"route-btn\">This is path2 file</div>";
 
 /***/ },
 /* 6 */,

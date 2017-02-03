@@ -6,7 +6,8 @@ var path = require('path'),
     WebpackMd5Hash = require('webpack-md5-hash'),
     TestPlugin = require('./plugins/test'),
     precss = require('precss'),
-    autoprefixer = require('autoprefixer');
+    autoprefixer = require('autoprefixer'),
+    InlineWebpackPlugin = require('inline-manifest-webpack-plugin');
 
 var PATHS = {
     app: path.join(__dirname, 'src'),
@@ -54,15 +55,15 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css!less!postcss')
+                loader: ExtractTextPlugin.extract('style', 'css!less')
             },
             {
                 test: /\.html$/,
-                loader: 'raw'
+                loader: 'html'
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css!postcss')
+                loader: ExtractTextPlugin.extract('style', 'css')
             },
             {
                 test: /\.json$/,
@@ -70,9 +71,9 @@ module.exports ={
             }
         ]
     },
-    postcss: function() {
+    /*postcss: function() {
         return [precss, autoprefixer];
-    },
+    },*/
     resolve: {
         alias: {
             src: path.join(__dirname, 'src'),
@@ -87,16 +88,17 @@ module.exports ={
         new WebpackMd5Hash(),
         new HtmlWebpackPlugin({
             title: '认证资料',
-            template: './dist/assets/info.html',
-            inject: 'body',
+            template: '!!ejs!./dist/assets/info.ejs',
+            //inject: 'body',
             filename: 'pages/register/index.html'   //输出html文件的位置
         }),
         //new DashboardPlugin(),
         new ExtractTextPlugin('css/register/style.[contenthash:8].css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            filename: 'js/register/common.js'
+            names: ['common', 'manifest'],
+            //filename: 'js/register/common.js'
         }),
+        new InlineWebpackPlugin()
         /*new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
@@ -104,6 +106,6 @@ module.exports ={
             comments: false,
             except: ['exports', 'require'] //避免关键字被混淆
         }),*/
-        new TestPlugin()
+        //new TestPlugin()
     ]
 }

@@ -1,4 +1,4 @@
-webpackJsonp([1,2],[
+webpackJsonp([1,2,3],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -26,9 +26,9 @@ webpackJsonp([1,2],[
 
 	var PageModel = function () {
 	    function PageModel() {
-	        _classCallCheck(this, PageModel);
+	        //this.init();
 
-	        this.init();
+	        _classCallCheck(this, PageModel);
 	    }
 
 	    _createClass(PageModel, [{
@@ -59,17 +59,15 @@ webpackJsonp([1,2],[
 
 	var _route2 = _interopRequireDefault(_route);
 
-	__webpack_require__(8);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var PageModel = function () {
 	    function PageModel() {
-	        _classCallCheck(this, PageModel);
+	        //this.init();
 
-	        this.init();
+	        _classCallCheck(this, PageModel);
 	    }
 
 	    _createClass(PageModel, [{
@@ -80,6 +78,11 @@ webpackJsonp([1,2],[
 	            document.querySelector('.route-btn').addEventListener('click', function () {
 	                _route2.default.go('path1');
 	            });
+	        }
+	    }, {
+	        key: 'viewDestory',
+	        value: function viewDestory() {
+	            console.log('well done');
 	        }
 	    }]);
 
@@ -364,8 +367,8 @@ webpackJsonp([1,2],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/.0.25.0@css-loader/index.js!./../../../node_modules/.2.2.3@less-loader/index.js!./../../../node_modules/.1.2.1@postcss-loader/index.js!./index.less", function() {
-				var newContent = require("!!./../../../node_modules/.0.25.0@css-loader/index.js!./../../../node_modules/.2.2.3@less-loader/index.js!./../../../node_modules/.1.2.1@postcss-loader/index.js!./index.less");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./index.less", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/less-loader/index.js!./index.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
