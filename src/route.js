@@ -21,7 +21,7 @@ Router
                     let controller = module.default;
                     Router.registerCtrl('path1', new controller(this.viewBox))
                 })
-                .catch(e => console.log(e))
+                .catch(e => console.log('chunk loading failed'))
         },
         //  进入路由跳转之前
         beforeEnter() {
@@ -43,7 +43,8 @@ Router
                 console.time('route async path2');
                 let controller = module.default;
                 Router.registerCtrl('path2', new controller(this.viewBox))
-            });
+            })
+            .catch(e => console.log('chunk loading failed'))
         },
         beforeEnter() {
 
