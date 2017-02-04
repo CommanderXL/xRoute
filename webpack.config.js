@@ -29,12 +29,15 @@ var cssLoader = [{
 ]
 
 
+const babelLoaderPlugins = [
+
+];
+
+
 module.exports = {
     entry: {
         'index': path.join(__dirname, 'src/index.js')
     },
-    //filename是主入口文件的名称,即对应的entry
-    //chunkFilename对应的是非主入口文件的名称,chunk
     output: {
         path: PATHS.dist,
         publicPath: '/static/taxi-driver/', //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
@@ -105,8 +108,10 @@ module.exports = {
             disable: false
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['common', 'manifest'],
+            //names: ['common', 'manifest'],
             //filename: 'js/register/common.js'
+            name: 'common',
+            filename: 'js/register/common.js'
         }),
         new webpack.LoaderOptionsPlugin({
             options: {

@@ -2,9 +2,6 @@ div {
   font-size: 15px;
 }
 div {
-  font-size: 15px;
-}
-div {
   box-sizing: border-box;
 }
 .public-container {
@@ -110,4 +107,7 @@ div {
   100% {
     transform: scale(0, 0);
   }
+}
+div {
+  font-size: 15px;
 }

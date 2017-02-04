@@ -1,17 +1,12 @@
-webpackJsonp([1,2],[
+webpackJsonp([2,3],[
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsLib_index__ = __webpack_require__(1);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _index = __webpack_require__(1);
-
-var Router = new _index.Route();
+var Router = new __WEBPACK_IMPORTED_MODULE_0_jsLib_index__["a" /* Route */]();
 
 //  路由配置信息
 //  页面销毁的回调放到的controller里面
@@ -25,11 +20,14 @@ Router.home('path1').addRoute({
         var _this = this;
 
         console.time('route async path1');
-        __webpack_require__.e/* require.ensure */(0).then((function () {
-            var controller = __webpack_require__(7);
-            Router.registerCtrl('path1', new controller(_this.viewBox));
+        __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 7)).then(function (controller) {
+            return Router.registerCtrl('path1', new controller(_this.viewBox));
+        });
+        /*require.ensure([], () => {
+            let controller = require('modules/path1/controller');
+            Router.registerCtrl('path1', new controller(this.viewBox));
             console.timeEnd('route async path1');
-        }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+        }, 'path');*/
     },
 
     //  进入路由跳转之前
@@ -46,11 +44,14 @@ Router.home('path1').addRoute({
         var _this2 = this;
 
         console.time('route async path2');
-        __webpack_require__.e/* require.ensure */(0).then((function () {
-            var controller = __webpack_require__(8);
-            Router.registerCtrl('path2', new controller(_this2.viewBox));
+        __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 8)).then(function (controller) {
+            return Router.registerCtrl('path2', new controller(_this2.viewBox));
+        });
+        /*require.ensure([], () => {
+            let controller = require('modules/path2/controller');
+            Router.registerCtrl('path2', new controller(this.viewBox));
             console.timeEnd('route async path2');
-        }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+        }, 'path');*/
     },
     beforeEnter: function beforeEnter() {},
     beforeLeave: function beforeLeave() {}
@@ -58,27 +59,18 @@ Router.home('path1').addRoute({
 
 Router.bootstrap();
 
-exports.default = Router;
+/* harmony default export */ __webpack_exports__["a"] = Router;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsLib_xRoute__ = __webpack_require__(3);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0_jsLib_xRoute__["a"]; });
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Route = undefined;
 
-var _xRoute = __webpack_require__(3);
-
-var _xRoute2 = _interopRequireDefault(_xRoute);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.Route = _xRoute2.default;
 
 /***/ }),
 /* 2 */
@@ -88,20 +80,15 @@ exports.Route = _xRoute2.default;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jsLib_index__ = __webpack_require__(1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _index = __webpack_require__(1);
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
 
 var noop = function noop() {};
 
@@ -233,7 +220,7 @@ var Route = function () {
                 //(oldRoute.ctrl && oldRoute.ctrl.viewDestory) && oldRoute.ctrl.viewDestory();
                 if (oldRoute.ctrl && oldRoute.ctrl.viewDestory) {
                     if (oldRoute.ctrl.viewDestory()) {
-                        var search = stateObj ? '?' + _index.util.getUrlParams(stateObj, true) : '';
+                        var search = stateObj ? '?' + __WEBPACK_IMPORTED_MODULE_0_jsLib_index__["util"].getUrlParams(stateObj, true) : '';
                         history.pushState({ path: oldRoute.path }, null, search + '#/' + oldRoute.path);
                         return;
                     }
@@ -270,7 +257,7 @@ var Route = function () {
                                 if (!_this.useHash) {
                                     //如果是从popstate中获取的状态,那么不应该将其加入历史状态栈中
                                     if (!isFromHistory) {
-                                        var _search = stateObj ? '?' + _index.util.getUrlParams(stateObj, true) : '';
+                                        var _search = stateObj ? '?' + __WEBPACK_IMPORTED_MODULE_0_jsLib_index__["util"].getUrlParams(stateObj, true) : '';
                                         history.pushState({ path: _path }, null, _search + '#/' + _path);
                                     }
                                 } else {
@@ -464,7 +451,7 @@ var Route = function () {
     return Route;
 }();
 
-exports.default = Route;
+/* harmony default export */ __webpack_exports__["a"] = Route;
 
 /***/ }),
 /* 4 */
@@ -480,14 +467,13 @@ module.exports = "<div class=\"path2-container\">\n  <div class=\"route-btn\">Th
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-__webpack_require__(0);
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__route__ = __webpack_require__(0);
 __webpack_require__(2);
+
 
 /***/ })
 ],[6]);

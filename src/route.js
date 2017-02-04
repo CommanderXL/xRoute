@@ -1,4 +1,6 @@
-import { Route } from 'jsLib/index';
+import {
+    Route
+} from 'jsLib/index';
 
 const Router = new Route();
 
@@ -14,11 +16,12 @@ Router
         //  挂载controller
         pageInit() {
             console.time('route async path1');
-            require.ensure([], () => {
-                let controller = require('modules/path1/controller');
-                Router.registerCtrl('path1', new controller(this.viewBox));
-                console.timeEnd('route async path1');
-            }, 'path');
+            import ('modules/path1/controller')
+            .then(module => {
+                    let controller = module.default;
+                    Router.registerCtrl('path1', new controller(this.viewBox))
+                })
+                .catch(e => console.log(e))
         },
         //  进入路由跳转之前
         beforeEnter() {
@@ -35,18 +38,18 @@ Router
         animate: 'zoomIn',
         template: require('modules/path2/index.html'),
         pageInit() {
-            console.time('route async path2');
-            require.ensure([], () => {
-                let controller = require('modules/path2/controller');
-                Router.registerCtrl('path2', new controller(this.viewBox));
-                console.timeEnd('route async path2');
-            }, 'path');
+            import ('modules/path2/controller')
+            .then(module => {
+                console.time('route async path2');
+                let controller = module.default;
+                Router.registerCtrl('path2', new controller(this.viewBox))
+            });
         },
         beforeEnter() {
 
         },
         beforeLeave() {
-            
+
         }
     })
 

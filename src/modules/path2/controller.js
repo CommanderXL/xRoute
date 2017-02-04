@@ -17,4 +17,5 @@ class PageModel {
     }
 }
 
-module.exports = PageModel;
+//module.exports = PageModel;
+export default PageModel;

@@ -1,4 +1,4 @@
-webpackJsonp([0,2],[
+webpackJsonp([0,3],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -7,24 +7,21 @@ webpackJsonp([0,2],[
 /* 5 */,
 /* 6 */,
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__route__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jsLib_imgResize__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_less__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__index_less__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _route = __webpack_require__(0);
-
-var _route2 = _interopRequireDefault(_route);
-
-__webpack_require__(9);
-
-__webpack_require__(10);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
 
 var PageModel = function () {
     function PageModel(container) {
@@ -40,7 +37,7 @@ var PageModel = function () {
 
             this.container.querySelector('.route-btn').addEventListener('click', function () {
                 console.log('path1');
-                _route2.default.go('path2');
+                __WEBPACK_IMPORTED_MODULE_0__route__["a" /* default */].go('path2');
             });
         }
     }]);
@@ -49,64 +46,45 @@ var PageModel = function () {
 }();
 
 module.exports = PageModel;
+//export default PageModel;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _route = __webpack_require__(0);
-
-var _route2 = _interopRequireDefault(_route);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var PageModel = function () {
-    function PageModel(container) {
-        _classCallCheck(this, PageModel);
-
-        this.container = document.querySelector(container);
-    }
-
-    _createClass(PageModel, [{
-        key: 'init',
-        value: function init() {
-            console.log('This\'s path2 file');
-
-            this.container.querySelector('.route-btn').addEventListener('click', function () {
-                console.log('path2');
-                _route2.default.go('path1');
-            });
-        }
-    }, {
-        key: 'viewDestory',
-        value: function viewDestory() {
-            console.log('well done');
-        }
-    }]);
-
-    return PageModel;
-}();
-
-module.exports = PageModel;
-
-/***/ }),
+/* 8 */,
 /* 9 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
+
+module.exports = function (originalModule) {
+	if (!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
+/* unused harmony export canvasResize */
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var BinaryFile = function BinaryFile(e, t, n) {
@@ -355,10 +333,10 @@ var BinaryFile = function BinaryFile(e, t, n) {
     };
 }(window);
 
-exports.canvasResize = canvasResize;
+
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
