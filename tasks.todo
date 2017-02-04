@@ -6,7 +6,7 @@ Projects:
          ✔ 添加对于css权重的样式书写规范.查看《前端早读课》,部分css属性已经受此影响比较大了(避免多级嵌套)  @critical @done (11/21/2016, 9:47:38 PM)
          ✔ 完善弹层组件 @high @done (11/19/2016, 10:07:14 AM)
          ✔ 找UI同学要银行，对勾的ICON. 另外check-icon留白太多 @done (11/19/2016, 12:06:20 AM)
-         ☐ 添加转场动画 @critical 
+         ✔ 添加转场动画 @critical @done (2/4/2017, 2:31:11 PM)
          ☐ 404页面 @critical 
          ✔ dialog添加tips提示信息 @critical @done (11/23/2016, 1:52:57 AM)
          ✔ search icon / 对勾icon @critical @done (11/23/2016, 2:01:41 AM)
@@ -20,7 +20,7 @@ Projects:
          ✔ 浏览器后退需要缓存数据(在router上注册viewBack的方法)  页面销毁可以放到route里面来做   @critical @done (11/23/2016, 11:48:39 AM)
             ✔ 方案1: 直接在Router上挂载 （this.way） @done (11/23/2016, 11:50:32 AM)
             ✔ 方案2: 通过一层回调 @done (11/23/2016, 11:50:33 AM)
-         ☐ promise添加错误处理, 主要是对网络请求失败的错误处理, 超时处理 @today 
+         ✔ promise添加错误处理, 主要是对网络请求失败的错误处理, 超时处理 @today @done (2/4/2017, 2:31:18 PM)
          ✔ info/person页面存在滑动事件穿透(done).   dialog存在滑动事件穿透 @done (通过在container上监听touchmove事件,并消除相应的事件 e. preventDefault) @done (12/18/2016, 11:17:45 AM)
          ✔ 是否需要将route部分独立出来 @low @done (12/18/2016, 11:18:52 AM)
          ✔ picker的31号处理, 大于当前时间报错的处理,不同年月导致日期不同的切换 @today @done (11/26/2016, 3:30:27 PM)
@@ -31,7 +31,7 @@ Projects:
          ✔ 未通过全局状态的处理(由后端下发数据?) @high @done (11/28/2016, 8:24:05 PM)
          ✔ 通过的身份信息是否可以修改? @high @done (11/29/2016, 1:25:26 AM)
          ✔ 信息审核部分的离开页面的弹窗处理 (压入栈所带来的回退问题,是否需要入栈)   (入栈，但是出来的时候使用history出栈)  @critical @done (11/26/2016, 11:23:29 AM)
-         ☐ 字段的重新梳理(和mis全部对应上) @high
+         ✔ 字段的重新梳理(和mis全部对应上) @high @done (2/4/2017, 2:31:22 PM)
          ☐ 从localstorage获取数据的错误处理,js报错 @critical 
          ☐ webpack 代理  https://github.com/e-cloud/webpack-docs/wiki/webpack-dev-server.cn
          ✔ tab的显示状态(根据权重值来显示tab).页面回退带上tab的值 @critical (权重值是否应该是后端来下发，以后不用再配置, sessionStorage来配置?) @done (12/3/2016, 4:56:49 PM)
@@ -442,4 +442,6 @@ webpack.DefinePlugin({
 
 TODO:
     account页面没有引入Event库
-
+    webpack1.x 通过 import 语法去动态引入async 库. babel-plugin-dynamic-import-webpack
+    OccurrenceOrderPlugin稳定模块id的插件
+    提取manifest文件
