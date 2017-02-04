@@ -1,4 +1,6 @@
-import { Route } from 'jsLib/index';
+import {
+    Route
+} from 'jsLib/index';
 
 const Router = new Route();
 
@@ -15,6 +17,7 @@ Router
         pageInit() {
             console.time('route async path1');
             require.ensure([], () => {
+                // 超时或者错误捕获
                 let controller = require('modules/path1/controller');
                 Router.registerCtrl('path1', new controller(this.viewBox));
                 console.timeEnd('route async path1');
@@ -46,7 +49,7 @@ Router
 
         },
         beforeLeave() {
-            
+
         }
     })
 

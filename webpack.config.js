@@ -14,15 +14,15 @@ var PATHS = {
 }
 
 var PKG = require('./package.json');
-var TARGET = process.env.npm_lifecycle_event;   //获取当前正在运行的脚本名称
+var TARGET = process.env.npm_lifecycle_event; //获取当前正在运行的脚本名称
 
-var isProduction = function() {
+var isProduction = function () {
     return process.env.NODE_ENV === 'production';
 }
 
 
 
-module.exports ={
+module.exports = {
     entry: {
         'index': path.join(__dirname, 'src/index.js')
     },
@@ -30,10 +30,9 @@ module.exports ={
     //chunkFilename对应的是非主入口文件的名称,chunk
     output: {
         path: PATHS.dist,
-        publicPath: '/static/taxi-driver/',    //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
+        publicPath: '/static/taxi-driver/', //publicPath 的话是打包的时候生成的文件链接,如果是在生产环境当然是用服务器地址，如果是开发环境就是用本地静态服务器的地址
         filename: 'js/register/[name].js',
         chunkFilename: 'js/register/[name].js',
-        //TODO: build文件中加入hash值
     },
     //生成source-map文件
     devtool: isProduction ? null : 'source-map',
@@ -46,27 +45,43 @@ module.exports ={
         }
     },
     module: {
-        loaders: [
-            {
+        loaders: [{
                 test: /\.js$/,
                 exclude: /node_modules|picker.min.js/,
-                loader: 'babel'
+                loader: 'babel-loader'
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style', 'css!less')
+                //loader: ExtractTextPlugin.extract('style', 'css!less')
+                use: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: [{
+                        loader: 'css-loader'
+                    },{
+                        loader: 'less-loader'
+                    }]
+                })
             },
             {
                 test: /\.html$/,
-                loader: 'raw'
+                loader: 'raw-loader'
             },
-            {
+            /*{
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style', 'css')
+            },*/
+            {
+                test: /\.css/,
+                use: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: [{
+                        loader: 'css-loader'
+                    }]
+                })
             },
             {
                 test: /\.json$/,
-                loader: 'json'
+                loader: 'json-loader'
             }
         ]
     },
@@ -77,11 +92,11 @@ module.exports ={
         alias: {
             src: path.join(__dirname, 'src'),
             modules: path.join(__dirname, 'src/modules'),
-            lessLib: path.join(__dirname, 'src/lib/less'),  
+            lessLib: path.join(__dirname, 'src/lib/less'),
             jsLib: path.join(__dirname, 'src/lib/js'),
             components: path.join(__dirname, 'src/components')
         },
-        extensions: ['', '.js', '.less', '.html', '.json', '.css'],
+        extensions: ['.js', '.less', '.html', '.json', '.css'],
     },
     plugins: [
         new WebpackMd5Hash(),
@@ -89,10 +104,15 @@ module.exports ={
             title: '认证资料',
             template: './dist/assets/info.html',
             inject: 'body',
-            filename: 'pages/register/index.html'   //输出html文件的位置
+            filename: 'pages/register/index.html' //输出html文件的位置
         }),
         //new DashboardPlugin(),
-        new ExtractTextPlugin('css/register/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
+        //new ExtractTextPlugin('css/register/style.css'),     //将引入的样式文件单独抽成style.css文件并插入到head标签当中,带有路径时,最后打包
+        new ExtractTextPlugin({
+            filename: 'css/register/style.css',
+            allChunks: true,
+            disable: false
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/register/common.js'
