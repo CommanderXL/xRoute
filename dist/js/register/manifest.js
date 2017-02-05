@@ -7,10 +7,12 @@
 /******/ 		var moduleId, chunkId, i = 0, callbacks = [];
 /******/ 		for(;i < chunkIds.length; i++) {
 /******/ 			chunkId = chunkIds[i];
-/******/ 			if(installedChunks[chunkId])
+/******/ 			if(installedChunks[chunkId])  
+                // callbacks接收的是一个数组
 /******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
 /******/ 			installedChunks[chunkId] = 0;
 /******/ 		}
+                // 将webpackJsonp中传入的moreModules进行
 /******/ 		for(moduleId in moreModules) {
 /******/ 			modules[moduleId] = moreModules[moduleId];
 /******/ 		}
@@ -34,7 +36,7 @@
 /******/ 		2:0
 /******/ 	};
 
-/******/ 	// The require function
+/******/ 	// The require function  通过moduleId来获取module
 /******/ 	function __webpack_require__(moduleId) {
 
 /******/ 		// Check if module is in cache
