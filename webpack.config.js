@@ -79,6 +79,10 @@ module.exports = {
                     fallbackLoader: 'style-loader',
                     loader: cssLoader
                 })
+            },
+            {
+                test: /\.handlebars$/,
+                loader: 'handlebars-loader'
             }
         ]
     },
@@ -96,7 +100,7 @@ module.exports = {
         new WebpackMd5Hash(),
         new HtmlWebpackPlugin({
             title: '认证资料',
-            template: './dist/assets/info.html',
+            template: './dist/assets/info.ejs',
             inject: 'body',
             filename: 'pages/register/index.html' //输出html文件的位置
         }),
@@ -110,7 +114,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             //names: ['common', 'manifest'],
             //filename: 'js/register/common.js'
-            name: 'common',
+            //name: 'common',
+            names: ['common', 'manifest'],
             filename: 'js/register/common.js'
         }),
         new webpack.LoaderOptionsPlugin({
