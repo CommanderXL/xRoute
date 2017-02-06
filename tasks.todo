@@ -444,4 +444,4 @@ TODO:
     account页面没有引入Event库
     webpack1.x 通过 import 语法去动态引入async 库. babel-plugin-dynamic-import-webpack
     OccurrenceOrderPlugin稳定模块id的插件
-    提取manifest文件
+    提取manifest文件 (注意不同构建文件的书写关系 以及使用inlineWebpack plugin)
