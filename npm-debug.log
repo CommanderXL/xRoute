@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/XRene/.nvm/versions/node/v6.9.2/bin/node',
+1 verbose cli   '/Users/XRene/.nvm/versions/node/v6.9.2/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'dist' ]
+2 info using npm@3.10.9
+3 info using node@v6.9.2
+4 verbose run-script [ 'predist', 'dist', 'postdist' ]
+5 info lifecycle pjax@1.0.0~predist: pjax@1.0.0
+6 silly lifecycle pjax@1.0.0~predist: no script for predist, continuing
+7 info lifecycle pjax@1.0.0~dist: pjax@1.0.0
+8 verbose lifecycle pjax@1.0.0~dist: unsafe-perm in lifecycle true
+9 verbose lifecycle pjax@1.0.0~dist: PATH: /Users/XRene/.nvm/versions/node/v6.9.2/lib/node_modules/npm/bin/node-gyp-bin:/Users/XRene/demo/xRoute/node_modules/.bin:/Users/XRene/.nvm/versions/node/v6.9.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle pjax@1.0.0~dist: CWD: /Users/XRene/demo/xRoute
+11 silly lifecycle pjax@1.0.0~dist: Args: [ '-c',
+11 silly lifecycle   'rm -rf ./dist/css/register && rm -rf ./dist/js/register && NODE_ENV=production webpack --progress --colors' ]
+12 silly lifecycle pjax@1.0.0~dist: Returned: code: 1  signal: null
+13 info lifecycle pjax@1.0.0~dist: Failed to exec dist script
+14 verbose stack Error: pjax@1.0.0 dist: `rm -rf ./dist/css/register && rm -rf ./dist/js/register && NODE_ENV=production webpack --progress --colors`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/XRene/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/XRene/.nvm/versions/node/v6.9.2/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid pjax@1.0.0
+16 verbose cwd /Users/XRene/demo/xRoute
+17 error Darwin 15.0.0
+18 error argv "/Users/XRene/.nvm/versions/node/v6.9.2/bin/node" "/Users/XRene/.nvm/versions/node/v6.9.2/bin/npm" "run" "dist"
+19 error node v6.9.2
+20 error npm  v3.10.9
+21 error code ELIFECYCLE
+22 error pjax@1.0.0 dist: `rm -rf ./dist/css/register && rm -rf ./dist/js/register && NODE_ENV=production webpack --progress --colors`
+22 error Exit status 1
+23 error Failed at the pjax@1.0.0 dist script 'rm -rf ./dist/css/register && rm -rf ./dist/js/register && NODE_ENV=production webpack --progress --colors'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the pjax package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     rm -rf ./dist/css/register && rm -rf ./dist/js/register && NODE_ENV=production webpack --progress --colors
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs pjax
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls pjax
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
