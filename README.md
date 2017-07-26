@@ -106,4 +106,5 @@
 ```javascript
   npm install
   npm run dev
+  浏览器中打开localhost:3000/pages/register/
 ```

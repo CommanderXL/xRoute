@@ -1,5 +1,4 @@
 import Router from '../../route';
-import 'jsLib/imgResize';
 import './index.less';
 
 class PageModel {
